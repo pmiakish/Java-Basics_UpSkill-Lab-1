@@ -11,6 +11,6 @@ public class Mod1_Task1 {
         double b = console.nextDouble();
         System.out.print ("Enter the value c: ");
         double c = console.nextDouble();
-        System.out.println ("((a–3)*b/2)+c = " + (((a - 3) * b / 2) + c));
+        System.out.println ("Expression value = " + (((a - 3) * b / 2) + c));
     }
 }
