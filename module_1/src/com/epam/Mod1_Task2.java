@@ -5,7 +5,6 @@ import java.util.Locale;
 public class Mod1_Task2 {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
-        double z;
         System.out.print ("Enter the value a (cannot be 0): ");
         double a = console.nextDouble();
         System.out.print("Enter the value b: ");
@@ -13,7 +12,7 @@ public class Mod1_Task2 {
         System.out.print("Enter the value c: ");
         double c = console.nextDouble();
             if (a!=0 && (Math.pow(b,2.0)+4*a*c)>=0) {
-                z = (b + Math.sqrt(Math.pow(b, 2.0) + 4 * a * c)) / (2 * a) - (Math.pow(a, 3.0) * c) + (Math.pow(b, -2.0));
+                double z = (b + Math.sqrt(Math.pow(b, 2.0) + 4 * a * c)) / (2 * a) - (Math.pow(a, 3.0) * c) + (Math.pow(b, -2.0));
                 System.out.println("Expression value = " + z);
             }
             else {
