@@ -2,7 +2,7 @@ package com.epam;
 import java.util.Scanner;
 import java.util.Locale;
 
-public class Mod1_Task1 {
+public class Mod1Task1 {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
         System.out.print ("Enter the value a: ");
