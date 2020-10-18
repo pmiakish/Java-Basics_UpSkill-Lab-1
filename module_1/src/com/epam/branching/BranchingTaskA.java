@@ -13,14 +13,15 @@ public class BranchingTaskA {
         double a = console.nextDouble();
         System.out.print ("Enter the second angle value in degrees: ");
         double b = console.nextDouble();
-            if (a + b < SUM_OF_ANGLES) {
-                if (a == RIGHT_ANGLE || b == RIGHT_ANGLE || a+b == RIGHT_ANGLE) {
-                    System.out.println ("This is a right-angled triangle");
-                } else {
-                    System.out.println("This isn't a right-angled triangle");
-                }
+        
+        if (a + b < SUM_OF_ANGLES) {
+            if (a == RIGHT_ANGLE || b == RIGHT_ANGLE || a+b == RIGHT_ANGLE) {
+                System.out.println ("This is a right-angled triangle");
             } else {
-                System.out.println ("A triangle with defined angles doesn't exist!");
+                System.out.println("This isn't a right-angled triangle");
             }
+        } else {
+            System.out.println ("A triangle with defined angles doesn't exist!");
+        }
     }
 }
