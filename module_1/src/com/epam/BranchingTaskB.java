@@ -9,30 +9,10 @@ public class BranchingTaskB {
         double a = console.nextDouble();
         System.out.print ("Enter the value 'b': ");
         double b = console.nextDouble();
-        double minAB;
-            if (a<=b) {
-                minAB = a;
-            }
-            else {
-                minAB = b;
-            }
         System.out.print ("Enter the value 'c': ");
         double c = console.nextDouble();
         System.out.print ("Enter the value 'd': ");
         double d = console.nextDouble();
-        double minCD;
-            if (c<=d) {
-                minCD = c;
-            }
-            else {
-                minCD = d;
-            }
-
-            if (minAB>=minCD) {
-                System.out.println ("Expression value = " + minAB);
-            }
-            else {
-                System.out.println ("Expression value = " + minCD);
-            }
+        System.out.println ("Expression value = " + Math.max(Math.min(a,b), Math.min(c,d)));
     }
 }
