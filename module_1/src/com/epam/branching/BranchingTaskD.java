@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class BranchingTaskD {
 
-    public static final int NUMBER_OF_SIDES = 3;
+    private static final int NUMBER_OF_SIDES = 3;
 
     public static void main(String[] args) {
 
