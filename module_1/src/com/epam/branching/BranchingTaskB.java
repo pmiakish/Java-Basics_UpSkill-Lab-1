@@ -13,6 +13,6 @@ public class BranchingTaskB {
         double c = console.nextDouble();
         System.out.print ("Enter the value 'd': ");
         double d = console.nextDouble();
-        System.out.println ("Expression value = " + Math.max(Math.min(a,b), Math.min(c,d)));
+        System.out.println ("Max value of two min = " + Math.max(Math.min(a,b), Math.min(c,d)));
     }
 }
