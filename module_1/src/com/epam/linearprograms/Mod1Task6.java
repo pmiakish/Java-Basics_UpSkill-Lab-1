@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.Locale;
 
 public class Mod1Task6 {
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
         System.out.println ("Enter the coordinates: ");
         System.out.print ("x value: ");
