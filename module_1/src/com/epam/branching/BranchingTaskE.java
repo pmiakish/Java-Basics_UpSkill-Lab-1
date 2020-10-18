@@ -11,10 +11,10 @@ public class BranchingTaskE {
         System.out.print ("Enter the value 'x': ");
         double x = console.nextDouble();
 
-            if (x <= CONDITION_PARAMETER) {
-                System.out.println ("F(x) = " + (Math.pow(x,2) - 3.0 * x + 9.0));
-            } else {
-                System.out.println ("F(x) = " + (1.0 / (Math.pow(x,3) + 6)));
-            }
+        if (x <= CONDITION_PARAMETER) {
+            System.out.println ("F(x) = " + (Math.pow(x,2) - 3.0 * x + 9.0));
+        } else {
+            System.out.println ("F(x) = " + (1.0 / (Math.pow(x,3) + 6)));
+        }
     }
 }
