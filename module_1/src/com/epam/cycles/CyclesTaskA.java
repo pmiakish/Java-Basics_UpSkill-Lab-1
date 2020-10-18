@@ -1,12 +1,11 @@
 package com.epam.cycles;
 import java.util.Scanner;
-import java.util.Locale;
 
 public class CyclesTaskA {
 
     public static void main(String[] args) {
 
-    Scanner console = new Scanner(System.in).useLocale(Locale.US);
+    Scanner console = new Scanner(System.in);
     System.out.print ("Enter the natural number A (non-negative integer greater than or equal to 1): ");
     int a = console.nextInt();
 
