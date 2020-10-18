@@ -1,4 +1,4 @@
-package com.epam;
+package com.epam.branching;
 import java.util.Scanner;
 import java.util.Locale;
 
@@ -18,7 +18,10 @@ public class BranchingTaskC {
         double x3 = console.nextDouble();
         System.out.print ("C(y3) value: ");
         double y3 = console.nextDouble();
-            if ((x2-x1)*(y3-y1)==(x3-x1)*(y2-y1)) System.out.println ("The points are on the same line");
-            else System.out.println ("The points aren't on the same line");
+            if ((x2 - x1) * (y3 - y1) == (x3 - x1) * (y2 - y1)) {
+                System.out.println ("The points are on the same line");
+            } else {
+                System.out.println("The points aren't on the same line");
+            }
     }
 }
