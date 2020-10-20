@@ -6,12 +6,10 @@ public class CyclesTaskD {
     private static final int AMOUNT_OF_NUMBERS = 200;
 
     public static void main(String[] args) {
-        BigInteger product = new BigInteger("1");
-        BigInteger squareNumber;
-        for (int i = 1; i <= AMOUNT_OF_NUMBERS; i++) {
-            squareNumber = BigInteger.valueOf(i * i);
-            product = product.multiply(squareNumber);
+        BigInteger composition = new BigInteger("1");
+        for (int i = 2; i <= AMOUNT_OF_NUMBERS; i++) {
+            composition = composition.multiply(BigInteger.valueOf(i * i));
         }
-        System.out.println("The product of the first " + AMOUNT_OF_NUMBERS + " square numbers is " + product);
+        System.out.println("The composition of the first " + AMOUNT_OF_NUMBERS + " square numbers is " + composition);
     }
 }
