@@ -1,32 +1,50 @@
 package com.epam.cycles;
-
 import java.util.Scanner;
 
 public class CyclesTaskG {
 
-    private static final int AMOUNT_OF_NUMBERS = 2;
+    private static final int FIRST_DIGIT = 0;
+    private static final int LAST_DIGIT = 9;
 
     public static void main(String[] args) {
-        Scanner console = new Scanner(System.in);
-        int[] numbers = new int[AMOUNT_OF_NUMBERS];
-        int [] numberLength = new int[AMOUNT_OF_NUMBERS];
-            for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
-                System.out.print ("Enter the number " + (i + 1) + ": ");
-                numbers[i] = Math.abs(console.nextInt());
-                numberLength[i] = String.valueOf(numbers[i]).length();
-            }
-        for (int n = 0; n < AMOUNT_OF_NUMBERS; n++) {
-            System.out.print ("\nDigits of the number '" + numbers[n] + "': ");
-            for (int rank = numberLength[n] - 1; rank >= 1; rank--) {
-                System.out.print ((numbers[n] / ((int) Math.pow(10, rank))) + ", ");
-                numbers[n] %= (int) Math.pow(10, rank);
-                    if (rank == 1) {
-                        System.out.print (numbers[n] + ".");
-                    }
-            }
-        }
+    Scanner console = new Scanner(System.in);
+    System.out.print("Enter the first number: ");
+    int firstNumber = Math.abs(console.nextInt());
+    int[] firstNumberDigits = new int[String.valueOf(firstNumber).length()];
+    System.out.print("Enter the second number: ");
+    int secondNumber = Math.abs(console.nextInt());
+    int[] secondNumberDigits = new int[String.valueOf(secondNumber).length()];
 
+    for (int i = 0; i < firstNumberDigits.length; i++) {
+        firstNumberDigits[i] = firstNumber % 10;
+        firstNumber /= 10;
+    }
+    for (int i = 0; i < secondNumberDigits.length; i++) {
+        secondNumberDigits[i] = secondNumber % 10;
+        secondNumber /= 10;
     }
 
-
+    System.out.print("The same digits are in the both numbers: ");
+    for (int i = FIRST_DIGIT; i <= LAST_DIGIT; i++) {
+        boolean findDigitFirstNumber = false;
+        boolean findDigitSecondNumber = false;
+        for (int j = 0; j < firstNumberDigits.length; j++) {
+            if (firstNumberDigits[j] == i) {
+                findDigitFirstNumber = true;
+                break;
+            }
+        }
+        if (findDigitFirstNumber) {
+            for (int j = 0; j < secondNumberDigits.length; j++) {
+                if (secondNumberDigits[j] == i) {
+                    findDigitSecondNumber = true;
+                    break;
+                }
+            }
+        }
+        if (findDigitFirstNumber && findDigitSecondNumber) {
+            System.out.print(i + " ");
+        }
+    }
+    }
 }
