@@ -2,7 +2,6 @@ package com.epam.cycles;
 import java.util.Scanner;
 
 public class CyclesTaskF {
-
     public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
@@ -12,26 +11,21 @@ public class CyclesTaskF {
         System.out.print("-- enter the value 'n': ");
         int n = console.nextInt();
 
-        if (m < n && n >= 1) {
-
+        if (m > 0 && m < n) {
             System.out.println("\nDivisors of numbers (excluding 1 and the same number):");
-            boolean checkNonNaturalNumber;
 
             for (int currentNumber = m; currentNumber <= n; currentNumber++) {
-                if (currentNumber < 1) {
-                    continue;
-                }
-                checkNonNaturalNumber = false;
+                boolean isCompositeNaturalNumber = false;
                 System.out.print("\nThe number " + currentNumber + " -> ");
                 int divisor = 2;
-                while (divisor < currentNumber) {
+                while (divisor < currentNumber / 2) {
                     if (currentNumber % divisor == 0) {
                         System.out.print(divisor + " ");
-                        checkNonNaturalNumber = true;
+                        isCompositeNaturalNumber = true;
                     }
                     divisor++;
                 }
-                if (!checkNonNaturalNumber) {
+                if (!isCompositeNaturalNumber) {
                     System.out.print("prime number");
                 }
             }
