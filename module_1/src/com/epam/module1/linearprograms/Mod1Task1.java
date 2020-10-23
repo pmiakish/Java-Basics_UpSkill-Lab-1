@@ -1,4 +1,4 @@
-package com.epam.linearprograms;
+package com.epam.module1.linearprograms;
 import java.util.Scanner;
 import java.util.Locale;
 

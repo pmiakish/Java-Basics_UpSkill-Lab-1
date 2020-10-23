@@ -1,4 +1,4 @@
-package com.epam.linearprograms;
+package com.epam.module1.linearprograms;
 import java.util.Scanner;
 
 public class Mod1Task5 {

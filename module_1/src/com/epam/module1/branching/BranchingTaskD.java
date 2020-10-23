@@ -1,4 +1,4 @@
-package com.epam.branching;
+package com.epam.module1.branching;
 import java.util.Scanner;
 import java.util.Locale;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.epam.cycles;
+package com.epam.module1.cycles;
 
 public class CyclesTaskC {
 
