@@ -1,4 +1,4 @@
-package com.epam.module2.onedimensionalarrays;
+package com.epam.onedimensionalarrays;
 import java.util.Scanner;
 import java.util.Locale;
 
