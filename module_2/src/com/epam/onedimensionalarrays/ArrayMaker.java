@@ -11,6 +11,15 @@ public class ArrayMaker {
         return arrayInt;
     }
 
+    // Random double array with max i min values
+    public static double[] getDoubleArray (double minValue, double maxValue, int amounOfNumbers) {
+        double[] arrayDouble = new double[amounOfNumbers];
+        for (int i  = 0; i < arrayDouble.length; i++) {
+            arrayDouble[i] = Math.random() * (maxValue - minValue) + minValue;
+        }
+        return arrayDouble;
+    }
+
     // Random double sequence
     public static double[] getDoubleSequence (int amounOfNumbers) {
         double randomeDivend = Math.random() - Math.random();

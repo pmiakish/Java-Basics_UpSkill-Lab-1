@@ -20,10 +20,8 @@ public class SumOfNumbersDivisibleByK {
         if (minValue >= 1 && maxValue > minValue && k <= maxValue) {
             int[] integerArray = ArrayMaker.getIntArray(minValue, maxValue, amountOfNumbers);
             System.out.println("\nThe array has been generated:");
-            for (int i = 0; i < integerArray.length; i++) {
-                System.out.print(integerArray[i] + " ");
-            }
-            System.out.print("\nSum of the array numbers that are divisible by " + k + " = ");
+            ArrayReader.printInt(integerArray);
+            System.out.print("Sum of the array numbers that are divisible by " + k + " = ");
             int sum = 0;
             for (int i : integerArray) {
                 if ((i % k) == 0) {

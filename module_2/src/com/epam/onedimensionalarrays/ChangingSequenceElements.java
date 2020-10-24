@@ -11,11 +11,9 @@ public class ChangingSequenceElements {
 
         double[] doubleArray = ArrayMaker.getDoubleSequence(amountOfNumbers);
         System.out.println("\nThe sequence of " + amountOfNumbers + " real numbers has been generated:");
-        for (int i = 0; i < doubleArray.length; i++) {
-            System.out.print(doubleArray[i] + " ");
-        }
+        ArrayReader.printDouble(doubleArray);
 
-        System.out.print("\n\nEnter value 'Z' (must be less than the greatest number of the sequence): ");
+        System.out.print("\nEnter value 'Z' (must be less than the greatest number of the sequence): ");
         double z = console.nextDouble();
         if (z < doubleArray[doubleArray.length - 1]) {
             int numberOfReplacements = 0;
