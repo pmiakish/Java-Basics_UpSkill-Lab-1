@@ -20,6 +20,9 @@ public class Tasks {
             case 3:
                 DoubleArrayChecking.checkElements();
                 break;
+            case 4:
+                DoubleArrayMaxMinReplacing.repalceElements();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
