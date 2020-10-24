@@ -23,6 +23,9 @@ public class Tasks {
             case 4:
                 DoubleArrayMaxMinReplacing.repalceElements();
                 break;
+            case 5:
+                IntArrayIndexValue.getValues();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
