@@ -17,7 +17,7 @@ public class SumOfNumbersDivisibleByK {
         System.out.print("Specify the 'K'-value (must be less than or equal to " + maxValue + "): ");
         int k = console.nextInt();
 
-        if (minValue >= 1 && maxValue > minValue && k <= maxValue) {
+        if (minValue >= 1 && maxValue > minValue && k <= maxValue && amountOfNumbers >= 1) {
             int[] integerArray = ArrayMaker.getIntArray(minValue, maxValue, amountOfNumbers);
             System.out.println("\nThe array has been generated:");
             ArrayReader.printInt(integerArray);

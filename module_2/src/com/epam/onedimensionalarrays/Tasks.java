@@ -17,6 +17,9 @@ public class Tasks {
             case 2:
                 ChangingSequenceElements.replaceElements();
                 break;
+            case 3:
+                DoubleArrayChecking.checkElements();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
