@@ -26,6 +26,9 @@ public class Tasks {
             case 5:
                 IntArrayIndexValue.getValues();
                 break;
+            case 6:
+                SumOfSequenceElements.addElementsWithPrimeIndexes();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;

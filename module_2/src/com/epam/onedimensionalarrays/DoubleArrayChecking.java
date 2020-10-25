@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class DoubleArrayChecking {
-    public static void checkElements () {
+    public static void checkElements() {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
 
         System.out.println("\nSpecify the array parameters (including real numbers): ");

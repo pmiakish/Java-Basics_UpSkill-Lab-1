@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Locale;
 
 public class SumOfNumbersDivisibleByK {
-    public static void getSum () {
+    public static void getSum() {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
 
         System.out.println("\nSpecify the array parameters (including only natural numbers): ");

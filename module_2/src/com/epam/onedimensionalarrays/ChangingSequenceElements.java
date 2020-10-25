@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class ChangingSequenceElements {
-    public static void replaceElements () {
+    public static void replaceElements() {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
         System.out.print("\nSpecify the amount of the sequence numbers: ");
         int amountOfNumbers = console.nextInt();
@@ -31,7 +31,7 @@ public class ChangingSequenceElements {
                 System.out.println("Incorrect 'Z'-value! Try again...");
             }
         } else {
-            System.out.print("Incorrect values! try again...");
+            System.out.print("Incorrect value! try again...");
         }
     }
     

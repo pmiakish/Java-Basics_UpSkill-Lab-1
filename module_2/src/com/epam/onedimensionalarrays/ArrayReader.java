@@ -1,7 +1,7 @@
 package com.epam.onedimensionalarrays;
 
 public class ArrayReader {
-    public static void printInt (int[] arrayInt) {
+    public static void printInt(int[] arrayInt) {
         for (int i = 0; i < arrayInt.length; i++) {
             System.out.print(arrayInt[i] + " ");
         }

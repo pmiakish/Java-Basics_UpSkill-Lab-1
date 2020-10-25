@@ -3,7 +3,7 @@ package com.epam.onedimensionalarrays;
 public class ArrayMaker {
 
     // Random integer array with max i min values
-    public static int[] getIntArray (int minValue, int maxValue, int amounOfNumbers) {
+    public static int[] getIntArray(int minValue, int maxValue, int amounOfNumbers) {
         int[] arrayInt = new int[amounOfNumbers];
         for (int i  = 0; i < arrayInt.length; i++) {
             arrayInt[i] = (int) (Math.random() * (maxValue - minValue + 1) + minValue);
