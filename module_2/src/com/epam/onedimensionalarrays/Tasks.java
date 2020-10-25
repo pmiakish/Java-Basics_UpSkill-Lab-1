@@ -29,6 +29,9 @@ public class Tasks {
             case 6:
                 SumOfSequenceElements.addElementsWithPrimeIndexes();
                 break;
+            case 8:
+                IntSequenceChanging.removeMinElements();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
