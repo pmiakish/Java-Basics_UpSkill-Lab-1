@@ -21,6 +21,7 @@ public class IntArrayElementsFrequency {
 
             // creating the array with frequencies of the elements
             int[] integerArrayElementsFrequency = new int[amountOfNumbers];
+            int countUniqueElements = 0;
             for (int i = 0; i < integerArray.length; i++) {
                 boolean isUniqueElement = true;
                 for (int j = 0; j < i; j++) {
@@ -30,6 +31,7 @@ public class IntArrayElementsFrequency {
                     }
                 }
                 if (isUniqueElement) {
+                    countUniqueElements++;
                     integerArrayElementsFrequency[i] = 1;
                     for (int currentIndex = i + 1; currentIndex < integerArray.length; currentIndex++) {
                         if (integerArray[currentIndex] == integerArray[i]) {
@@ -55,7 +57,11 @@ public class IntArrayElementsFrequency {
                 }
             }
 
-            System.out.println("The most frequently min value of the array is " + maxFrequencyValue + " (has been found " + maxFrequency + " times)");
+            if (maxFrequency > 1 && countUniqueElements > 1) {
+                System.out.println("The most frequently min value of the array is " + maxFrequencyValue + " (has been found " + maxFrequency + " times).");
+            } else {
+                System.out.println("The most frequently value of the array not found.");
+            }
 
         } else {
             System.out.print("Incorrect values! try again...");
