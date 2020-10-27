@@ -35,6 +35,9 @@ public class Tasks {
             case 9:
                 IntArrayElementsFrequency.getMostFrequentElement();
                 break;
+            case 10:
+                IntArrayElementsCompressing.compressArray();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
