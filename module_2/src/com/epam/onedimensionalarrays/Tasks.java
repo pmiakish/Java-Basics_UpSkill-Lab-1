@@ -32,6 +32,9 @@ public class Tasks {
             case 8:
                 IntSequenceChanging.removeMinElements();
                 break;
+            case 9:
+                IntArrayElementsFrequency.getMostFrequentElement();
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
