@@ -3,65 +3,57 @@ package com.epam.onedimensionalarrays;
 public class ArrayMaker {
 
     // Random integer array with max and min values
-    public static int[] getIntArray(int minValue, int maxValue, int amountOfNumbers) {
-        int[] arrayInt = new int[amountOfNumbers];
-        for (int i  = 0; i < arrayInt.length; i++) {
-            arrayInt[i] = (int) (Math.random() * (maxValue - minValue + 1) + minValue);
+    public static int[] generateArrayOfIntNumbers(int minValue, int maxValue, int amountOfNumbers) {
+        int[] generatedArray = new int[amountOfNumbers];
+        for (int i  = 0; i < amountOfNumbers; i++) {
+            generatedArray[i] = (int) (Math.random() * (maxValue - minValue + 1) + minValue);
         }
-        return arrayInt;
+        return generatedArray;
     }
 
     // Random double array with max and min values
-    public static double[] getDoubleArray(double minValue, double maxValue, int amountOfNumbers) {
-        double[] arrayDouble = new double[amountOfNumbers];
-        for (int i  = 0; i < arrayDouble.length; i++) {
-            arrayDouble[i] = Math.random() * (maxValue - minValue) + minValue;
+    public static double[] generateArrayOfRealNumbers(double minValue, double maxValue, int amountOfNumbers) {
+        double[] generatedArray = new double[amountOfNumbers];
+        for (int i  = 0; i < amountOfNumbers; i++) {
+            generatedArray[i] = Math.random() * (maxValue - minValue) + minValue;
         }
-        return arrayDouble;
+        return generatedArray;
     }
 
-    // integer sequence
-    public static int[] getIntSequence(int amountOfNumbers) {
-        int a = (int) ((Math.random() - Math.random()) * (Math.random() - Math.random()) * 10.0);
+    // Random int sequence with amount of numbers
+    public static int[] generateSequenceOfIntNumbers(int amountOfNumbers) {
+        int a = (int) ((Math.random() - Math.random()) * 10.0);
         int b = (int) ((Math.random() - Math.random()) * 10.0);
         int c = (int) ((Math.random() - Math.random()) * 10.0);
-
         while (b == 0 || c == 0) {
             b += (int) ((Math.random() - Math.random()) * 10.0);
             c += (int) ((Math.random() - Math.random()) * 10.0);
         }
-
-        int[] arrayInt = new int[amountOfNumbers];
-        arrayInt[0] = a + (b * c) - (b + c);
-        System.out.println("a" + a + " b" + b + " c" + c);//trace
-        for (int i  = 1; i < arrayInt.length; i++) {
-            arrayInt[i] = arrayInt[i-1] + (a + (b * c) - (b + c));
+        int[] generatedSequence = new int[amountOfNumbers];
+        generatedSequence[0] =  (b * c) + a;
+        for (int currentIndex = 1; currentIndex < amountOfNumbers; currentIndex++) {
+            generatedSequence[currentIndex] =  generatedSequence[currentIndex - 1] + (b * c) + a;
         }
-        return arrayInt;
+        return generatedSequence;
     }
 
-    // double sequence
-    public static double[] getDoubleSequence(int amountOfNumbers) {
-        double randomeDivend = Math.random() - Math.random();
-        double randomeDivendFactor = Math.random() + Math.random();
-        while (randomeDivend == 0 || randomeDivendFactor == 0) {
-            randomeDivend += Math.random() - Math.random();
-            randomeDivendFactor += Math.random() + Math.random();
+    // Random double sequence with start and end values
+    public static double[] generateSequenceOfRealNumbers(double startValue, double endValue, int amountOfNumbers) {
+        double[] generatedSequence = new double[amountOfNumbers];
+        generatedSequence[0] = startValue;
+        generatedSequence[amountOfNumbers - 1] = endValue;
+        if (startValue > endValue) {
+            for (int i = 1; i < amountOfNumbers; i++) {
+                generatedSequence[i] = generatedSequence[i - 1] - ((startValue - endValue) / (amountOfNumbers - 1));
+            }
+        } else if (startValue < endValue) {
+            for (int i = 1; i < amountOfNumbers; i++) {
+                generatedSequence[i] = generatedSequence[i - 1] + ((endValue - startValue) / (amountOfNumbers - 1));
+            }
+        } else {
+            System.out.println("\nIncorrect max/min values of the sequence!");
         }
-        double randomeDivisor = Math.random() - Math.random();
-        double randomeDivisorFactor = Math.random() + Math.random();
-        while (randomeDivisor == 0 || randomeDivisorFactor == 0) {
-            randomeDivisor += Math.random() - Math.random();
-            randomeDivisorFactor += Math.random() + Math.random();
-        }
-
-        double[] arrayDouble = new double[amountOfNumbers];
-        for (int i  = 0; i < arrayDouble.length; i++) {
-            randomeDivend *= randomeDivendFactor;
-            randomeDivisor *= randomeDivisorFactor;
-            arrayDouble[i] = randomeDivend / randomeDivisor;
-        }
-        return arrayDouble;
+        return generatedSequence;
     }
 
 }
