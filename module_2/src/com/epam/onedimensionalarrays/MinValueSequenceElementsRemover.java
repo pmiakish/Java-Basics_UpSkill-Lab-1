@@ -8,17 +8,16 @@ package com.epam.onedimensionalarrays;
 
 public class MinValueSequenceElementsRemover {
 
-    private static int minValue = 0;
-    private static int amountOfMinValues = 0;
+    private static final int AMOUNT_OF_CHARACTERISTICS = 2;
 
     public static int[] removeElements(int[] generatedNumbers) {
-        searchMinElements(generatedNumbers);
+        int[] minValuesAndTheirAmount = searchMinElements(generatedNumbers);
         int[] arrayWithRemovedMinValues;
-        if (amountOfMinValues < generatedNumbers.length) {
-            arrayWithRemovedMinValues = new int[generatedNumbers.length - amountOfMinValues];
+        if (minValuesAndTheirAmount[1] < generatedNumbers.length) {
+            arrayWithRemovedMinValues = new int[generatedNumbers.length - minValuesAndTheirAmount[1]];
             int arrayIndex = 0;
             for (int oldArrayCurrentValue : generatedNumbers) {
-                if (oldArrayCurrentValue != minValue) {
+                if (oldArrayCurrentValue != minValuesAndTheirAmount[0]) {
                     arrayWithRemovedMinValues[arrayIndex] = oldArrayCurrentValue;
                     arrayIndex++;
                 }
@@ -30,17 +29,19 @@ public class MinValueSequenceElementsRemover {
         return arrayWithRemovedMinValues;
     }
 
-    private static void searchMinElements(int[] generatedNumbers) {
-        minValue = generatedNumbers[0];
-        amountOfMinValues = 1;
+    private static int[] searchMinElements(int[] generatedNumbers) {
+        int[] minValuesAndTheirAmount = new int[AMOUNT_OF_CHARACTERISTICS];
+        minValuesAndTheirAmount[0] = generatedNumbers[0];
+        minValuesAndTheirAmount[1] = 1;
         for (int currentIndex = 1; currentIndex < generatedNumbers.length; currentIndex++) {
-            if (generatedNumbers[currentIndex] < minValue) {
-                minValue = generatedNumbers[currentIndex];
-                amountOfMinValues = 1;
-            } else if (generatedNumbers[currentIndex] == minValue) {
-                amountOfMinValues++;
+            if (generatedNumbers[currentIndex] < minValuesAndTheirAmount[0]) {
+                minValuesAndTheirAmount[0] = generatedNumbers[currentIndex];
+                minValuesAndTheirAmount[1] = 1;
+            } else if (minValuesAndTheirAmount[0] == generatedNumbers[currentIndex]) {
+                minValuesAndTheirAmount[1]++;
             }
         }
+        return minValuesAndTheirAmount;
     }
 
 }

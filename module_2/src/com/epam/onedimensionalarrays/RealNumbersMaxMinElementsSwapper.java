@@ -7,40 +7,47 @@ package com.epam.onedimensionalarrays;
 
 public class RealNumbersMaxMinElementsSwapper {
 
-    private static int maxIndex = 0;
-    private static int minIndex = 0;
-    private static boolean multipleMaxIndex = false;
-    private static boolean multipleMinIndex = false;
-
     public static double[] swapElements(double[] generatedNumbers) {
-        searchForMaxMinElements(generatedNumbers);
-        if (multipleMaxIndex || multipleMinIndex) {
-            generatedNumbers = null;
-            System.out.println("\nMultiple max or min values!");
+        final int maxElementIndex = searchForMaxMinElements(generatedNumbers, true);
+        final int minElementIndex = searchForMaxMinElements(generatedNumbers, false);
+        if (maxElementIndex != -1 && minElementIndex != -1) {
+            rewriteValues(generatedNumbers, maxElementIndex, minElementIndex);
         } else {
-            double temporary = generatedNumbers[maxIndex];
-            generatedNumbers[maxIndex] = generatedNumbers[minIndex];
-            generatedNumbers[minIndex] = temporary;
+            System.out.println("\nMultiple max or min values!");
+            generatedNumbers = null;
         }
         return generatedNumbers;
     }
 
-    private static void searchForMaxMinElements (double[] generatedNumbers) {
+    private static int searchForMaxMinElements (double[] generatedNumbers, boolean searchingMaxNumber) {
+        int foundedIndex = 0;
+        boolean areMultipleItems = false;
         for (int currentIndex = 1; currentIndex < generatedNumbers.length; currentIndex++) {
-            // searching for max number
-            if (generatedNumbers[currentIndex] > generatedNumbers[maxIndex]) {
-                maxIndex = currentIndex;
-                multipleMaxIndex = false;
-            } else if (generatedNumbers[currentIndex] == generatedNumbers[maxIndex]) {
-                multipleMaxIndex = true;
-            }
-            // searching for min number
-            if (generatedNumbers[currentIndex] < generatedNumbers[minIndex]) {
-                minIndex = currentIndex;
-                multipleMinIndex = false;
-            } else if (generatedNumbers[currentIndex] == generatedNumbers[minIndex]) {
-                multipleMinIndex = true;
+            if (searchingMaxNumber) {
+                // searching for max number
+                if (generatedNumbers[currentIndex] > generatedNumbers[foundedIndex]) {
+                    foundedIndex = currentIndex;
+                    areMultipleItems = false;
+                } else if (generatedNumbers[currentIndex] == generatedNumbers[foundedIndex]) {
+                    areMultipleItems = true;
+                }
+            } else {
+                // searching for min number
+                if (generatedNumbers[currentIndex] < generatedNumbers[foundedIndex]) {
+                    foundedIndex = currentIndex;
+                    areMultipleItems = false;
+                } else if (generatedNumbers[currentIndex] == generatedNumbers[foundedIndex]) {
+                    areMultipleItems = true;
+                }
             }
         }
+        return areMultipleItems ? -1 : foundedIndex;
+    }
+
+    private static void rewriteValues (double[] generatedNumbers, final int maxElementIndex,
+                                       final int minElementIndex) {
+        double temporary = generatedNumbers[maxElementIndex];
+        generatedNumbers[maxElementIndex] = generatedNumbers[minElementIndex];
+        generatedNumbers[minElementIndex] = temporary;
     }
 }

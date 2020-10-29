@@ -16,7 +16,8 @@ public class SumCalculatorOfSequenceElementsWithPrimeIndexes {
         double sum = 0.0;
         for (int currentIndex = FIRST_PRIME_INDEX; currentIndex < generatedNumbers.length; currentIndex++) {
             boolean isCompositeIndex = false;
-            for (int divisor = MIN_DIVISOR_FOR_PRIME_INDEX; divisor <= Math.round(Math.sqrt(currentIndex)); divisor++) {
+            for (int divisor = MIN_DIVISOR_FOR_PRIME_INDEX; divisor <= Math.round(Math.sqrt(currentIndex));
+                    divisor++) {
                 if (currentIndex % divisor == 0) {
                     isCompositeIndex = true;
                     break;

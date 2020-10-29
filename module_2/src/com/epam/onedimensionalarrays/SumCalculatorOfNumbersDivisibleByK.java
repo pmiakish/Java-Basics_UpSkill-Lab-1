@@ -19,6 +19,6 @@ public class SumCalculatorOfNumbersDivisibleByK {
         } else {
             System.out.println("\nIncorrect divisor value!");
         }
-    return sum;
+        return sum;
     }
 }

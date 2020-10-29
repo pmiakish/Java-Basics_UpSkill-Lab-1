@@ -9,20 +9,21 @@ package com.epam.onedimensionalarrays;
  */
 
 public class SequenceElementsGreaterThanZChanger {
-    public static double[] replaceElements(double[] generatedSequence, double specifiedParameterZ) {
-        if (specifiedParameterZ < (Math.max(generatedSequence[0], generatedSequence[generatedSequence.length - 1]))) {
-            int numberOfReplacements = 0;
+    public static int replaceELementsAndCountReplacements(double[] generatedSequence, double
+            specifiedParameterZ) {
+        int numberOfReplacements = 0;
+        if (specifiedParameterZ < (Math.max(generatedSequence[0],
+                generatedSequence[generatedSequence.length - 1]))) {
             for (int i = 0; i < generatedSequence.length; i++) {
                 if (generatedSequence[i] > specifiedParameterZ) {
                     generatedSequence[i] = specifiedParameterZ;
                     numberOfReplacements++;
                 }
             }
-            System.out.println("\nNumber of replacements is " + numberOfReplacements);
         } else {
-            generatedSequence = null;
+            numberOfReplacements = -1;
             System.out.println("\nIncorrect value of Z!");
         }
-        return generatedSequence;
+        return numberOfReplacements;
     }
 }

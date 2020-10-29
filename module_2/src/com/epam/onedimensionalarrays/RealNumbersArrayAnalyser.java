@@ -12,16 +12,13 @@ public class RealNumbersArrayAnalyser {
 
     public static int[] characterizeArray(double[] generatedNumbers) {
         int[] arrayCharacteristics = new int[NUMBER_OF_CHARACTERISTICS];
-        arrayCharacteristics[0] = 0; // positive numbers
-        arrayCharacteristics[1] = 0; // negative numbers
-        arrayCharacteristics[2] = 0; // zeros
         for (double currentNumber : generatedNumbers) {
             if (currentNumber > 0) {
-                arrayCharacteristics[0]++;
+                arrayCharacteristics[0]++; // positive numbers
             } else if (currentNumber < 0) {
-                arrayCharacteristics[1]++;
+                arrayCharacteristics[1]++; // negative numbers
             } else {
-                arrayCharacteristics[2]++;
+                arrayCharacteristics[2]++; // zeros
             }
         }
         return arrayCharacteristics;
