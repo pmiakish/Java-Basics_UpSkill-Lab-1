@@ -11,10 +11,10 @@ public class MatrixSelectivePrinter {
     public static void printOddColumnsIfFirstNumberIsGreaterThanLastNumber(int[][] generatedMatrix) {
         int[] indicators = createIndicatorsToPrintArray(generatedMatrix);
         System.out.println();
-        for (int currentRow = 0; currentRow < generatedMatrix.length; currentRow++) {
-            for (int currentColumn = 0; currentColumn < generatedMatrix[currentRow].length; currentColumn++) {
+        for (int[] row : generatedMatrix) {
+            for (int currentColumn = 0; currentColumn < row.length; currentColumn++) {
                 if (indicators[currentColumn] == 1) {
-                    System.out.printf("%5d ", generatedMatrix[currentRow][currentColumn]);
+                    System.out.printf("%5d ", row[currentColumn]);
                 }
             }
             System.out.println();
@@ -66,5 +66,22 @@ public class MatrixSelectivePrinter {
             }
         }
         return isSquareMatrix;
+    }
+
+    //task_03
+    public static void printKRowAndPColumn(int[][] generatedMatrix, int rowForPrintNumber, int columnForPrintNumber) {
+        if (rowForPrintNumber >= 0 && rowForPrintNumber < generatedMatrix.length && columnForPrintNumber >= 0 &&
+                columnForPrintNumber < generatedMatrix[0].length) {
+            System.out.println("\nThe row [" + rowForPrintNumber + "] is:");
+            for (int item : generatedMatrix[rowForPrintNumber]) {
+                System.out.print(item + " ");
+            }
+            System.out.println("\n\nThe column [" + columnForPrintNumber + "] is:");
+            for (int[] row : generatedMatrix) {
+                System.out.println(row[columnForPrintNumber]);
+            }
+        } else {
+            System.out.println("\nInvalid number of the row or column!");
+        }
     }
 }
