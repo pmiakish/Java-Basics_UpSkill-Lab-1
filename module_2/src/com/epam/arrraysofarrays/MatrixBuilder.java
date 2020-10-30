@@ -36,4 +36,26 @@ public class MatrixBuilder {
             }
         return matrix;
     }
+
+    //task_05 build the square matrix according to a preassigned pattern: row_1 [1, 1, 1 ... 1, 1, 1],
+    //row_2 [2, 2, 2 ... 2, 2, 0], row_n-1 [n-1, n-1, 0 ... 0, 0, 0], row_n [n, 0, 0 ... 0, 0, 0].
+    //N is an even number.
+    public static int[][] buildMatrixAccordingToPattern2(int orderOfMatrix) {
+        int[][] matrix = null;
+        if (orderOfMatrix > 1 && orderOfMatrix % 2 == 0) {
+            matrix = new int[orderOfMatrix][orderOfMatrix];
+            for (int currentRow = 0; currentRow < orderOfMatrix; currentRow++) {
+                for (int currentColumn = 0; currentColumn < orderOfMatrix; currentColumn++) {
+                    if (currentColumn < matrix[currentRow].length - currentRow) {
+                        matrix[currentRow][currentColumn] = currentRow + 1;
+                    } else {
+                        matrix[currentRow][currentColumn] = 0;
+                    }
+                }
+            }
+        }
+        return matrix;
+    }
+
+
 }
