@@ -47,8 +47,14 @@ public class TaskLauncher {
                 MatrixSelectivePrinter.printKRowAndPColumn(generatedMatrixForThirdTask, ROW_FOR_PRINT_NUMBER,
                         COLUMN_FOR_PRINT_NUMBER);
             case 4:
-                System.out.println("\nThe generated matrix:");
-                MatrixReader.printMatrix(MatrixBuilder.buildMatrixAccordingToPattern1(ORDER_OF_SQUARE_MATRIX));
+                int[][] generatedMatrixForFourthTask =
+                        MatrixBuilder.buildMatrixAccordingToPattern1(ORDER_OF_SQUARE_MATRIX);
+                if (generatedMatrixForFourthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixReader.printMatrix(generatedMatrixForFourthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
                 break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
