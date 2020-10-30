@@ -12,6 +12,7 @@ public class TaskLauncher {
     private static final int AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX = 7;
     private static final int ROW_FOR_PRINT_NUMBER = 3;
     private static final int COLUMN_FOR_PRINT_NUMBER = 2;
+    private static final int ORDER_OF_SQUARE_MATRIX = 8;
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
@@ -45,6 +46,9 @@ public class TaskLauncher {
                 MatrixReader.printMatrix(generatedMatrixForThirdTask);
                 MatrixSelectivePrinter.printKRowAndPColumn(generatedMatrixForThirdTask, ROW_FOR_PRINT_NUMBER,
                         COLUMN_FOR_PRINT_NUMBER);
+            case 4:
+                System.out.println("\nThe generated matrix:");
+                MatrixReader.printMatrix(MatrixBuilder.buildMatrixAccordingToPattern1(ORDER_OF_SQUARE_MATRIX));
                 break;
             default:
                 System.out.println("Task " + taskNumber + " not found");

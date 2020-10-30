@@ -11,4 +11,25 @@ public class MatrixBuilder {
         }
         return matrix;
     }
+
+    //task_04 build the square matrix according to a preassigned pattern: row_1 [1, 2, 3 ... n],
+    //row_2 [n, n-1, n-2 ... 1], row_3 [1, 2, 3 ... n], row_n [n, n-1, n-2 ... 1]
+    public static int[][] buildMatrixAccordingToPattern1(int orderOfMatrix) {
+        int[][] matrix = new int[orderOfMatrix][orderOfMatrix];
+        for (int currentRow = 0; currentRow < orderOfMatrix; currentRow++) {
+            if (currentRow % 2 == 0) {
+                for (int currentColumn = 0; currentColumn < orderOfMatrix; currentColumn++) {
+                    matrix[currentRow][currentColumn] = currentColumn + 1;
+                }
+            } else {
+                for (int currentColumn = 0; currentColumn < orderOfMatrix; currentColumn++) {
+                    matrix[currentRow][currentColumn] = orderOfMatrix - currentColumn;
+                }
+            }
+        }
+        return matrix;
+    }
+
+
+
 }
