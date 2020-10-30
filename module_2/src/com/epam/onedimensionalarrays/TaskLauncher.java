@@ -66,8 +66,6 @@ public class TaskLauncher {
                 int sum = SumCalculatorOfNumbersDivisibleByK.countSum(generatedNumbersForSumming, DIVISOR_K);
                 if (sum > 0) {
                     System.out.println("\nThe sum of the numbers divisible by K is " + sum);
-                } else {
-                    System.out.println("\nThe sum of the numbers divisible by K can't be found.");
                 }
                 break;
             case 2:
