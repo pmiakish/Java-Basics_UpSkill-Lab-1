@@ -25,27 +25,42 @@ public class TaskLauncher {
             case 1:
                 int[][] generatedMatrixForFirstTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
                         MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
-                System.out.println("\nThe generated matrix:");
-                MatrixReader.printMatrix(generatedMatrixForFirstTask);
-                System.out.println("\nThe odd columns of the matrix which have the first number greater than " +
-                        "the last number:");
-                MatrixSelectivePrinter.printOddColumnsIfFirstNumberIsGreaterThanLastNumber(generatedMatrixForFirstTask);
+                if (generatedMatrixForFirstTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixReader.printMatrix(generatedMatrixForFirstTask);
+                    System.out.println("\nThe odd columns of the matrix which have the first number greater than " +
+                            "the last number:");
+                    MatrixSelectivePrinter.
+                            printOddColumnsIfFirstNumberIsGreaterThanLastNumber(generatedMatrixForFirstTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
                 break;
             case 2:
-                int[][] generatedSquareMatrix = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX, MAX_VALUE_OF_MATRIX,
+                int[][] generatedMatrixForSecondTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX,
                         AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX, AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
-                System.out.println("\nThe generated matrix:");
-                MatrixReader.printMatrix(generatedSquareMatrix);
-                MatrixSelectivePrinter.printDiagonalNumbers(generatedSquareMatrix);
+                if (generatedMatrixForSecondTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixReader.printMatrix(generatedMatrixForSecondTask);
+                    MatrixSelectivePrinter.printDiagonalNumbers(generatedMatrixForSecondTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
                 break;
             case 3:
                 int[][] generatedMatrixForThirdTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
                         MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
                         AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
-                System.out.println("\nThe generated matrix:");
-                MatrixReader.printMatrix(generatedMatrixForThirdTask);
-                MatrixSelectivePrinter.printKRowAndPColumn(generatedMatrixForThirdTask, ROW_FOR_PRINT_NUMBER,
-                        COLUMN_FOR_PRINT_NUMBER);
+                if (generatedMatrixForThirdTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixReader.printMatrix(generatedMatrixForThirdTask);
+                    MatrixSelectivePrinter.printKRowAndPColumn(generatedMatrixForThirdTask, ROW_FOR_PRINT_NUMBER,
+                            COLUMN_FOR_PRINT_NUMBER);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
             case 4:
                 int[][] generatedMatrixForFourthTask =
                         MatrixBuilder.buildMatrixAccordingToPattern1(ORDER_OF_SQUARE_MATRIX);
