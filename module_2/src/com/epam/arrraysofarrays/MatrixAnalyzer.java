@@ -47,8 +47,7 @@ public class MatrixAnalyzer {
 
     // task_03
     public static void printKRowAndPColumn(int[][] matrix, int row, int column) {
-        if (row >= 0 && row < matrix.length && column >= 0 &&
-                column < matrix[0].length) {
+        if (row >= 0 && row < matrix.length && column >= 0 && column < matrix[0].length) {
             System.out.println("\nThe row [" + row + "] is:");
             for (int item : matrix[row - 1]) {
                 System.out.print(item + " ");

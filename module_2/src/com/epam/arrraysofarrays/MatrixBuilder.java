@@ -57,4 +57,30 @@ public class MatrixBuilder {
         return matrix;
     }
 
+    //task_06 build the square matrix according to a preassigned pattern: row_1 [1, 1, 1 ... 1, 1, 1],
+    //row_2 [0, 1, 1 ... 1, 1, 0], row_3 [0, 0, 1 ... 1, 0, 0], penultimate_row [0, 1, 1 ... 1, 1, 0],
+    //last_row [1, 1, 1 ... 1, 1, 1].
+    //N is an even number.
+    public static int[][] buildMatrixAccordingToPattern3(int orderOfMatrix) {
+        int[][] matrix = null;
+        boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
+        if (orderOfMatrix > 1 && isOrderOfMatrixEvenNumber) {
+            matrix = new int[orderOfMatrix][orderOfMatrix];
+            final int rowBeforeMiddle = (matrix.length / 2) - 1;
+            int numberOfZeros = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = numberOfZeros; j < (matrix[i].length - numberOfZeros); j++) {
+                    matrix[i][j] = 1;
+                }
+                if (i < rowBeforeMiddle) {
+                    numberOfZeros++;
+                } else if (i > rowBeforeMiddle) {
+                    numberOfZeros--;
+                }
+            }
+        }
+        return matrix;
+    }
+
+
 }

@@ -94,6 +94,16 @@ public class TaskLauncher {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
                 break;
+            case 6:
+                int[][] generatedMatrixForSixthTask = MatrixBuilder.
+                                buildMatrixAccordingToPattern3(ORDER_OF_SQUARE_MATRIX);
+                if (generatedMatrixForSixthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForSixthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
