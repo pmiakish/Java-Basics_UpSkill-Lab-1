@@ -7,9 +7,9 @@ public class MatrixBuilder {
         int[][] matrix = null;
         if (minValue < maxValue && numberOfRows > 1 && numberOfColumns > 1) {
             matrix = new int[numberOfRows][numberOfColumns];
-            for (int currentRow = 0; currentRow < numberOfRows; currentRow++) {
-                for (int currentColumn = 0; currentColumn < numberOfColumns; currentColumn++) {
-                    matrix[currentRow][currentColumn] = (int) (Math.random() * (maxValue - minValue + 1) + minValue);
+            for (int i = 0; i < numberOfRows; i++) {
+                for (int j = 0; j < numberOfColumns; j++) {
+                    matrix[i][j] = (int) (Math.random() * (maxValue - minValue + 1) + minValue);
                 }
             }
         }
@@ -18,22 +18,25 @@ public class MatrixBuilder {
 
     //task_04 build the square matrix according to a preassigned pattern: row_1 [1, 2, 3 ... n],
     //row_2 [n, n-1, n-2 ... 1], row_3 [1, 2, 3 ... n], row_n [n, n-1, n-2 ... 1]
+    //N is an even number.
     public static int[][] buildMatrixAccordingToPattern1(int orderOfMatrix) {
         int[][] matrix = null;
-        if (orderOfMatrix > 1) {
+        boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
+        if (orderOfMatrix > 1 && isOrderOfMatrixEvenNumber) {
             matrix = new int[orderOfMatrix][orderOfMatrix];
-                for (int currentRow = 0; currentRow < orderOfMatrix; currentRow++) {
-                    if (currentRow % 2 == 0) {
-                        for (int currentColumn = 0; currentColumn < orderOfMatrix; currentColumn++) {
-                            matrix[currentRow][currentColumn] = currentColumn + 1;
-                        }
-                    } else {
-                        for (int currentColumn = 0; currentColumn < orderOfMatrix; currentColumn++) {
-                            matrix[currentRow][currentColumn] = orderOfMatrix - currentColumn;
-                        }
+            for (int i = 0; i < orderOfMatrix; i++) {
+                boolean isOddRow = i % 2 == 0;
+                if (isOddRow) {
+                    for (int j = 0; j < orderOfMatrix; j++) {
+                        matrix[i][j] = j + 1;
+                    }
+                } else {
+                    for (int j = 0; j < orderOfMatrix; j++) {
+                        matrix[i][j] = orderOfMatrix - j;
                     }
                 }
             }
+        }
         return matrix;
     }
 
@@ -42,20 +45,16 @@ public class MatrixBuilder {
     //N is an even number.
     public static int[][] buildMatrixAccordingToPattern2(int orderOfMatrix) {
         int[][] matrix = null;
-        if (orderOfMatrix > 1 && orderOfMatrix % 2 == 0) {
+        boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
+        if (orderOfMatrix > 1 && isOrderOfMatrixEvenNumber) {
             matrix = new int[orderOfMatrix][orderOfMatrix];
-            for (int currentRow = 0; currentRow < orderOfMatrix; currentRow++) {
-                for (int currentColumn = 0; currentColumn < orderOfMatrix; currentColumn++) {
-                    if (currentColumn < matrix[currentRow].length - currentRow) {
-                        matrix[currentRow][currentColumn] = currentRow + 1;
-                    } else {
-                        matrix[currentRow][currentColumn] = 0;
-                    }
+            for (int i = 0; i < orderOfMatrix; i++) {
+                for (int j = 0; j < matrix[i].length - i; j++) {
+                    matrix[i][j] = i + 1;
                 }
             }
         }
         return matrix;
     }
-
 
 }
