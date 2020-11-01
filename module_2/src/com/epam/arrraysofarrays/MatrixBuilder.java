@@ -18,6 +18,20 @@ public class MatrixBuilder {
         return matrix;
     }
 
+    // Random NON-NEGATIVE integer matrix with max, min values, predetermined numbers of rows and columns
+    public static int[][] generateNonNegativeMatrix(int minValue, int maxValue, int numberOfRows, int numberOfColumns) {
+        int[][] matrix = null;
+        if (minValue >= 0 && minValue < maxValue && numberOfRows > 1 && numberOfColumns > 1) {
+            matrix = new int[numberOfRows][numberOfColumns];
+            for (int i = 0; i < numberOfRows; i++) {
+                for (int j = 0; j < numberOfColumns; j++) {
+                    matrix[i][j] = (int) (Math.random() * (maxValue - minValue + 1) + minValue);
+                }
+            }
+        }
+        return matrix;
+    }
+
     //task_04 build the square matrix according to a preassigned pattern: row_1 [1, 2, 3 ... n],
     //row_2 [n, n-1, n-2 ... 1], row_3 [1, 2, 3 ... n], row_n [n, n-1, n-2 ... 1]
     //N is an even number.

@@ -62,4 +62,29 @@ public class MatrixAnalyzer {
         }
         return result;
     }
+
+    // task_09
+    public static int[] defineSumOfColumnsItems(int[][] matrix) {
+        int[] sum = new int[matrix[0].length];
+        for (int j = 0; j < matrix[0].length; j++) {
+            for (int[] row : matrix) {
+                sum[j] += row[j];
+            }
+        }
+        return sum;
+    }
+
+    // task_09 searching for max item of the sum-array
+    public static int defineMaxSumItem(int[] sum) {
+        int maxSumColumn = 0;
+        for (int i = 1; i < sum.length; i++) {
+            if (sum[i] > sum[maxSumColumn]) {
+                maxSumColumn = i;
+            } else if (sum[i] == sum[maxSumColumn]) {
+                maxSumColumn = -1;
+            }
+        }
+        return maxSumColumn;
+    }
+
 }

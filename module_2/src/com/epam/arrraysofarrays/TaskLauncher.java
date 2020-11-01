@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class TaskLauncher {
 
     private static final int MIN_VALUE_OF_MATRIX = -25;
+    private static final int MIN_NON_NEGATIVE_VALUE_OF_MATRIX = 0;
     private static final int MAX_VALUE_OF_MATRIX = 25;
     private static final int AMOUNT_OF_ROWS_OF_MATRIX = 5;
     private static final int AMOUNT_OF_COLUMNS_OF_MATRIX = 8;
@@ -137,6 +138,25 @@ public class TaskLauncher {
                         MatrixPrinter.printMatrix(generatedMatrixForEighthTask);
                     } else {
                         System.out.println("\nCheck numbers of the columns!");
+                    }
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
+            case 9:
+                int[][] generatedMatrixForNinthTask = MatrixBuilder.
+                        generateNonNegativeMatrix(MIN_NON_NEGATIVE_VALUE_OF_MATRIX, MAX_VALUE_OF_MATRIX,
+                        AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
+                if (generatedMatrixForNinthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForNinthTask);
+                    int[] sum = MatrixAnalyzer.defineSumOfColumnsItems(generatedMatrixForNinthTask);
+                    System.out.println("\nThe sums of the items of each column are: " + Arrays.toString(sum));
+                    int maxSumColumn = MatrixAnalyzer.defineMaxSumItem(sum);
+                    if (maxSumColumn != -1) {
+                        System.out.println("\nThe max sum of its items has the column #" + (maxSumColumn + 1));
+                    } else {
+                        System.out.println("\nMore than one value of the maximum sum of column elements was found.");
                     }
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
