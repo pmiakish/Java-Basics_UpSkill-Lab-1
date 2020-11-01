@@ -68,8 +68,13 @@ public class TaskLauncher {
                 if (generatedMatrixForThirdTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForThirdTask);
-                    MatrixAnalyzer.printKRowAndPColumn(generatedMatrixForThirdTask, ROW_FOR_PRINT_NUMBER,
-                            COLUMN_FOR_PRINT_NUMBER);
+                    StringBuilder result = MatrixAnalyzer.defineKRowAndPColumn(generatedMatrixForThirdTask,
+                            ROW_FOR_PRINT_NUMBER, COLUMN_FOR_PRINT_NUMBER);
+                    if (result.length() != 0) {
+                        System.out.println(result);
+                    } else {
+                        System.out.println("\nCheck numbers of the row and column!");
+                    }
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
@@ -100,6 +105,16 @@ public class TaskLauncher {
                 if (generatedMatrixForSixthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForSixthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
+            case 7:
+                double[][] generatedMatrixForSeventhTask = MatrixBuilder.
+                        generateSpecifiedMatrix(ORDER_OF_SQUARE_MATRIX);
+                if (generatedMatrixForSeventhTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForSeventhTask);
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }

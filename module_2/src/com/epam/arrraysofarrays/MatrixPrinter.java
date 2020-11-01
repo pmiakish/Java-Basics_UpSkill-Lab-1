@@ -10,4 +10,14 @@ public class MatrixPrinter {
             System.out.println();
         }
     }
+
+    public static void printMatrix(double[][] matrix) {
+        System.out.println();
+        for (double[] row : matrix) {
+            for (double item : row) {
+                System.out.printf("%10f ", item);
+            }
+            System.out.println();
+        }
+    }
 }

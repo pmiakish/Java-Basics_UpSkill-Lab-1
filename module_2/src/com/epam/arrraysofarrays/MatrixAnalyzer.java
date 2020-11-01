@@ -46,18 +46,20 @@ public class MatrixAnalyzer {
     }
 
     // task_03
-    public static void printKRowAndPColumn(int[][] matrix, int row, int column) {
+    public static StringBuilder defineKRowAndPColumn(int[][] matrix, int row, int column) {
+        StringBuilder result = new StringBuilder();
         if (row >= 0 && row < matrix.length && column >= 0 && column < matrix[0].length) {
-            System.out.println("\nThe row [" + row + "] is:");
+            result.append("\nThe numbers of the row [").append(row).append("] are: ");
             for (int item : matrix[row - 1]) {
-                System.out.print(item + " ");
+                result.append(item).append(" ");
             }
-            System.out.println("\n\nThe column [" + column + "] is:");
+            result.append("\nThe numbers of the column [").append(column).append("] are: ");
             for (int[] rowArray : matrix) {
-                System.out.print(rowArray[column - 1] + " ");
+                result.append(rowArray[column - 1]).append(" ");
             }
         } else {
             System.out.println("\nInvalid number of the row or column!");
         }
+        return result;
     }
 }

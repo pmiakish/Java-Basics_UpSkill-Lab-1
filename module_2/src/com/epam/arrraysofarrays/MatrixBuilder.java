@@ -1,5 +1,7 @@
 package com.epam.arrraysofarrays;
 
+import static java.lang.Math.sin;
+
 public class MatrixBuilder {
 
     // Random integer matrix with max, min values, predetermined numbers of rows and columns
@@ -82,5 +84,23 @@ public class MatrixBuilder {
         return matrix;
     }
 
+    //task_07 the method generate an square matrix according a formula
+    public static double[][] generateSpecifiedMatrix(int orderOfMatrix) {
+        double[][] matrix = null;
+        if (orderOfMatrix > 1) {
+            int counter = 0;
+            matrix = new double[orderOfMatrix][orderOfMatrix];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    matrix[i][j] = sin((Math.pow(i + 1, 2) - Math.pow(j + 1, 2)) / orderOfMatrix);
+                    if (matrix[i][j] > 0.0) {
+                        counter++;
+                    }
+                }
+            }
+            System.out.println("\nThe number of positive elements in the matrix is " + counter + ".");
+        }
+        return matrix;
+    }
 
 }
