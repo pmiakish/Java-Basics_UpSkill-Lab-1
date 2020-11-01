@@ -105,4 +105,22 @@ public class MatrixAnalyzer {
         return arePositiveNumbers ? positiveNumbersOfMainDiagonal : absenceOfPositiveNumbers;
     }
 
+    // task_11
+    public static StringBuilder defineRowsContainedPreassignedNumber(int[][] matrix, int preassignedNumber,
+            int preassignedOccurrences) {
+        StringBuilder numbersOfRows = new StringBuilder();
+        for (int i = 0; i < matrix.length; i++) {
+            int counterOfOccurrences = 0;
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == preassignedNumber) {
+                    counterOfOccurrences++;
+                }
+            }
+            if (counterOfOccurrences >= preassignedOccurrences) {
+                numbersOfRows.append(i).append(" ");
+            }
+        }
+        return numbersOfRows;
+    }
+
 }

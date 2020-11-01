@@ -11,6 +11,12 @@ public class TaskLauncher {
     private static final int MAX_VALUE_OF_MATRIX = 25;
     private static final int AMOUNT_OF_ROWS_OF_MATRIX = 6;
     private static final int AMOUNT_OF_COLUMNS_OF_MATRIX = 8;
+    private static final int MIN_VALUE_OF_MATRIX_ELEVENTH_TASK = 0;
+    private static final int MAX_VALUE_OF_MATRIX_ELEVENTH_TASK = 15;
+    private static final int AMOUNT_OF_ROWS_OF_MATRIX_ELEVENTH_TASK = 10;
+    private static final int AMOUNT_OF_COLUMNS_OF_MATRIX_ELEVENTH_TASK = 20;
+    private static final int PREASSIGNED_NUMBER_ELEVENTH_TASK = 5;
+    private static final int NUMBER_OF_OCCURRENCES_ELEVENTH_TASK = 3;
     private static final int AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX = 7;
     private static final int ROW_FOR_PRINT_NUMBER = 3;
     private static final int COLUMN_FOR_PRINT_NUMBER = 2;
@@ -178,6 +184,27 @@ public class TaskLauncher {
                                 positiveNumbers);
                     } else {
                         System.out.println("\nCheck numbers of the row and column!");
+                    }
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
+            case 11:
+                int[][] generatedMatrixForEleventhTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX_ELEVENTH_TASK,
+                        MAX_VALUE_OF_MATRIX_ELEVENTH_TASK,AMOUNT_OF_ROWS_OF_MATRIX_ELEVENTH_TASK,
+                        AMOUNT_OF_COLUMNS_OF_MATRIX_ELEVENTH_TASK);
+                if (generatedMatrixForEleventhTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForEleventhTask);
+                    StringBuilder numberOfRows = MatrixAnalyzer.
+                            defineRowsContainedPreassignedNumber(generatedMatrixForEleventhTask,
+                            PREASSIGNED_NUMBER_ELEVENTH_TASK, NUMBER_OF_OCCURRENCES_ELEVENTH_TASK);
+                    if (numberOfRows.length() != 0) {
+                        System.out.println("\nThe number " + PREASSIGNED_NUMBER_ELEVENTH_TASK + " occurs " +
+                                NUMBER_OF_OCCURRENCES_ELEVENTH_TASK + " and more times in the following rows: " +
+                                numberOfRows);
+                    } else {
+                        System.out.println("\nThe rows with preassigned parameters not found!");
                     }
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
