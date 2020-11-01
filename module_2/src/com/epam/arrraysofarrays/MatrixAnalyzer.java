@@ -48,7 +48,7 @@ public class MatrixAnalyzer {
     // task_03
     public static StringBuilder defineKRowAndPColumn(int[][] matrix, int row, int column) {
         StringBuilder result = new StringBuilder();
-        if (row >= 0 && row < matrix.length && column >= 0 && column < matrix[0].length) {
+        if (row > 0 && row <= matrix.length && column > 0 && column <= matrix[0].length) {
             result.append("\nThe numbers of the row [").append(row).append("] are: ");
             for (int item : matrix[row - 1]) {
                 result.append(item).append(" ");

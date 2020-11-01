@@ -119,6 +119,29 @@ public class TaskLauncher {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
                 break;
+            case 8:
+                int[][] generatedMatrixForEighthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
+                        AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
+                if (generatedMatrixForEighthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForEighthTask);
+                    System.out.print("\nEnter the first column number for replacing: ");
+                    int firstColumn = console.nextInt();
+                    System.out.print("Enter the second column number for replacing: ");
+                    int secondColumn = console.nextInt();
+                    boolean isModified = MatrixModifier.replaceColumns(generatedMatrixForEighthTask, firstColumn,
+                            secondColumn);
+                    if (isModified) {
+                        System.out.println("\nThe modified matrix:");
+                        MatrixPrinter.printMatrix(generatedMatrixForEighthTask);
+                    } else {
+                        System.out.println("\nCheck numbers of the columns!");
+                    }
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
             default:
                 System.out.println("Task " + taskNumber + " not found");
                 break;
