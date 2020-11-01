@@ -48,14 +48,14 @@ public class MatrixAnalyzer {
     // task_03
     public static StringBuilder defineKRowAndPColumn(int[][] matrix, int row, int column) {
         StringBuilder result = new StringBuilder();
-        if (row > 0 && row <= matrix.length && column > 0 && column <= matrix[0].length) {
+        if (row >= 0 && row < matrix.length && column >= 0 && column < matrix[0].length) {
             result.append("\nThe numbers of the row [").append(row).append("] are: ");
-            for (int item : matrix[row - 1]) {
+            for (int item : matrix[row]) {
                 result.append(item).append(" ");
             }
             result.append("\nThe numbers of the column [").append(column).append("] are: ");
             for (int[] rowArray : matrix) {
-                result.append(rowArray[column - 1]).append(" ");
+                result.append(rowArray[column]).append(" ");
             }
         } else {
             System.out.println("\nInvalid number of the row or column!");
@@ -65,22 +65,22 @@ public class MatrixAnalyzer {
 
     // task_09
     public static int[] defineSumOfColumnsItems(int[][] matrix) {
-        int[] sum = new int[matrix[0].length];
+        int[] columnSums = new int[matrix[0].length];
         for (int j = 0; j < matrix[0].length; j++) {
             for (int[] row : matrix) {
-                sum[j] += row[j];
+                columnSums[j] += row[j];
             }
         }
-        return sum;
+        return columnSums;
     }
 
-    // task_09 searching for max item of the sum-array
-    public static int defineMaxSumItem(int[] sum) {
+    // task_09 searching for max item of the column sums array
+    public static int defineMaxSumItem(int[] columnSums) {
         int maxSumColumn = 0;
-        for (int i = 1; i < sum.length; i++) {
-            if (sum[i] > sum[maxSumColumn]) {
+        for (int i = 1; i < columnSums.length; i++) {
+            if (columnSums[i] > columnSums[maxSumColumn]) {
                 maxSumColumn = i;
-            } else if (sum[i] == sum[maxSumColumn]) {
+            } else if (columnSums[i] == columnSums[maxSumColumn]) {
                 maxSumColumn = -1;
             }
         }

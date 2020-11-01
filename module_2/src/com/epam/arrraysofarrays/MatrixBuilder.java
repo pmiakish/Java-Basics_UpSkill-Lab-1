@@ -61,7 +61,7 @@ public class MatrixBuilder {
     //N is an even number.
     public static int[][] buildMatrixAccordingToPattern2(int orderOfMatrix) {
         int[][] matrix = null;
-        boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
+        final boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
         if (orderOfMatrix > 1 && isOrderOfMatrixEvenNumber) {
             matrix = new int[orderOfMatrix][orderOfMatrix];
             for (int i = 0; i < orderOfMatrix; i++) {
@@ -99,20 +99,20 @@ public class MatrixBuilder {
     }
 
     //task_07 the method generate an square matrix according a formula
-    public static double[][] generateSpecifiedMatrix(int orderOfMatrix) {
+    public static double[][] buildMatrixAccordingToFormula(int orderOfMatrix) {
         double[][] matrix = null;
         if (orderOfMatrix > 1) {
-            int counter = 0;
+            int counterOfPositiveElements = 0;
             matrix = new double[orderOfMatrix][orderOfMatrix];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
-                    matrix[i][j] = sin((Math.pow(i + 1, 2) - Math.pow(j + 1, 2)) / orderOfMatrix);
+                    matrix[i][j] = sin((Math.pow(i, 2) - Math.pow(j, 2)) / orderOfMatrix);
                     if (matrix[i][j] > 0.0) {
-                        counter++;
+                        counterOfPositiveElements++;
                     }
                 }
             }
-            System.out.println("\nThe number of positive elements in the matrix is " + counter + ".");
+            System.out.println("\nThe number of positive elements in the matrix is " + counterOfPositiveElements + ".");
         }
         return matrix;
     }

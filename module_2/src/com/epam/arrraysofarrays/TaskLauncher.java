@@ -112,7 +112,7 @@ public class TaskLauncher {
                 break;
             case 7:
                 double[][] generatedMatrixForSeventhTask = MatrixBuilder.
-                        generateSpecifiedMatrix(ORDER_OF_SQUARE_MATRIX);
+                        buildMatrixAccordingToFormula(ORDER_OF_SQUARE_MATRIX);
                 if (generatedMatrixForSeventhTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForSeventhTask);
@@ -122,8 +122,8 @@ public class TaskLauncher {
                 break;
             case 8:
                 int[][] generatedMatrixForEighthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
-                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
-                        AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
+                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_OF_MATRIX,
+                        AMOUNT_OF_COLUMNS_OF_MATRIX);
                 if (generatedMatrixForEighthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForEighthTask);
@@ -150,11 +150,11 @@ public class TaskLauncher {
                 if (generatedMatrixForNinthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForNinthTask);
-                    int[] sum = MatrixAnalyzer.defineSumOfColumnsItems(generatedMatrixForNinthTask);
-                    System.out.println("\nThe sums of the items of each column are: " + Arrays.toString(sum));
-                    int maxSumColumn = MatrixAnalyzer.defineMaxSumItem(sum);
+                    final int[] columnSums = MatrixAnalyzer.defineSumOfColumnsItems(generatedMatrixForNinthTask);
+                    System.out.println("\nThe sums of the items of each column are: " + Arrays.toString(columnSums));
+                    final int maxSumColumn = MatrixAnalyzer.defineMaxSumItem(columnSums);
                     if (maxSumColumn != -1) {
-                        System.out.println("\nThe max sum of its items has the column #" + (maxSumColumn + 1));
+                        System.out.println("\nThe max sum of its items has the column #" + (maxSumColumn));
                     } else {
                         System.out.println("\nMore than one value of the maximum sum of column elements was found.");
                     }
