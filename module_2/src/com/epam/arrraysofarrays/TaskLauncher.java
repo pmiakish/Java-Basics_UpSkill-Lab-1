@@ -9,7 +9,7 @@ public class TaskLauncher {
     private static final int MIN_VALUE_OF_MATRIX = -25;
     private static final int MIN_NON_NEGATIVE_VALUE_OF_MATRIX = 0;
     private static final int MAX_VALUE_OF_MATRIX = 25;
-    private static final int AMOUNT_OF_ROWS_OF_MATRIX = 5;
+    private static final int AMOUNT_OF_ROWS_OF_MATRIX = 6;
     private static final int AMOUNT_OF_COLUMNS_OF_MATRIX = 8;
     private static final int AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX = 7;
     private static final int ROW_FOR_PRINT_NUMBER = 3;
@@ -157,6 +157,27 @@ public class TaskLauncher {
                         System.out.println("\nThe max sum of its items has the column #" + (maxSumColumn));
                     } else {
                         System.out.println("\nMore than one value of the maximum sum of column elements was found.");
+                    }
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+                break;
+            case 10:
+                int[][] generatedMatrixForTenthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
+                        AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
+                if (generatedMatrixForTenthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForTenthTask);
+                    StringBuilder positiveNumbers = MatrixAnalyzer.
+                            definePositiveItemsOfMainDiagonalOfMatrix(generatedMatrixForTenthTask);
+                    if (positiveNumbers.toString().equals("-1")) {
+                        System.out.println("\nThere're no positive items located on the main diagonal of the matrix!");
+                    } else if (positiveNumbers.length() != 0) {
+                        System.out.println("\nThe positive items located on the main diagonal of the matrix are: " +
+                                positiveNumbers);
+                    } else {
+                        System.out.println("\nCheck numbers of the row and column!");
                     }
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");

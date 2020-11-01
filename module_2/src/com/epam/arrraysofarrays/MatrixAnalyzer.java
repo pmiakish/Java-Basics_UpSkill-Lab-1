@@ -87,4 +87,22 @@ public class MatrixAnalyzer {
         return maxSumColumn;
     }
 
+    // task_10
+    public static StringBuilder definePositiveItemsOfMainDiagonalOfMatrix(int[][] matrix) {
+        StringBuilder positiveNumbersOfMainDiagonal = new StringBuilder();
+        StringBuilder absenceOfPositiveNumbers = new StringBuilder("-1");
+        boolean arePositiveNumbers = false;
+        if (checkIfMatrixIsSquare(matrix)) {
+            for (int i = 0; i < matrix.length; i++) {
+                if (matrix[i][i] > 0) {
+                    positiveNumbersOfMainDiagonal.append(matrix[i][i]).append(" ");
+                    arePositiveNumbers = true;
+                }
+            }
+        } else {
+            System.out.println("\nThe generated matrix isn't square!");
+        }
+        return arePositiveNumbers ? positiveNumbersOfMainDiagonal : absenceOfPositiveNumbers;
+    }
+
 }
