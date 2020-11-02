@@ -63,4 +63,20 @@ public class MatrixModifier {
         }
     }
 
+    // task_15
+    public static boolean replaceOddItems(int[][] matrix, int replacementValue) {
+        boolean areOddNumbers = false;
+        boolean isOddNumber;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                isOddNumber = matrix[i][j] % 2 != 0;
+                if (isOddNumber) {
+                    matrix[i][j] = replacementValue;
+                    areOddNumbers = true;
+                }
+            }
+        }
+        return areOddNumbers;
+    }
+
 }

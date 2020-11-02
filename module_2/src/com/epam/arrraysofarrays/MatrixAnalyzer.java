@@ -88,7 +88,7 @@ public class MatrixAnalyzer {
     }
 
     // task_10
-    public static StringBuilder definePositiveItemsOfMainDiagonalOfMatrix(int[][] matrix) {
+    public static StringBuilder definePositiveItemsOfMainDiagonal(int[][] matrix) {
         StringBuilder positiveNumbersOfMainDiagonal = new StringBuilder();
         StringBuilder absenceOfPositiveNumbers = new StringBuilder("-1");
         boolean arePositiveNumbers = false;
@@ -121,6 +121,19 @@ public class MatrixAnalyzer {
             }
         }
         return numbersOfRows;
+    }
+
+    // task_15
+    public static int defineMaxItem(int[][] matrix) {
+        int maxItem = Integer.MIN_VALUE;
+        for (int[] row : matrix) {
+            for (int item : row) {
+                if (item > maxItem) {
+                    maxItem = item;
+                }
+            }
+        }
+        return maxItem;
     }
 
 }

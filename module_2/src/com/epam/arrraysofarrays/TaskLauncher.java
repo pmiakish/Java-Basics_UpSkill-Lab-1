@@ -178,7 +178,7 @@ public class TaskLauncher {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForTenthTask);
                     StringBuilder positiveNumbers = MatrixAnalyzer.
-                            definePositiveItemsOfMainDiagonalOfMatrix(generatedMatrixForTenthTask);
+                            definePositiveItemsOfMainDiagonal(generatedMatrixForTenthTask);
                     if (positiveNumbers.toString().equals("-1")) {
                         System.out.println("\nThere're no positive items located on the main diagonal of the matrix!");
                     } else if (positiveNumbers.length() != 0) {
@@ -255,6 +255,25 @@ public class TaskLauncher {
                 if (generatedMatrixForFourteenthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForFourteenthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+            }
+            case 15 -> {
+                int[][] generatedMatrixForFifteenthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
+                if (generatedMatrixForFifteenthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForFifteenthTask);
+                    if (MatrixModifier.replaceOddItems(generatedMatrixForFifteenthTask, MatrixAnalyzer.
+                            defineMaxItem(generatedMatrixForFifteenthTask))) {
+                        System.out.println("\nThe modified matrix (all the odd numbers were replaced with the item " +
+                                "having max value):");
+                        MatrixPrinter.printMatrix(generatedMatrixForFifteenthTask);
+                    }
+                    else {
+                        System.out.println("\nThere're no odd numbers in the matrix!");
+                    }
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
