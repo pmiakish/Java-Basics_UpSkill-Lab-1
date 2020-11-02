@@ -30,7 +30,7 @@ public class TaskLauncher {
 
         // Tasks
         switch (taskNumber) {
-            case 1:
+            case 1 -> {
                 int[][] generatedMatrixForFirstTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
                         MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
                 if (generatedMatrixForFirstTask != null) {
@@ -47,8 +47,8 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 int[][] generatedMatrixForSecondTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
                         MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
                         AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
@@ -67,10 +67,10 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 3:
+            }
+            case 3 -> {
                 int[][] generatedMatrixForThirdTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
-                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
+                        MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
                         AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
                 if (generatedMatrixForThirdTask != null) {
                     System.out.println("\nThe generated matrix:");
@@ -85,8 +85,8 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 4:
+            }
+            case 4 -> {
                 int[][] generatedMatrixForFourthTask =
                         MatrixBuilder.buildMatrixAccordingToPattern1(ORDER_OF_SQUARE_MATRIX);
                 if (generatedMatrixForFourthTask != null) {
@@ -95,28 +95,28 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 5:
+            }
+            case 5 -> {
                 int[][] generatedMatrixForFifthTask = MatrixBuilder.
-                                buildMatrixAccordingToPattern2(ORDER_OF_SQUARE_MATRIX);
+                        buildMatrixAccordingToPattern2(ORDER_OF_SQUARE_MATRIX);
                 if (generatedMatrixForFifthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForFifthTask);
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 6:
+            }
+            case 6 -> {
                 int[][] generatedMatrixForSixthTask = MatrixBuilder.
-                                buildMatrixAccordingToPattern3(ORDER_OF_SQUARE_MATRIX);
+                        buildMatrixAccordingToPattern3(ORDER_OF_SQUARE_MATRIX);
                 if (generatedMatrixForSixthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForSixthTask);
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 7:
+            }
+            case 7 -> {
                 double[][] generatedMatrixForSeventhTask = MatrixBuilder.
                         buildMatrixAccordingToFormula(ORDER_OF_SQUARE_MATRIX);
                 if (generatedMatrixForSeventhTask != null) {
@@ -125,10 +125,10 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 8:
+            }
+            case 8 -> {
                 int[][] generatedMatrixForEighthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
-                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_OF_MATRIX,
                         AMOUNT_OF_COLUMNS_OF_MATRIX);
                 if (generatedMatrixForEighthTask != null) {
                     System.out.println("\nThe generated matrix:");
@@ -148,11 +148,11 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 9:
+            }
+            case 9 -> {
                 int[][] generatedMatrixForNinthTask = MatrixBuilder.
                         generateNonNegativeMatrix(MIN_NON_NEGATIVE_VALUE_OF_MATRIX, MAX_VALUE_OF_MATRIX,
-                        AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
+                                AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
                 if (generatedMatrixForNinthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForNinthTask);
@@ -167,10 +167,10 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 10:
+            }
+            case 10 -> {
                 int[][] generatedMatrixForTenthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
-                        MAX_VALUE_OF_MATRIX,AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
+                        MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX,
                         AMOUNT_OF_ROWS_AND_COLUMNS_OF_SQUARE_MATRIX);
                 if (generatedMatrixForTenthTask != null) {
                     System.out.println("\nThe generated matrix:");
@@ -188,17 +188,17 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            case 11:
+            }
+            case 11 -> {
                 int[][] generatedMatrixForEleventhTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX_ELEVENTH_TASK,
-                        MAX_VALUE_OF_MATRIX_ELEVENTH_TASK,AMOUNT_OF_ROWS_OF_MATRIX_ELEVENTH_TASK,
+                        MAX_VALUE_OF_MATRIX_ELEVENTH_TASK, AMOUNT_OF_ROWS_OF_MATRIX_ELEVENTH_TASK,
                         AMOUNT_OF_COLUMNS_OF_MATRIX_ELEVENTH_TASK);
                 if (generatedMatrixForEleventhTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForEleventhTask);
                     StringBuilder numberOfRows = MatrixAnalyzer.
                             defineRowsContainedPreassignedNumber(generatedMatrixForEleventhTask,
-                            PREASSIGNED_NUMBER_ELEVENTH_TASK, NUMBER_OF_OCCURRENCES_ELEVENTH_TASK);
+                                    PREASSIGNED_NUMBER_ELEVENTH_TASK, NUMBER_OF_OCCURRENCES_ELEVENTH_TASK);
                     if (numberOfRows.length() != 0) {
                         System.out.println("\nThe number " + PREASSIGNED_NUMBER_ELEVENTH_TASK + " occurs " +
                                 NUMBER_OF_OCCURRENCES_ELEVENTH_TASK + " and more times in the following rows: " +
@@ -209,10 +209,26 @@ public class TaskLauncher {
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
-                break;
-            default:
-                System.out.println("Task " + taskNumber + " not found");
-                break;
+            }
+            case 12 -> {
+                int[][] generatedMatrixForTwelfthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
+                if (generatedMatrixForTwelfthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForTwelfthTask);
+                    boolean ascendingOrder = true;
+                    MatrixModifier.sortRows(generatedMatrixForTwelfthTask, ascendingOrder);
+                    System.out.println("\nThe matrix rows are sorted in ascending order:");
+                    MatrixPrinter.printMatrix(generatedMatrixForTwelfthTask);
+                    ascendingOrder = false;
+                    MatrixModifier.sortRows(generatedMatrixForTwelfthTask, ascendingOrder);
+                    System.out.println("\nThe matrix rows are sorted in descending order:");
+                    MatrixPrinter.printMatrix(generatedMatrixForTwelfthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+            }
+            default -> System.out.println("Task " + taskNumber + " not found");
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.epam.arrraysofarrays;
 
+import java.util.Arrays;
+
 public class MatrixModifier {
 
     // task_08
@@ -16,6 +18,29 @@ public class MatrixModifier {
             isModified = true;
         }
         return isModified;
+    }
+
+    // task_12
+    public static void sortRows(int[][] matrix, boolean ascendingOrder) {
+        if (ascendingOrder) {
+            for (int[] row : matrix) {
+                Arrays.sort(row);
+            }
+        } else {
+            for (int[] row : matrix) {
+                Arrays.sort(row);
+            }
+            for (int i = 0; i < matrix.length; i++) {
+                final int lastItemIndex = matrix[i].length - 1;
+                final int middleOfRow = matrix[i].length / 2;
+                int temp;
+                for (int j = 0; j < middleOfRow; j++) {
+                    temp = matrix[i][j];
+                    matrix[i][j] = matrix[i][lastItemIndex - j];
+                    matrix[i][lastItemIndex - j] = temp;
+                }
+            }
+        }
     }
 
 }
