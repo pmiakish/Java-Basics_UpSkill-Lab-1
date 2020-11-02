@@ -27,14 +27,38 @@ public class MatrixModifier {
         }
         if (descendingOrder) {
             for (int i = 0; i < matrix.length; i++) {
-                final int lastItemIndex = matrix[i].length - 1;
-                final int middleOfRow = matrix[i].length / 2;
-                int temp;
+                int lastItemIndex = matrix[i].length - 1;
+                int middleOfRow = matrix[i].length / 2;
+                int tempItem;
                 for (int j = 0; j < middleOfRow; j++) {
-                    temp = matrix[i][j];
+                    tempItem = matrix[i][j];
                     matrix[i][j] = matrix[i][lastItemIndex - j];
-                    matrix[i][lastItemIndex - j] = temp;
+                    matrix[i][lastItemIndex - j] = tempItem;
                 }
+            }
+        }
+    }
+
+    // task_13
+    public static void sortColumns(int[][] matrix, boolean descendingOrder) {
+        int[] tempColumn = new int[matrix.length];
+        for (int j = 0; j < matrix[0].length; j++) {
+            for (int i = 0; i < matrix.length; i++) {
+                tempColumn[i] = matrix[i][j];
+            }
+            Arrays.sort(tempColumn);
+            if (descendingOrder) {
+                int lastItemIndex = tempColumn.length - 1;
+                int middleOfColumn = tempColumn.length / 2;
+                int tempItem;
+                for (int z = 0; z < middleOfColumn; z++) {
+                    tempItem = tempColumn[z];
+                    tempColumn[z] = tempColumn[lastItemIndex - z];
+                    tempColumn[lastItemIndex - z] = tempItem;
+                }
+            }
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i][j] = tempColumn[i];
             }
         }
     }

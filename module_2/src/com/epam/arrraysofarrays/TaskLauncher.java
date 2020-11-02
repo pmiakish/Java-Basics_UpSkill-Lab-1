@@ -228,6 +228,24 @@ public class TaskLauncher {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
             }
+            case 13 -> {
+                int[][] generatedMatrixForThirteenthTask = MatrixBuilder.generateMatrix(MIN_VALUE_OF_MATRIX,
+                        MAX_VALUE_OF_MATRIX, AMOUNT_OF_ROWS_OF_MATRIX, AMOUNT_OF_COLUMNS_OF_MATRIX);
+                if (generatedMatrixForThirteenthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForThirteenthTask);
+                    boolean descendingOrder = false;
+                    MatrixModifier.sortColumns(generatedMatrixForThirteenthTask, descendingOrder);
+                    System.out.println("\nThe matrix columns are sorted in ascending order:");
+                    MatrixPrinter.printMatrix(generatedMatrixForThirteenthTask);
+                    descendingOrder = true;
+                    MatrixModifier.sortColumns(generatedMatrixForThirteenthTask, descendingOrder);
+                    System.out.println("\nThe matrix columns are sorted in descending order:");
+                    MatrixPrinter.printMatrix(generatedMatrixForThirteenthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+            }
             default -> System.out.println("Task " + taskNumber + " not found");
         }
     }
