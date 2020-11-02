@@ -216,12 +216,12 @@ public class TaskLauncher {
                 if (generatedMatrixForTwelfthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForTwelfthTask);
-                    boolean ascendingOrder = true;
-                    MatrixModifier.sortRows(generatedMatrixForTwelfthTask, ascendingOrder);
+                    boolean descendingOrder = false;
+                    MatrixModifier.sortRows(generatedMatrixForTwelfthTask, descendingOrder);
                     System.out.println("\nThe matrix rows are sorted in ascending order:");
                     MatrixPrinter.printMatrix(generatedMatrixForTwelfthTask);
-                    ascendingOrder = false;
-                    MatrixModifier.sortRows(generatedMatrixForTwelfthTask, ascendingOrder);
+                    descendingOrder = true;
+                    MatrixModifier.sortRows(generatedMatrixForTwelfthTask, descendingOrder);
                     System.out.println("\nThe matrix rows are sorted in descending order:");
                     MatrixPrinter.printMatrix(generatedMatrixForTwelfthTask);
                 } else {
