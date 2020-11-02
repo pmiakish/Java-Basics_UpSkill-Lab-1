@@ -117,4 +117,25 @@ public class MatrixBuilder {
         return matrix;
     }
 
+    //task_14 build the matrix according to a preassigned pattern (the number of '1' in each column equals the column
+    //number)
+    public static int[][] buildMatrixAccordingToPattern4(int numberOfRows, int numberOfColumns) {
+        int[][] matrix = null;
+        if (numberOfRows >= numberOfColumns && numberOfColumns > 1) {
+            matrix = new int[numberOfRows][numberOfColumns];
+            int randomRow;
+            for (int j = 1; j < numberOfColumns; j++) {
+                int counterOfOnes = j;
+                while (counterOfOnes > 0) {
+                    randomRow = (int) (Math.random() * numberOfRows);
+                    if (matrix[randomRow][j] != 1) {
+                        matrix[randomRow][j] = 1;
+                        counterOfOnes--;
+                    }
+                }
+            }
+        }
+        return matrix;
+    }
+
 }

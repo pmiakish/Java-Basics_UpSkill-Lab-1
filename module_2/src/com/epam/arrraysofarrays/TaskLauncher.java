@@ -21,6 +21,8 @@ public class TaskLauncher {
     private static final int ROW_FOR_PRINT_NUMBER = 3;
     private static final int COLUMN_FOR_PRINT_NUMBER = 2;
     private static final int ORDER_OF_SQUARE_MATRIX = 8;
+    private static final int AMOUNT_OF_ROWS_OF_MATRIX_FOURTEENTH_TASK = 9;
+    private static final int AMOUNT_OF_COLUMNS_OF_MATRIX_FOURTEENTH_TASK = 7;
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in).useLocale(Locale.US);
@@ -242,6 +244,17 @@ public class TaskLauncher {
                     MatrixModifier.sortColumns(generatedMatrixForThirteenthTask, descendingOrder);
                     System.out.println("\nThe matrix columns are sorted in descending order:");
                     MatrixPrinter.printMatrix(generatedMatrixForThirteenthTask);
+                } else {
+                    System.out.println("\nThe matrix with the specified parameters can't be generated!");
+                }
+            }
+            case 14 -> {
+                int[][] generatedMatrixForFourteenthTask = MatrixBuilder.
+                        buildMatrixAccordingToPattern4(AMOUNT_OF_ROWS_OF_MATRIX_FOURTEENTH_TASK,
+                        AMOUNT_OF_COLUMNS_OF_MATRIX_FOURTEENTH_TASK);
+                if (generatedMatrixForFourteenthTask != null) {
+                    System.out.println("\nThe generated matrix:");
+                    MatrixPrinter.printMatrix(generatedMatrixForFourteenthTask);
                 } else {
                     System.out.println("\nThe matrix with the specified parameters can't be generated!");
                 }
