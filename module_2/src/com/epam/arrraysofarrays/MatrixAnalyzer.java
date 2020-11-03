@@ -113,12 +113,13 @@ public class MatrixAnalyzer {
             int counterOfOccurrences = 0;
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] == preassignedNumber) {
-                    counterOfOccurrences++;
+                    if (++counterOfOccurrences == preassignedOccurrences) {
+                        numbersOfRows.append(i).append(" ");
+                        break;
+                    }
                 }
             }
-            if (counterOfOccurrences >= preassignedOccurrences) {
-                numbersOfRows.append(i).append(" ");
-            }
+
         }
         return numbersOfRows;
     }
