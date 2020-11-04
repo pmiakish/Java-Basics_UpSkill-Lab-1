@@ -12,7 +12,8 @@ public class ArraySorter {
     public static void main(String[] args) {
         int[] unsortedArray = ArrayMaker.generateArray(MIN_VALUE, MAX_VALUE, AMOUNT_OF_NUMBERS);
         System.out.println("The unsorted array -> " + Arrays.toString(unsortedArray));
-        System.out.println("The sorted array (by select) -> " + Arrays.toString(sortBySelect(unsortedArray)));
+        System.out.println("\nThe sorted array (by selecting) -> " + Arrays.toString(sortBySelect(unsortedArray)));
+        System.out.println("\nThe sorted array (by swapping) -> " + Arrays.toString(sortBySwap(unsortedArray)));
 
     }
 
@@ -32,4 +33,27 @@ public class ArraySorter {
         }
         return arrayForSorting;
     }
+
+    private static int[] sortBySwap(int[] unsortedArray) {
+        int[] arrayForSorting = Arrays.copyOf(unsortedArray, unsortedArray.length);
+        int temp;
+        boolean isArrayUnsorted;
+        for (int i = 0; i < arrayForSorting.length; i++) {
+            isArrayUnsorted = false;
+            int lastIndex = arrayForSorting.length - i;
+            for (int j = 1; j < lastIndex; j++) {
+                if (arrayForSorting[j - 1] > arrayForSorting[j]) {
+                    temp = arrayForSorting[j - 1];
+                    arrayForSorting[j - 1] = arrayForSorting[j];
+                    arrayForSorting[j] = temp;
+                    isArrayUnsorted = true;
+                }
+            }
+            if (!isArrayUnsorted) {
+                break;
+            }
+        }
+        return arrayForSorting;
+    }
+
 }
