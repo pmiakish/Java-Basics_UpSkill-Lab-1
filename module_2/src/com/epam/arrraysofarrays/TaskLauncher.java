@@ -266,8 +266,7 @@ public class TaskLauncher {
                 if (generatedMatrixForFifteenthTask != null) {
                     System.out.println("\nThe generated matrix:");
                     MatrixPrinter.printMatrix(generatedMatrixForFifteenthTask);
-                    if (MatrixModifier.replaceOddItems(generatedMatrixForFifteenthTask, MatrixAnalyzer.
-                            defineMaxItem(generatedMatrixForFifteenthTask))) {
+                    if (MatrixModifier.replaceOddItems(generatedMatrixForFifteenthTask)) {
                         System.out.println("\nThe modified matrix (all the odd numbers were replaced with the item " +
                                 "having max value):");
                         MatrixPrinter.printMatrix(generatedMatrixForFifteenthTask);

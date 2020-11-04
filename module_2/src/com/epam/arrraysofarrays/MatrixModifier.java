@@ -64,9 +64,10 @@ public class MatrixModifier {
     }
 
     // task_15
-    public static boolean replaceOddItems(int[][] matrix, int replacementValue) {
+    public static boolean replaceOddItems(int[][] matrix) {
         boolean areOddNumbers = false;
         boolean isOddNumber;
+        int replacementValue = defineMaxItem(matrix);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 isOddNumber = matrix[i][j] % 2 != 0;
@@ -78,5 +79,19 @@ public class MatrixModifier {
         }
         return areOddNumbers;
     }
+
+    // task_15
+    private static int defineMaxItem(int[][] matrix) {
+        int maxItem = Integer.MIN_VALUE;
+        for (int[] row : matrix) {
+            for (int item : row) {
+                if (item > maxItem) {
+                    maxItem = item;
+                }
+            }
+        }
+        return maxItem;
+    }
+
 
 }
