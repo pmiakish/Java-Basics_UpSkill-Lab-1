@@ -79,7 +79,7 @@ public class MatrixBuilder {
     //N is an even number.
     public static int[][] buildMatrixAccordingToPattern3(int orderOfMatrix) {
         int[][] matrix = null;
-        boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
+        final boolean isOrderOfMatrixEvenNumber = orderOfMatrix % 2 == 0;
         if (orderOfMatrix > 1 && isOrderOfMatrixEvenNumber) {
             matrix = new int[orderOfMatrix][orderOfMatrix];
             final int rowBeforeMiddle = (matrix.length / 2) - 1;
