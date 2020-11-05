@@ -5,9 +5,9 @@ import com.epam.onedimensionalarrays.ArrayMaker;
 
 public class TaskLauncher {
 
-    private static final int MIN_VALUE = -50;
-    private static final int MAX_VALUE = 50;
-    private static final int SORT_AMOUNT_OF_NUMBERS = 20;
+    private static final int MIN_VALUE = -100;
+    private static final int MAX_VALUE = 100;
+    private static final int SORT_AMOUNT_OF_NUMBERS = 100;
     private static final int FIRST_AMOUNT_OF_NUMBERS = 15;
     private static final int SECOND_AMOUNT_OF_NUMBERS = 10;
     private static final int K_PARAMETER = 7;
@@ -45,6 +45,13 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 04 ---\nThe unsorted array -> " + Arrays.toString(thirdArrayForSorting));
         numberOfComparisons = ArraySorter.sortByInsertion(thirdArrayForSorting);
         System.out.println("The array after insertion sorting -> " + Arrays.toString(thirdArrayForSorting) +
+                "\nThe number of comparisons is " + numberOfComparisons);
+
+        // task 05
+        int[] fourthArrayForSorting = ArrayMaker.generateArray(MIN_VALUE, MAX_VALUE, SORT_AMOUNT_OF_NUMBERS);
+        System.out.println("\n--- TASK 05 ---\nThe unsorted array -> " + Arrays.toString(fourthArrayForSorting));
+        numberOfComparisons = ArraySorter.sortByShell(fourthArrayForSorting);
+        System.out.println("The array after Shell sorting -> " + Arrays.toString(fourthArrayForSorting) +
                 "\nThe number of comparisons is " + numberOfComparisons);
 
     }
