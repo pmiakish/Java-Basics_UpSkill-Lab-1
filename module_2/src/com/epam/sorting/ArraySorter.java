@@ -12,12 +12,12 @@ public class ArraySorter {
     public static void main(String[] args) {
         int[] unsortedArray = ArrayMaker.generateArray(MIN_VALUE, MAX_VALUE, AMOUNT_OF_NUMBERS);
         System.out.println("The unsorted array -> " + Arrays.toString(unsortedArray));
-        System.out.println("\nThe sorted array (by selecting) -> " + Arrays.toString(sortBySelect(unsortedArray)));
-        System.out.println("\nThe sorted array (by swapping) -> " + Arrays.toString(sortBySwap(unsortedArray)));
+        System.out.println("\nThe sorted array (by selection) -> " + Arrays.toString(sortBySelection(unsortedArray)));
+        System.out.println("\nThe sorted array (by swapping) -> " + Arrays.toString(sortBySwapping(unsortedArray)));
 
     }
 
-    private static int[] sortBySelect(int[] unsortedArray) {
+    private static int[] sortBySelection(int[] unsortedArray) {
         int[] arrayForSorting = Arrays.copyOf(unsortedArray, unsortedArray.length);
         int temp;
         for (int i = 1; i < arrayForSorting.length; i++) {
@@ -34,7 +34,7 @@ public class ArraySorter {
         return arrayForSorting;
     }
 
-    private static int[] sortBySwap(int[] unsortedArray) {
+    private static int[] sortBySwapping(int[] unsortedArray) {
         int[] arrayForSorting = Arrays.copyOf(unsortedArray, unsortedArray.length);
         int temp;
         boolean isArrayUnsorted;
