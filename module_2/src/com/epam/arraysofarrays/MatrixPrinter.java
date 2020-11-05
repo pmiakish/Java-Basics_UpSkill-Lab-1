@@ -1,4 +1,4 @@
-package com.epam.arrraysofarrays;
+package com.epam.arraysofarrays;
 
 public class MatrixPrinter {
     public static void printMatrix(int[][] matrix) {

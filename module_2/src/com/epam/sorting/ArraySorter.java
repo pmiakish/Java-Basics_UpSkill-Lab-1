@@ -1,51 +1,38 @@
 package com.epam.sorting;
 
-import java.util.Arrays;
-import com.epam.onedimensionalarrays.ArrayMaker;
-
 public class ArraySorter {
 
-    private static final int MIN_VALUE = -50;
-    private static final int MAX_VALUE = 50;
-    private static final int AMOUNT_OF_NUMBERS = 20;
-
-    public static void main(String[] args) {
-        int[] unsortedArray = ArrayMaker.generateArray(MIN_VALUE, MAX_VALUE, AMOUNT_OF_NUMBERS);
-        System.out.println("The unsorted array -> " + Arrays.toString(unsortedArray));
-        System.out.println("\nThe sorted array (by selection) -> " + Arrays.toString(sortBySelection(unsortedArray)));
-        System.out.println("\nThe sorted array (by swapping) -> " + Arrays.toString(sortBySwapping(unsortedArray)));
-
-    }
-
-    private static int[] sortBySelection(int[] unsortedArray) {
-        int[] arrayForSorting = Arrays.copyOf(unsortedArray, unsortedArray.length);
+    public static int sortBySelection(int[] array) {
         int temp;
-        for (int i = 1; i < arrayForSorting.length; i++) {
+        int counterOfComparisons = 0;
+        for (int i = 1; i < array.length; i++) {
             int indexOfMinValue = i - 1;
-            for (int j = i; j < arrayForSorting.length; j++) {
-                if (arrayForSorting[j] < arrayForSorting[indexOfMinValue]) {
+            for (int j = i; j < array.length; j++) {
+                counterOfComparisons++;
+                if (array[j] < array[indexOfMinValue]) {
                     indexOfMinValue = j;
                 }
             }
-            temp = arrayForSorting[i - 1];
-            arrayForSorting[i - 1] = arrayForSorting[indexOfMinValue];
-            arrayForSorting[indexOfMinValue] = temp;
+            temp = array[i - 1];
+            array[i - 1] = array[indexOfMinValue];
+            array[indexOfMinValue] = temp;
         }
-        return arrayForSorting;
+        return counterOfComparisons;
     }
 
-    private static int[] sortBySwapping(int[] unsortedArray) {
-        int[] arrayForSorting = Arrays.copyOf(unsortedArray, unsortedArray.length);
+    public static int sortBySwapping(int[] array) {
         int temp;
+        int counterOfComparisons = 0;
         boolean isArrayUnsorted;
-        for (int i = 0; i < arrayForSorting.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             isArrayUnsorted = false;
-            int lastIndex = arrayForSorting.length - i;
+            int lastIndex = array.length - i;
             for (int j = 1; j < lastIndex; j++) {
-                if (arrayForSorting[j - 1] > arrayForSorting[j]) {
-                    temp = arrayForSorting[j - 1];
-                    arrayForSorting[j - 1] = arrayForSorting[j];
-                    arrayForSorting[j] = temp;
+                counterOfComparisons++;
+                if (array[j - 1] > array[j]) {
+                    temp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = temp;
                     isArrayUnsorted = true;
                 }
             }
@@ -53,7 +40,32 @@ public class ArraySorter {
                 break;
             }
         }
-        return arrayForSorting;
+        return counterOfComparisons;
+    }
+
+    public static int sortByInsertion(int[] array) {
+        int temp;
+        int counterOfComparisons = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < array[i - 1]) {
+                counterOfComparisons++;
+                temp = array[i];
+                for (int j = i - 1; j >= 0; j--) {
+                    counterOfComparisons++;
+                    if (array[j] > temp && j != 0) {
+                        array[j + 1] = array[j];
+                    } else if (array[j] > temp && j == 0) {
+                        array[j + 1] = array[j];
+                        array[j] = temp;
+                    }
+                    else {
+                        array[j + 1] = temp;
+                        break;
+                    }
+                }
+            }
+        }
+        return counterOfComparisons;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.epam.arrraysofarrays;
+package com.epam.arraysofarrays;
 
 import java.util.Arrays;
 

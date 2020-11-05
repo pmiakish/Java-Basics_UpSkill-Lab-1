@@ -1,4 +1,4 @@
-package com.epam.arrraysofarrays;
+package com.epam.arraysofarrays;
 
 public class MatrixAnalyzer {
 
