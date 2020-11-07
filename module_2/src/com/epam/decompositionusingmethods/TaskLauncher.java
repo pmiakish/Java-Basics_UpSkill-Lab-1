@@ -12,6 +12,9 @@ public class TaskLauncher {
     private static final int NUMBER_E = 570;
     private static final int NUMBER_F = 36;
 
+    // task 03
+    private static final double SIDE_LENGTH = 8.0;
+
     public static void main(String[] args) {
 
         // task 01
@@ -33,6 +36,15 @@ public class TaskLauncher {
                     NUMBER_D + ", " + NUMBER_E + ", " + NUMBER_F + " is " + divisorSecondTask);
         } else {
             System.out.println("\n--- TASK 02 ---\nIncorrect parameters!");
+        }
+
+        // task 03
+        double regularHexagonArea = GeometricalCalculator.findRegularHexagonArea(SIDE_LENGTH);
+        if (regularHexagonArea != -1) {
+            System.out.println("\n--- TASK 03 ---\nThe area of the regular hexagon with the side length " + SIDE_LENGTH
+                    + " is " + regularHexagonArea);
+        } else {
+            System.out.println("\n--- TASK 03 ---\nIncorrect value of the side length!");
         }
 
     }
