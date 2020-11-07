@@ -17,6 +17,14 @@ public class NumbersAnalyzer {
         return divisor;
     }
 
+    public static int findGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber) {
+        int divisor = -1;
+        if (firstNumber > 0 && secondNumber > 0 && thirdNumber > 0) {
+            divisor = findGreatestCommonDivisor(findGreatestCommonDivisor(firstNumber, secondNumber), thirdNumber);
+            }
+        return divisor;
+    }
+
     public static int findGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber, int fourthNumber) {
         int divisor = -1;
         if (firstNumber > 0 && secondNumber > 0 && thirdNumber > 0 && fourthNumber > 0) {
@@ -53,5 +61,14 @@ public class NumbersAnalyzer {
         return secondLargestNumber;
     }
 
+    public static int checkIfNumbersAreCoprime(int firstNumber, int secondNumber, int thirdNumber) {
+        int result = -1;
+        if (findGreatestCommonDivisor(firstNumber, secondNumber, thirdNumber) == 1) {
+            result = 1;
+        } else if (findGreatestCommonDivisor(firstNumber, secondNumber, thirdNumber) > 1) {
+            result = 0;
+        }
+        return result;
+    }
 
 }

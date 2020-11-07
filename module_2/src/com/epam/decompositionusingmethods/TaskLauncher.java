@@ -31,6 +31,11 @@ public class TaskLauncher {
     private static final int MAX_VALUE_FIFTH_TASK = 35;
     private static final int AMOUNT_OF_NUMBERS_FIFTH_TASK = 20;
 
+    // task 06
+    private static final int FIRST_NUMBER_SIXTH_TASK = 91;
+    private static final int SECOND_NUMBER_SIXTH_TASK = 27;
+    private static final int THIRD_NUMBER_SIXTH_TASK = 133;
+
     public static void main(String[] args) {
 
         // task 01
@@ -87,6 +92,19 @@ public class TaskLauncher {
             System.out.println("The second largest number in the array is " + secondLargestNumber);
         } else {
             System.out.println("\n--- TASK 05 ---\nThe second largest number of the array not found!");
+        }
+
+        // task 06
+        int resultOfChecking = NumbersAnalyzer.checkIfNumbersAreCoprime(FIRST_NUMBER_SIXTH_TASK,
+                SECOND_NUMBER_SIXTH_TASK, THIRD_NUMBER_SIXTH_TASK);
+        if (resultOfChecking == 1) {
+            System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
+                    SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " are coprime.");
+        } else if (resultOfChecking == 0) {
+            System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
+                    SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " aren't coprime.");
+        } else if (resultOfChecking == -1) {
+            System.out.println("\n--- TASK 06 ---\nIncorrect values of the numbers!");
         }
 
     }
