@@ -18,6 +18,20 @@ public class MatrixBuilder {
         return matrix;
     }
 
+    // Random double matrix with max, min values, predetermined numbers of rows and columns
+    public static double[][] generateMatrix(double minValue, double maxValue, int numberOfRows, int numberOfColumns) {
+        double[][] matrix = null;
+        if (minValue < maxValue && numberOfRows > 1 && numberOfColumns > 1) {
+            matrix = new double[numberOfRows][numberOfColumns];
+            for (int i = 0; i < numberOfRows; i++) {
+                for (int j = 0; j < numberOfColumns; j++) {
+                    matrix[i][j] = Math.random() * (maxValue - minValue) + minValue;
+                }
+            }
+        }
+        return matrix;
+    }
+
     // Random NON-NEGATIVE integer matrix with max, min values, predetermined numbers of rows and columns
     public static int[][] generateNonNegativeMatrix(int minValue, int maxValue, int numberOfRows, int numberOfColumns) {
         int[][] matrix = null;

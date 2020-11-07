@@ -1,5 +1,10 @@
 package com.epam.decompositionusingmethods;
 
+import com.epam.arraysofarrays.MatrixBuilder;
+import com.epam.arraysofarrays.MatrixPrinter;
+
+import java.util.Arrays;
+
 public class TaskLauncher {
 
     // task 01
@@ -14,6 +19,12 @@ public class TaskLauncher {
 
     // task 03
     private static final double SIDE_LENGTH = 8.0;
+
+    // task 04
+    private static final double MIN_COORDINATE_VALUE = -50.0;
+    private static final double MAX_COORDINATE_VALUE = 50.0;
+    private static final int NUMBER_OF_COORDINATE_AXES = 2;
+    private static final int NUMBER_OF_POINTS = 4;
 
     public static void main(String[] args) {
 
@@ -45,6 +56,21 @@ public class TaskLauncher {
                     + " is " + regularHexagonArea);
         } else {
             System.out.println("\n--- TASK 03 ---\nIncorrect value of the side length!");
+        }
+
+        // task 04
+        double[][] coordinates = MatrixBuilder.generateMatrix(MIN_COORDINATE_VALUE, MAX_COORDINATE_VALUE,
+                NUMBER_OF_COORDINATE_AXES, NUMBER_OF_POINTS);
+        System.out.println("\n--- TASK 04 ---\nThe generated coordinates (the first row - x, the second row - y):");
+        MatrixPrinter.printMatrix(coordinates);
+        int[] mostDistantPoints = GeometricalCalculator.findMostDistantPoints(coordinates);
+        if (mostDistantPoints != null) {
+            System.out.println("The most distant points are " + Arrays.toString(mostDistantPoints) + " with " +
+                    "coordinates: x1[" + coordinates[0][mostDistantPoints[0]] + "] y1[" +
+                    coordinates[1][mostDistantPoints[0]] + "], x2[" + coordinates[0][mostDistantPoints[1]] + "] y2[" +
+                    coordinates[1][mostDistantPoints[1]] + "]");
+        } else {
+            System.out.println("\n--- TASK 04 ---\nIncorrect coordinate values!");
         }
 
     }
