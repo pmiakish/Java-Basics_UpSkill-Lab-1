@@ -37,4 +37,21 @@ public class NumbersAnalyzer {
         return multiple;
     }
 
+    public static int findSecondLargestNumber(int[] numbers) {
+        int largestNumber = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] > largestNumber) {
+                largestNumber = numbers[i];
+            }
+        }
+        int secondLargestNumber = Integer.MIN_VALUE;
+        for (int currentNumber : numbers) {
+            if (currentNumber < largestNumber && currentNumber > secondLargestNumber) {
+                secondLargestNumber = currentNumber;
+            }
+        }
+        return secondLargestNumber;
+    }
+
+
 }

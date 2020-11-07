@@ -1,9 +1,9 @@
 package com.epam.decompositionusingmethods;
 
+import java.util.Arrays;
 import com.epam.arraysofarrays.MatrixBuilder;
 import com.epam.arraysofarrays.MatrixPrinter;
-
-import java.util.Arrays;
+import com.epam.onedimensionalarrays.ArrayMaker;
 
 public class TaskLauncher {
 
@@ -24,7 +24,12 @@ public class TaskLauncher {
     private static final double MIN_COORDINATE_VALUE = -50.0;
     private static final double MAX_COORDINATE_VALUE = 50.0;
     private static final int NUMBER_OF_COORDINATE_AXES = 2;
-    private static final int NUMBER_OF_POINTS = 4;
+    private static final int NUMBER_OF_POINTS = 6;
+
+    // task 05
+    private static final int MIN_VALUE_FIFTH_TASK = -35;
+    private static final int MAX_VALUE_FIFTH_TASK = 35;
+    private static final int AMOUNT_OF_NUMBERS_FIFTH_TASK = 20;
 
     public static void main(String[] args) {
 
@@ -65,12 +70,23 @@ public class TaskLauncher {
         MatrixPrinter.printMatrix(coordinates);
         int[] mostDistantPoints = GeometricalCalculator.findMostDistantPoints(coordinates);
         if (mostDistantPoints != null) {
-            System.out.println("The most distant points are " + Arrays.toString(mostDistantPoints) + " with " +
+            System.out.println("\nThe most distant points are " + Arrays.toString(mostDistantPoints) + " with " +
                     "coordinates: x1[" + coordinates[0][mostDistantPoints[0]] + "] y1[" +
                     coordinates[1][mostDistantPoints[0]] + "], x2[" + coordinates[0][mostDistantPoints[1]] + "] y2[" +
                     coordinates[1][mostDistantPoints[1]] + "]");
         } else {
             System.out.println("\n--- TASK 04 ---\nIncorrect coordinate values!");
+        }
+
+        // task 05
+        int[] generatedNumbersForFifthTask = ArrayMaker.generateArray(MIN_VALUE_FIFTH_TASK, MAX_VALUE_FIFTH_TASK,
+                AMOUNT_OF_NUMBERS_FIFTH_TASK);
+        System.out.println("\n--- TASK 05 ---\nThe generated array:\n" + Arrays.toString(generatedNumbersForFifthTask));
+        int secondLargestNumber = NumbersAnalyzer.findSecondLargestNumber(generatedNumbersForFifthTask);
+        if (secondLargestNumber != Integer.MIN_VALUE) {
+            System.out.println("The second largest number in the array is " + secondLargestNumber);
+        } else {
+            System.out.println("\n--- TASK 05 ---\nThe second largest number of the array not found!");
         }
 
     }
