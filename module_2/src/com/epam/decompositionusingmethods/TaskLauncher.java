@@ -1,6 +1,5 @@
 package com.epam.decompositionusingmethods;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import com.epam.arraysofarrays.MatrixBuilder;
