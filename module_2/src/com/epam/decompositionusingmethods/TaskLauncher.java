@@ -56,6 +56,9 @@ public class TaskLauncher {
     private static final double Z_SIDE_LENGTH = 21.5;
     private static final double T_SIDE_LENGTH = 41.3;
 
+    // task 09
+    private static final int NUMBER_FOR_SPLITTING = 1586487;
+
     public static void main(String[] args) {
 
         // task 01
@@ -169,6 +172,10 @@ public class TaskLauncher {
         } else {
             System.out.println("\n--- TASK 09 ---\nIncorrect values of length of the quadrangle sides!");
         }
+
+        // task 09
+        System.out.println("\n--- TASK 10 ---\nThe number " + NUMBER_FOR_SPLITTING + " was divided into digits ->" +
+                Arrays.toString(NumbersAnalyzer.splitNumberIntoDigits(NUMBER_FOR_SPLITTING)));
 
     }
 }

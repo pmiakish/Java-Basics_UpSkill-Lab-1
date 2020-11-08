@@ -93,4 +93,13 @@ public class NumbersAnalyzer {
         return sum;
     }
 
+    public static int[] splitNumberIntoDigits(int number) {
+        int[] digits = new int[String.valueOf(number).length()];
+        for (int i = digits.length - 1; i >= 0 ; i--) {
+            digits[i] = number % 10;
+            number /= 10;
+        }
+        return digits;
+    }
+
 }
