@@ -104,6 +104,15 @@ public class NumbersAnalyzer {
         return digits;
     }
 
+    public static int[] splitNumberIntoDigits(long number) {
+        int[] digits = new int[String.valueOf(number).length()];
+        for (int i = digits.length - 1; i >= 0 ; i--) {
+            digits[i] = (int) number % 10;
+            number /= 10;
+        }
+        return digits;
+    }
+
     public static int compareAmountOfDigitsInTwoNumbers(int firstNumber, int secondNumber) {
         int result;
         int firstNumberLength = String.valueOf(firstNumber).length();
@@ -209,6 +218,27 @@ public class NumbersAnalyzer {
             }
         }
         return numbersWithIncreasingDigitSequence;
+    }
+
+    public static long calculateSumOfNumbersWithOddDigits(int digitCapacity) {
+        long sum = -1;
+        if (digitCapacity > 1) {
+            sum = 0;
+            for (int i = (int) (Math.pow(10.0, digitCapacity - 1.0)); i < (int) (Math.pow(10.0, digitCapacity)); i++) {
+                int[] digits = splitNumberIntoDigits(i);
+                boolean isNumberWithOddDigits = true;
+                for (int digit : digits) {
+                    if (digit % 2 == 0) {
+                        isNumberWithOddDigits = false;
+                        break;
+                    }
+                }
+                if (isNumberWithOddDigits) {
+                    sum += i;
+                }
+            }
+        }
+        return sum;
     }
 
 }

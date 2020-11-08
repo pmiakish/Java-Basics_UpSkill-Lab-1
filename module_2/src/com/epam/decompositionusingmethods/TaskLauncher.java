@@ -76,7 +76,7 @@ public class TaskLauncher {
     private static final int FIRST_NUMBER_FOURTEENTH_TASK = 1;
     private static final int LAST_NUMBER_FOURTEENTH_TASK = 5258;
 
-    // task 15
+    // tasks 15, 16
     private static final int DIGIT_CAPACITY = 5;
 
     public static void main(String[] args) {
@@ -261,5 +261,24 @@ public class TaskLauncher {
             System.out.println("\n--- TASK 15 ---\nCannot find " + DIGIT_CAPACITY + "-digit numbers with increasing " +
                     "digit sequence!");
         }
+
+        // task 16
+        long sumOfNumbersWithOddDigits = NumbersAnalyzer.calculateSumOfNumbersWithOddDigits(DIGIT_CAPACITY);
+        if (sumOfNumbersWithOddDigits != -1) {
+            System.out.println("\n--- TASK 16 ---\nThe sum of all the " + DIGIT_CAPACITY + "-digit numbers with only " +
+                    "odd digits is " + sumOfNumbersWithOddDigits);
+            int[] digitsOfSum = NumbersAnalyzer.splitNumberIntoDigits(sumOfNumbersWithOddDigits);
+            int counterOfEvenDigits = 0;
+            for (int digit : digitsOfSum) {
+                if (digit % 2 == 0) {
+                    counterOfEvenDigits++;
+                }
+            }
+            System.out.println("The sum number contains " + counterOfEvenDigits + " even digits");
+        } else {
+            System.out.println("\n--- TASK 16 ---\nCannot find sum of " + DIGIT_CAPACITY + "-digit numbers with only " +
+                    "odd digits!");
+        }
+
     }
 }
