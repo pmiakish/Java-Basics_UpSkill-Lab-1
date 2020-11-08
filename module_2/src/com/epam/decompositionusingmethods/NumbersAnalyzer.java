@@ -102,4 +102,18 @@ public class NumbersAnalyzer {
         return digits;
     }
 
+    public static int compareAmountOfDigitsInTwoNumbers(int firstNumber, int secondNumber) {
+        int result;
+        int firstNumberLength = String.valueOf(firstNumber).length();
+        int secondNumberLength = String.valueOf(secondNumber).length();
+        if (firstNumberLength > secondNumberLength) {
+            result = 0;
+        } else if (firstNumberLength < secondNumberLength) {
+            result = 1;
+        } else {
+            result = -1;
+        }
+        return result;
+    }
+
 }

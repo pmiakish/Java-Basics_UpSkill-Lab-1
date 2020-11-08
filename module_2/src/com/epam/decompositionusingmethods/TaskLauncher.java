@@ -56,8 +56,12 @@ public class TaskLauncher {
     private static final double Z_SIDE_LENGTH = 21.5;
     private static final double T_SIDE_LENGTH = 41.3;
 
-    // task 09
+    // task 10
     private static final int NUMBER_FOR_SPLITTING = 1586487;
+
+    // task 11
+    private static final int FIRST_NUMBER_ELEVENTH_TASK = 175755;
+    private static final int SECOND_NUMBER_ELEVENTH_TASK = 25446457;
 
     public static void main(String[] args) {
 
@@ -173,9 +177,28 @@ public class TaskLauncher {
             System.out.println("\n--- TASK 09 ---\nIncorrect values of length of the quadrangle sides!");
         }
 
-        // task 09
+        // task 10
         System.out.println("\n--- TASK 10 ---\nThe number " + NUMBER_FOR_SPLITTING + " was divided into digits ->" +
                 Arrays.toString(NumbersAnalyzer.splitNumberIntoDigits(NUMBER_FOR_SPLITTING)));
+
+        // task 11
+        System.out.println("\n--- TASK 11 ---\nComparison of the numbers " + FIRST_NUMBER_ELEVENTH_TASK + " and " +
+                SECOND_NUMBER_ELEVENTH_TASK + ":");
+        int resultOfComparison = NumbersAnalyzer.compareAmountOfDigitsInTwoNumbers(FIRST_NUMBER_ELEVENTH_TASK,
+                SECOND_NUMBER_ELEVENTH_TASK);
+        switch (resultOfComparison) {
+            case 0:
+                System.out.println("The number " + FIRST_NUMBER_ELEVENTH_TASK + " contains more digits than the number "
+                        + SECOND_NUMBER_ELEVENTH_TASK);
+                break;
+            case 1:
+                System.out.println("The number " + SECOND_NUMBER_ELEVENTH_TASK + " contains more digits than the " +
+                        "number " + FIRST_NUMBER_ELEVENTH_TASK);
+                break;
+            case -1:
+                System.out.println("The both numbers contain the same number of digits");
+                break;
+        }
 
     }
 }
