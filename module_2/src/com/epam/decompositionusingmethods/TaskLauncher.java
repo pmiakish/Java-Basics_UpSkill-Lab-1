@@ -76,6 +76,9 @@ public class TaskLauncher {
     private static final int FIRST_NUMBER_FOURTEENTH_TASK = 1;
     private static final int LAST_NUMBER_FOURTEENTH_TASK = 5258;
 
+    // task 15
+    private static final int DIGIT_CAPACITY = 5;
+
     public static void main(String[] args) {
 
         // task 01
@@ -246,6 +249,17 @@ public class TaskLauncher {
         } else {
             System.out.println("\n--- TASK 14 ---\nCannot find Armstrong numbers in the specified range from " +
                     FIRST_NUMBER_FOURTEENTH_TASK + " to " + LAST_NUMBER_FOURTEENTH_TASK);
+        }
+
+        // task 15
+        StringBuilder numbersWithIncreasingDigitSequence = NumbersAnalyzer.
+                findNumbersWithIncreasingDigitSequence(DIGIT_CAPACITY);
+        if (numbersWithIncreasingDigitSequence.length() != 0) {
+            System.out.println("\n--- TASK 15 ---\nThe " + DIGIT_CAPACITY + "-digit numbers with increasing digit " +
+                    "sequence are " + numbersWithIncreasingDigitSequence);
+        } else {
+            System.out.println("\n--- TASK 15 ---\nCannot find " + DIGIT_CAPACITY + "-digit numbers with increasing " +
+                    "digit sequence!");
         }
     }
 }

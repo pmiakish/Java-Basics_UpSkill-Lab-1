@@ -191,4 +191,24 @@ public class NumbersAnalyzer {
         return armstrongNumbers;
     }
 
+    public static StringBuilder findNumbersWithIncreasingDigitSequence(int digitCapacity) {
+        StringBuilder numbersWithIncreasingDigitSequence = new StringBuilder();
+        if (digitCapacity > 1) {
+            for (int i = (int) (Math.pow(10.0, digitCapacity - 1.0)); i < (int) (Math.pow(10.0, digitCapacity)); i++) {
+                int[] digits = splitNumberIntoDigits(i);
+                boolean isIncreasingSequence = true;
+                for (int j = 1; j < digits.length; j++) {
+                    if (digits[j] != digits[j - 1] + 1) {
+                        isIncreasingSequence = false;
+                        break;
+                    }
+                }
+                if (isIncreasingSequence) {
+                    numbersWithIncreasingDigitSequence.append("[").append(i).append("] ");
+                }
+            }
+        }
+        return numbersWithIncreasingDigitSequence;
+    }
+
 }
