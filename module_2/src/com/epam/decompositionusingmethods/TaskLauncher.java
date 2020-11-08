@@ -69,6 +69,10 @@ public class TaskLauncher {
     private static final int K_NUMBER_TWELFTH_TASK = 18;
     private static final int N_NUMBER_TWELFTH_TASK = 10000;
 
+    // task 13
+    private static final int FIRST_NUMBER_THIRTEENTH_TASK = 41;
+    private static final int LAST_NUMBER_THIRTEENTH_TASK = 82;
+
     public static void main(String[] args) {
 
         // task 01
@@ -217,6 +221,17 @@ public class TaskLauncher {
             System.out.println("\n--- TASK 12 ---\nThe numbers consisting of digits, the sum of which equals to the " +
                     "number " + K_NUMBER_TWELFTH_TASK + " (the numbers are less than the number " +
                     N_NUMBER_TWELFTH_TASK + ") not found");
+        }
+
+        // task 13
+        StringBuilder twinPrimes = NumbersAnalyzer.findTwinPrimeNumbers(FIRST_NUMBER_THIRTEENTH_TASK,
+                LAST_NUMBER_THIRTEENTH_TASK);
+        if (twinPrimes.length() != 0) {
+            System.out.println("\n--- TASK 13 ---\nThe twin prime numbers in the specified range from " +
+                    FIRST_NUMBER_THIRTEENTH_TASK + " to " + LAST_NUMBER_THIRTEENTH_TASK + " are " + twinPrimes);
+        } else {
+            System.out.println("\n--- TASK 13 ---\nCannot find twin prime numbers in the specified range from " +
+                    FIRST_NUMBER_THIRTEENTH_TASK + " to " + LAST_NUMBER_THIRTEENTH_TASK);
         }
 
     }

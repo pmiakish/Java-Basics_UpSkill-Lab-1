@@ -136,5 +136,43 @@ public class NumbersAnalyzer {
         return numbers;
     }
 
+    public static StringBuilder findTwinPrimeNumbers(int firstNumber, int lastNumber) {
+        StringBuilder twinPrimes = new StringBuilder();
+        final int specifiedFactor = 2;
+        if (firstNumber > 2 && lastNumber == specifiedFactor * firstNumber) {
+            ArrayList<Integer> primeNumbers = findPrimeNumbers(firstNumber, lastNumber);
+            if (primeNumbers.size() != 0) {
+                for (int i = 1; i < primeNumbers.size(); i++) {
+                    if (primeNumbers.get(i - 1) + 2 == primeNumbers.get(i)) {
+                        twinPrimes.append("[").append(primeNumbers.get(i - 1)).append(", ").append(primeNumbers.get(i)).
+                                append("] ");
+                    }
+                }
+            }
+        }
+        return twinPrimes;
+    }
+
+    private static ArrayList<Integer> findPrimeNumbers(int firstNumber, int lastNumber) {
+        final int minDivisorForPrimeNumbers = 2;
+        final int firstPrimeNumber = 2;
+        ArrayList<Integer> primeNumbers = new ArrayList<>();
+        if (firstNumber >= firstPrimeNumber && lastNumber > firstNumber) {
+            for (int i = firstPrimeNumber; i <= lastNumber; i++) {
+                boolean isCompositeNumber = false;
+                for (int divisor = minDivisorForPrimeNumbers; divisor <= Math.round(Math.sqrt(i)); divisor++) {
+                    if (i % divisor == 0) {
+                        isCompositeNumber = true;
+                        break;
+                    }
+                }
+                if (!isCompositeNumber) {
+                    primeNumbers.add(i);
+                }
+            }
+        }
+        return primeNumbers;
+    }
+
 
 }
