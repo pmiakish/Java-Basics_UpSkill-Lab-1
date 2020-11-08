@@ -36,6 +36,10 @@ public class TaskLauncher {
     private static final int SECOND_NUMBER_SIXTH_TASK = 27;
     private static final int THIRD_NUMBER_SIXTH_TASK = 133;
 
+    // task 07
+    private static final int FIRST_NUMBER_SEVENTH_TASK = 1;
+    private static final int SECOND_NUMBER_SEVENTH_TASK = 9;
+
     public static void main(String[] args) {
 
         // task 01
@@ -104,7 +108,17 @@ public class TaskLauncher {
             System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
                     SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " aren't coprime.");
         } else if (resultOfChecking == -1) {
-            System.out.println("\n--- TASK 06 ---\nIncorrect values of the numbers!");
+            System.out.println("\n--- TASK 06 ---\nIncorrect values of the given numbers!");
+        }
+
+        // task 07
+        long sumOfOddNumbersFactorials = NumbersAnalyzer.findSumOfOddNumbersFactorials(FIRST_NUMBER_SEVENTH_TASK,
+                SECOND_NUMBER_SEVENTH_TASK);
+        if (sumOfOddNumbersFactorials != -1) {
+            System.out.println("\n--- TASK 07 ---\nThe sum of the all odd numbers from " + FIRST_NUMBER_SEVENTH_TASK +
+                    " to " + SECOND_NUMBER_SEVENTH_TASK + " is " + sumOfOddNumbersFactorials);
+        } else {
+            System.out.println("\n--- TASK 07 ---\nIncorrect values of the given numbers!");
         }
 
     }

@@ -71,4 +71,51 @@ public class NumbersAnalyzer {
         return result;
     }
 
+    public static long findSumOfOddNumbersFactorials(int firstNumber, int secondNumber) {
+        long sum = -1;
+        int[] oddNumbers = findOddNumbersInSpecifiedRange(firstNumber, secondNumber);
+        if (oddNumbers != null) {
+            sum = 0;
+            for (int number : oddNumbers) {
+                sum += calculateFactorialOfNumber(number);
+            }
+        }
+        return sum;
+    }
+
+    private static int[] findOddNumbersInSpecifiedRange(int minValue, int maxValue) {
+        int[] oddNumbers = null;
+        if (maxValue > minValue) {
+            int amountOfNumbersInSpecifiedRange = maxValue - minValue + 1;
+            if (minValue % 2 == 0 && amountOfNumbersInSpecifiedRange % 2 != 0) {
+                oddNumbers = new int[amountOfNumbersInSpecifiedRange / 2];
+            } else {
+                oddNumbers = new int[(amountOfNumbersInSpecifiedRange + 1) / 2];
+            }
+            int firstOddNumber;
+            if (minValue % 2 == 0) {
+                firstOddNumber = minValue + 1;
+            } else {
+                firstOddNumber = minValue;
+            }
+            for (int i = 0; i < oddNumbers.length; i++) {
+                oddNumbers[i] = firstOddNumber;
+                firstOddNumber += 2;
+            }
+        }
+        return oddNumbers;
+    }
+
+    private static long calculateFactorialOfNumber(int naturalNumber) {
+        long factorial = -1;
+        if (naturalNumber >= 1) {
+            factorial = 1;
+            for (int i = 2; i <= naturalNumber; i++) {
+                factorial *= i;
+            }
+        }
+        return factorial;
+    }
+
+
 }
