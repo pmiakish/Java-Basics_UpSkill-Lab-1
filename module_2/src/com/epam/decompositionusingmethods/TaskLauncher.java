@@ -1,5 +1,7 @@
 package com.epam.decompositionusingmethods;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import com.epam.arraysofarrays.MatrixBuilder;
 import com.epam.arraysofarrays.MatrixPrinter;
@@ -62,6 +64,10 @@ public class TaskLauncher {
     // task 11
     private static final int FIRST_NUMBER_ELEVENTH_TASK = 175755;
     private static final int SECOND_NUMBER_ELEVENTH_TASK = 25446457;
+
+    // task 12
+    private static final int K_NUMBER_TWELFTH_TASK = 18;
+    private static final int N_NUMBER_TWELFTH_TASK = 10000;
 
     public static void main(String[] args) {
 
@@ -198,6 +204,19 @@ public class TaskLauncher {
             case -1:
                 System.out.println("The both numbers contain the same number of digits");
                 break;
+        }
+
+        // task 12
+        ArrayList<Integer> numbers = NumbersAnalyzer.
+                findNumbersEqualsToSumOfDigitsOfNumberKAndLessThanNumberN(K_NUMBER_TWELFTH_TASK, N_NUMBER_TWELFTH_TASK);
+        if (numbers.size() != 0) {
+            System.out.println("\n--- TASK 12 ---\nThe numbers consisting of digits, the sum of which equals to the " +
+                    "number " + K_NUMBER_TWELFTH_TASK + " (the numbers are less than the number " +
+                    N_NUMBER_TWELFTH_TASK + "):\n" + Arrays.toString(numbers.toArray()));
+        } else {
+            System.out.println("\n--- TASK 12 ---\nThe numbers consisting of digits, the sum of which equals to the " +
+                    "number " + K_NUMBER_TWELFTH_TASK + " (the numbers are less than the number " +
+                    N_NUMBER_TWELFTH_TASK + ") not found");
         }
 
     }
