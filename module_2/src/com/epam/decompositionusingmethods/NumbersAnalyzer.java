@@ -174,5 +174,23 @@ public class NumbersAnalyzer {
         return primeNumbers;
     }
 
+    public static StringBuilder findArmstrongNumbers(int firstNumber, int lastNumber) {
+        StringBuilder armstrongNumbers = new StringBuilder();
+        if (firstNumber > 0 && lastNumber > firstNumber) {
+            for (int i = firstNumber; i <= lastNumber; i++) {
+                int[] digits = splitNumberIntoDigits(i);
+                int sumOfPow = 0;
+                for (int digit : digits) {
+                    sumOfPow += (int) Math.pow(digit, digits.length);
+                }
+                if (i == sumOfPow) {
+                    armstrongNumbers.append("[").append(i).append("] ");
+                }
+            }
+        }
+        return armstrongNumbers;
+    }
+
+
 
 }

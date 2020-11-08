@@ -72,6 +72,10 @@ public class TaskLauncher {
     private static final int FIRST_NUMBER_THIRTEENTH_TASK = 41;
     private static final int LAST_NUMBER_THIRTEENTH_TASK = 82;
 
+    // task 14
+    private static final int FIRST_NUMBER_FOURTEENTH_TASK = 1;
+    private static final int LAST_NUMBER_FOURTEENTH_TASK = 5258;
+
     public static void main(String[] args) {
 
         // task 01
@@ -187,7 +191,7 @@ public class TaskLauncher {
         }
 
         // task 10
-        System.out.println("\n--- TASK 10 ---\nThe number " + NUMBER_FOR_SPLITTING + " was divided into digits ->" +
+        System.out.println("\n--- TASK 10 ---\nThe number " + NUMBER_FOR_SPLITTING + " was divided into digits -> " +
                 Arrays.toString(NumbersAnalyzer.splitNumberIntoDigits(NUMBER_FOR_SPLITTING)));
 
         // task 11
@@ -231,6 +235,17 @@ public class TaskLauncher {
         } else {
             System.out.println("\n--- TASK 13 ---\nCannot find twin prime numbers in the specified range from " +
                     FIRST_NUMBER_THIRTEENTH_TASK + " to " + LAST_NUMBER_THIRTEENTH_TASK);
+        }
+
+        // task 14
+        StringBuilder armstrongNumbers = NumbersAnalyzer.findArmstrongNumbers(FIRST_NUMBER_FOURTEENTH_TASK,
+                LAST_NUMBER_FOURTEENTH_TASK);
+        if (armstrongNumbers.length() != 0) {
+            System.out.println("\n--- TASK 14 ---\nThe Armstrong numbers in the specified range from " +
+                    FIRST_NUMBER_FOURTEENTH_TASK + " to " + LAST_NUMBER_FOURTEENTH_TASK + " are " + armstrongNumbers);
+        } else {
+            System.out.println("\n--- TASK 14 ---\nCannot find Armstrong numbers in the specified range from " +
+                    FIRST_NUMBER_FOURTEENTH_TASK + " to " + LAST_NUMBER_FOURTEENTH_TASK);
         }
 
     }
