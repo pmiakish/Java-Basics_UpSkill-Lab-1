@@ -79,6 +79,9 @@ public class TaskLauncher {
     // tasks 15, 16
     private static final int DIGIT_CAPACITY = 5;
 
+    // task 17
+    private static final int NUMBER_FOR_SUBTRACTION = 150;
+
     public static void main(String[] args) {
 
         // task 01
@@ -278,6 +281,15 @@ public class TaskLauncher {
         } else {
             System.out.println("\n--- TASK 16 ---\nCannot find sum of " + DIGIT_CAPACITY + "-digit numbers with only " +
                     "odd digits!");
+        }
+
+        // task 17
+        int counterOfSubtractions = NumbersAnalyzer.countSubtractionsSumOfDigitsFromNumber(NUMBER_FOR_SUBTRACTION);
+        if (counterOfSubtractions != -1) {
+            System.out.println("\n--- TASK 17 ---\nThe number of subtractions the sum of digits from the number " +
+                    NUMBER_FOR_SUBTRACTION + " required to reduce it to 0 is " + counterOfSubtractions);
+        } else {
+            System.out.println("\n--- TASK 17 ---\nIncorrect number!");
         }
 
     }

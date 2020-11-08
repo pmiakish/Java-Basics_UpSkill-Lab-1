@@ -241,4 +241,19 @@ public class NumbersAnalyzer {
         return sum;
     }
 
+    public static int countSubtractionsSumOfDigitsFromNumber(int number) {
+        int counterOfSubtractions = -1;
+        if (number > 1) {
+            counterOfSubtractions = 0;
+            while (number > 0) {
+                int[] digits = splitNumberIntoDigits(number);
+                for (int digit : digits) {
+                    number -= digit;
+                }
+                counterOfSubtractions++;
+            }
+        }
+        return counterOfSubtractions;
+    }
+
 }
