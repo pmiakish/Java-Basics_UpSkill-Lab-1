@@ -32,21 +32,29 @@ public class TaskLauncher {
     private static final int AMOUNT_OF_NUMBERS_FIFTH_TASK = 20;
 
     // task 06
-    private static final int FIRST_NUMBER_SIXTH_TASK = 91;
+    private static final int FIRST_NUMBER_SIXTH_TASK = 90;
     private static final int SECOND_NUMBER_SIXTH_TASK = 27;
-    private static final int THIRD_NUMBER_SIXTH_TASK = 133;
+    private static final int THIRD_NUMBER_SIXTH_TASK = 3;
 
     // task 07
-    private static final int FIRST_NUMBER_SEVENTH_TASK = 1;
-    private static final int SECOND_NUMBER_SEVENTH_TASK = 9;
+    private static final int LAST_NUMBER_SEVENTH_TASK = 9;
 
     // task 08
     private static final int MIN_ARRAY_VALUE_EIGHTH_TASK = -25;
     private static final int MAX_ARRAY_VALUE_EIGHTH_TASK = 25;
     private static final int AMOUNT_OF_NUMBERS_EIGHTH_TASK = 10;
-    private static final int FIRST_START_ITEM_EIGHTH_TASK = 1;
-    private static final int SECOND_START_ITEM_EIGHTH_TASK = 3;
-    private static final int THIRD_START_ITEM_EIGHTH_TASK = 4;
+    private static final int FIRST_K_ITEM_EIGHTH_TASK = 1;
+    private static final int FIRST_M_ITEM_EIGHTH_TASK = 3;
+    private static final int SECOND_K_ITEM_EIGHTH_TASK = 3;
+    private static final int SECOND_M_ITEM_EIGHTH_TASK = 5;
+    private static final int THIRD_K_ITEM_EIGHTH_TASK = 4;
+    private static final int THIRD_M_ITEM_EIGHTH_TASK = 6;
+
+    // task 09
+    private static final double X_SIDE_LENGTH = 25.0;
+    private static final double Y_SIDE_LENGTH = 37.0;
+    private static final double Z_SIDE_LENGTH = 21.5;
+    private static final double T_SIDE_LENGTH = 41.3;
 
     public static void main(String[] args) {
 
@@ -86,14 +94,10 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 04 ---\nThe generated coordinates (the first row - x, the second row - y):");
         MatrixPrinter.printMatrix(coordinates);
         int[] mostDistantPoints = GeometricalCalculator.findMostDistantPoints(coordinates);
-        if (mostDistantPoints != null) {
-            System.out.println("\nThe most distant points are " + Arrays.toString(mostDistantPoints) + " with " +
-                    "coordinates: x1[" + coordinates[0][mostDistantPoints[0]] + "] y1[" +
-                    coordinates[1][mostDistantPoints[0]] + "], x2[" + coordinates[0][mostDistantPoints[1]] + "] y2[" +
-                    coordinates[1][mostDistantPoints[1]] + "]");
-        } else {
-            System.out.println("\n--- TASK 04 ---\nIncorrect coordinate values!");
-        }
+        System.out.println("\nThe most distant points are " + Arrays.toString(mostDistantPoints) + " with " +
+                "coordinates: x1[" + coordinates[0][mostDistantPoints[0]] + "] y1[" +
+                coordinates[1][mostDistantPoints[0]] + "], x2[" + coordinates[0][mostDistantPoints[1]] + "] y2[" +
+                coordinates[1][mostDistantPoints[1]] + "]");
 
         // task 05
         int[] generatedNumbersForFifthTask = ArrayMaker.generateArray(MIN_VALUE_FIFTH_TASK, MAX_VALUE_FIFTH_TASK,
@@ -107,24 +111,27 @@ public class TaskLauncher {
         }
 
         // task 06
-        int resultOfChecking = NumbersAnalyzer.checkIfNumbersAreCoprime(FIRST_NUMBER_SIXTH_TASK,
-                SECOND_NUMBER_SIXTH_TASK, THIRD_NUMBER_SIXTH_TASK);
-        if (resultOfChecking == 1) {
-            System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
-                    SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " are coprime.");
-        } else if (resultOfChecking == 0) {
-            System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
-                    SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " aren't coprime.");
-        } else if (resultOfChecking == -1) {
-            System.out.println("\n--- TASK 06 ---\nIncorrect values of the given numbers!");
+        int result = NumbersAnalyzer.findGreatestCommonDivisor(FIRST_NUMBER_SIXTH_TASK, SECOND_NUMBER_SIXTH_TASK,
+                THIRD_NUMBER_SIXTH_TASK);
+        switch (result) {
+            case 1:
+                System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
+                        SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " are coprime.");
+                break;
+            case -1:
+                System.out.println("\n--- TASK 06 ---\nIncorrect values of the given numbers!");
+                break;
+            default:
+                System.out.println("\n--- TASK 06 ---\nThe numbers " + FIRST_NUMBER_SIXTH_TASK + ", " +
+                        SECOND_NUMBER_SIXTH_TASK + ", " + THIRD_NUMBER_SIXTH_TASK + " aren't coprime.");
+                break;
         }
 
         // task 07
-        long sumOfOddNumbersFactorials = NumbersAnalyzer.findSumOfOddNumbersFactorials(FIRST_NUMBER_SEVENTH_TASK,
-                SECOND_NUMBER_SEVENTH_TASK);
+        long sumOfOddNumbersFactorials = NumbersAnalyzer.findSumOfOddNumbersFactorials(LAST_NUMBER_SEVENTH_TASK);
         if (sumOfOddNumbersFactorials != -1) {
-            System.out.println("\n--- TASK 07 ---\nThe sum of the all odd numbers from " + FIRST_NUMBER_SEVENTH_TASK +
-                    " to " + SECOND_NUMBER_SEVENTH_TASK + " is " + sumOfOddNumbersFactorials);
+            System.out.println("\n--- TASK 07 ---\nThe sum of the all odd numbers from 1 to " + LAST_NUMBER_SEVENTH_TASK
+                    + " is " + sumOfOddNumbersFactorials);
         } else {
             System.out.println("\n--- TASK 07 ---\nIncorrect values of the given numbers!");
         }
@@ -133,18 +140,34 @@ public class TaskLauncher {
         int[] array = ArrayMaker.generateArray(MIN_ARRAY_VALUE_EIGHTH_TASK, MAX_ARRAY_VALUE_EIGHTH_TASK,
                 AMOUNT_OF_NUMBERS_EIGHTH_TASK);
         System.out.println("\n--- TASK 08 ---\nThe generated numbers: " + Arrays.toString(array));
-        int[] startIndexes = new int[] {FIRST_START_ITEM_EIGHTH_TASK, SECOND_START_ITEM_EIGHTH_TASK,
-                THIRD_START_ITEM_EIGHTH_TASK};
-        int[] sumsArray = new int[startIndexes.length];
+
+
+        int[][] indexesForSummation = {
+                {FIRST_K_ITEM_EIGHTH_TASK, SECOND_K_ITEM_EIGHTH_TASK, THIRD_K_ITEM_EIGHTH_TASK},
+                {FIRST_M_ITEM_EIGHTH_TASK, SECOND_M_ITEM_EIGHTH_TASK, THIRD_M_ITEM_EIGHTH_TASK}
+        };
+        int[] sumsArray = new int[indexesForSummation[0].length];
         for (int i = 0; i < sumsArray.length; i++) {
-            sumsArray[i] = NumbersAnalyzer.findSumOfThreeConsecutiveItemsOfArray(array, startIndexes[i]);
+            sumsArray[i] = NumbersAnalyzer.findSumOfThreeConsecutiveItemsOfArray(array, indexesForSummation[0][i],
+                    indexesForSummation[1][i]);
             if (sumsArray[i] != Integer.MIN_VALUE) {
-                System.out.println("The sum of three consecutive array items, starting with the item #" +
-                        startIndexes[i] + " is " + sumsArray[i]);
+                System.out.println("The sum of three consecutive array items from #" + indexesForSummation[0][i] +
+                        " to #" + indexesForSummation[1][i] + " is " + sumsArray[i]);
             } else {
-                System.out.println("The sum of three consecutive array items, starting with the item #" +
-                        startIndexes[i] + " can't be found! Check the start index");
+                System.out.println("The sum of three consecutive array items from #" + indexesForSummation[0][i] +
+                        " to #" + indexesForSummation[1][i] + " can't be found! Check indexes of the items!");
             }
+        }
+
+        // task 09
+        double areaOfQuadrangle = GeometricalCalculator.findAreaOfQuadrangleWithOneRightAngle(X_SIDE_LENGTH,
+                Y_SIDE_LENGTH, Z_SIDE_LENGTH, T_SIDE_LENGTH);
+        if (areaOfQuadrangle != -1) {
+            System.out.println("\n--- TASK 09 ---\nThe area of the quadrangle with length of the sides X(" +
+                    X_SIDE_LENGTH + "), Y(" + Y_SIDE_LENGTH + "), Z(" + Z_SIDE_LENGTH + "), T(" + T_SIDE_LENGTH +
+                    "), having the right angle between the sides X and Y is " + areaOfQuadrangle);
+        } else {
+            System.out.println("\n--- TASK 09 ---\nIncorrect values of length of the quadrangle sides!");
         }
 
     }

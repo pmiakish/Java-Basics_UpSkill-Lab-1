@@ -2,9 +2,6 @@ package com.epam.decompositionusingmethods;
 
 public class NumbersAnalyzer {
 
-    // task 08
-    private static final int NUMBER_OF_ITEMS = 3;
-
     public static int findGreatestCommonDivisor(int firstNumber, int secondNumber) {
         int divisor = -1;
         if (firstNumber > 0 && secondNumber > 0) {
@@ -50,63 +47,27 @@ public class NumbersAnalyzer {
 
     public static int findSecondLargestNumber(int[] numbers) {
         int largestNumber = numbers[0];
+        int secondLargestNumber = Integer.MIN_VALUE;
         for (int i = 1; i < numbers.length; i++) {
             if (numbers[i] > largestNumber) {
+                secondLargestNumber = largestNumber;
                 largestNumber = numbers[i];
-            }
-        }
-        int secondLargestNumber = Integer.MIN_VALUE;
-        for (int currentNumber : numbers) {
-            if (currentNumber < largestNumber && currentNumber > secondLargestNumber) {
-                secondLargestNumber = currentNumber;
+            } else if (numbers[i] > secondLargestNumber) {
+                secondLargestNumber = numbers[i];
             }
         }
         return secondLargestNumber;
     }
 
-    public static int checkIfNumbersAreCoprime(int firstNumber, int secondNumber, int thirdNumber) {
-        int result = -1;
-        if (findGreatestCommonDivisor(firstNumber, secondNumber, thirdNumber) == 1) {
-            result = 1;
-        } else if (findGreatestCommonDivisor(firstNumber, secondNumber, thirdNumber) > 1) {
-            result = 0;
-        }
-        return result;
-    }
-
-    public static long findSumOfOddNumbersFactorials(int firstNumber, int secondNumber) {
+    public static long findSumOfOddNumbersFactorials(int lastNumber) {
         long sum = -1;
-        int[] oddNumbers = findOddNumbersInSpecifiedRange(firstNumber, secondNumber);
-        if (oddNumbers != null) {
+        if (lastNumber > 0) {
             sum = 0;
-            for (int number : oddNumbers) {
-                sum += calculateFactorialOfNumber(number);
+            for (int i = 1; i <= lastNumber; i += 2) {
+                sum += calculateFactorialOfNumber(i);
             }
         }
         return sum;
-    }
-
-    private static int[] findOddNumbersInSpecifiedRange(int minValue, int maxValue) {
-        int[] oddNumbers = null;
-        if (maxValue > minValue) {
-            int amountOfNumbersInSpecifiedRange = maxValue - minValue + 1;
-            if (minValue % 2 == 0 && amountOfNumbersInSpecifiedRange % 2 != 0) {
-                oddNumbers = new int[amountOfNumbersInSpecifiedRange / 2];
-            } else {
-                oddNumbers = new int[(amountOfNumbersInSpecifiedRange + 1) / 2];
-            }
-            int firstOddNumber;
-            if (minValue % 2 == 0) {
-                firstOddNumber = minValue + 1;
-            } else {
-                firstOddNumber = minValue;
-            }
-            for (int i = 0; i < oddNumbers.length; i++) {
-                oddNumbers[i] = firstOddNumber;
-                firstOddNumber += 2;
-            }
-        }
-        return oddNumbers;
     }
 
     private static long calculateFactorialOfNumber(int naturalNumber) {
@@ -120,11 +81,12 @@ public class NumbersAnalyzer {
         return factorial;
     }
 
-    public static int findSumOfThreeConsecutiveItemsOfArray(int[] array, int firstItem) {
+    public static int findSumOfThreeConsecutiveItemsOfArray(int[] array, int firstItem, int lastItem) {
+        final int numberOfItems = 3;
         int sum = Integer.MIN_VALUE;
-        if (firstItem >= 0 && firstItem <= array.length - NUMBER_OF_ITEMS) {
+        if (firstItem >= 0 && lastItem < array.length && lastItem - firstItem == numberOfItems - 1) {
             sum = 0;
-            for (int i = firstItem; i < firstItem + NUMBER_OF_ITEMS; i++) {
+            for (int i = firstItem; i <= lastItem; i++) {
                 sum += array[i];
             }
         }
