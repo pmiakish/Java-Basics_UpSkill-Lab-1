@@ -247,6 +247,5 @@ public class TaskLauncher {
             System.out.println("\n--- TASK 14 ---\nCannot find Armstrong numbers in the specified range from " +
                     FIRST_NUMBER_FOURTEENTH_TASK + " to " + LAST_NUMBER_FOURTEENTH_TASK);
         }
-
     }
 }

@@ -191,6 +191,4 @@ public class NumbersAnalyzer {
         return armstrongNumbers;
     }
 
-
-
 }
