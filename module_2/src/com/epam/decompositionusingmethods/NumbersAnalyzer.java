@@ -2,6 +2,9 @@ package com.epam.decompositionusingmethods;
 
 public class NumbersAnalyzer {
 
+    // task 08
+    private static final int NUMBER_OF_ITEMS = 3;
+
     public static int findGreatestCommonDivisor(int firstNumber, int secondNumber) {
         int divisor = -1;
         if (firstNumber > 0 && secondNumber > 0) {
@@ -117,5 +120,15 @@ public class NumbersAnalyzer {
         return factorial;
     }
 
+    public static int findSumOfThreeConsecutiveItemsOfArray(int[] array, int firstItem) {
+        int sum = Integer.MIN_VALUE;
+        if (firstItem >= 0 && firstItem <= array.length - NUMBER_OF_ITEMS) {
+            sum = 0;
+            for (int i = firstItem; i < firstItem + NUMBER_OF_ITEMS; i++) {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
 
 }

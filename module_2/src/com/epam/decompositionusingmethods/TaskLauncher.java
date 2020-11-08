@@ -40,6 +40,14 @@ public class TaskLauncher {
     private static final int FIRST_NUMBER_SEVENTH_TASK = 1;
     private static final int SECOND_NUMBER_SEVENTH_TASK = 9;
 
+    // task 08
+    private static final int MIN_ARRAY_VALUE_EIGHTH_TASK = -25;
+    private static final int MAX_ARRAY_VALUE_EIGHTH_TASK = 25;
+    private static final int AMOUNT_OF_NUMBERS_EIGHTH_TASK = 10;
+    private static final int FIRST_START_ITEM_EIGHTH_TASK = 1;
+    private static final int SECOND_START_ITEM_EIGHTH_TASK = 3;
+    private static final int THIRD_START_ITEM_EIGHTH_TASK = 4;
+
     public static void main(String[] args) {
 
         // task 01
@@ -119,6 +127,24 @@ public class TaskLauncher {
                     " to " + SECOND_NUMBER_SEVENTH_TASK + " is " + sumOfOddNumbersFactorials);
         } else {
             System.out.println("\n--- TASK 07 ---\nIncorrect values of the given numbers!");
+        }
+
+        // task 08
+        int[] array = ArrayMaker.generateArray(MIN_ARRAY_VALUE_EIGHTH_TASK, MAX_ARRAY_VALUE_EIGHTH_TASK,
+                AMOUNT_OF_NUMBERS_EIGHTH_TASK);
+        System.out.println("\n--- TASK 08 ---\nThe generated numbers: " + Arrays.toString(array));
+        int[] startIndexes = new int[] {FIRST_START_ITEM_EIGHTH_TASK, SECOND_START_ITEM_EIGHTH_TASK,
+                THIRD_START_ITEM_EIGHTH_TASK};
+        int[] sumsArray = new int[startIndexes.length];
+        for (int i = 0; i < sumsArray.length; i++) {
+            sumsArray[i] = NumbersAnalyzer.findSumOfThreeConsecutiveItemsOfArray(array, startIndexes[i]);
+            if (sumsArray[i] != Integer.MIN_VALUE) {
+                System.out.println("The sum of three consecutive array items, starting with the item #" +
+                        startIndexes[i] + " is " + sumsArray[i]);
+            } else {
+                System.out.println("The sum of three consecutive array items, starting with the item #" +
+                        startIndexes[i] + " can't be found! Check the start index");
+            }
         }
 
     }
