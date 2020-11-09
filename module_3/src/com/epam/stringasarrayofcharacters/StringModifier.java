@@ -1,6 +1,7 @@
 package com.epam.stringasarrayofcharacters;
 
 public class StringModifier {
+
     public static StringBuilder[] changeCamelCaseToSnakeCase(String[] variables) {
         StringBuilder[] renamedVariables = new StringBuilder[variables.length];
         for (int i = 0; i < variables.length; i++) {
@@ -15,6 +16,11 @@ public class StringModifier {
             }
         }
         return renamedVariables;
+    }
+
+    public static String changeSubstringInString(String str) {
+        String strWithReplacedSubstr = "";
+        return  strWithReplacedSubstr = str.replace("word", "letter");
     }
 
 }
