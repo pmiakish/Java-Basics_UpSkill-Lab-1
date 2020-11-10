@@ -15,6 +15,11 @@ public class TaskLauncher {
             "authoritatively, words, but these also include prefixes, suffixes, combining forms, and other word " +
             "forms and elements—many of which we don’t necessarily think of or categorize as words.";
 
+    // task 03
+    private static final String TEXT_WITH_DIGITS = "Globally the number of internet users increased from only 413 " +
+            "million in 2000 to over 3.4 billion in 2016. The one billion barrier was crossed in 2005. Every day " +
+            "over the past five years, an average of 640,000 people went online for the first time.";
+
     public static void main(String[] args) {
         // task 01
         StringBuilder[] renamedVariables = StringModifier.changeCamelCaseToSnakeCase(NAMES_OF_VARIABLES);
@@ -25,5 +30,9 @@ public class TaskLauncher {
         String strWithReplacedSubstr = StringModifier.changeSubstringInString(TEXT_FOR_REPLACING);
         System.out.println("\n--- TASK 02 ---\nThe original text:\n" + TEXT_FOR_REPLACING + "\n" +
                 "The modified text (substring 'word' was replaced by 'letter'):\n" + strWithReplacedSubstr);
+
+        // task 02
+        System.out.println("\n--- TASK 03 ---\nThe number of digits in the following string:\n\"" + TEXT_WITH_DIGITS +
+                "\"\nis " + StringAnalyzer.countAmountOfDigits(TEXT_WITH_DIGITS));
     }
 }
