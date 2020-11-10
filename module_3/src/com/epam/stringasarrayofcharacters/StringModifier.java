@@ -19,8 +19,19 @@ public class StringModifier {
     }
 
     public static String changeSubstringInString(String str) {
-        String strWithReplacedSubstr = "";
-        return  strWithReplacedSubstr = str.replace("word", "letter");
+        return str.replace("word", "letter");
+    }
+
+    public static String removeRedundantSpaces(String str) {
+        StringBuilder stringWithoutRedundantSpaces = new StringBuilder();
+        char[] characters = str.toCharArray();
+        stringWithoutRedundantSpaces.append(characters[0]);
+        for (int i = 1; i < characters.length; i++) {
+            if (!(characters[i] == ' ' && characters[i - 1] == ' ')) {
+                stringWithoutRedundantSpaces.append(characters[i]);
+            }
+        }
+        return stringWithoutRedundantSpaces.toString().trim();
     }
 
 }

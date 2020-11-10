@@ -20,6 +20,11 @@ public class TaskLauncher {
             "million in 2000 to over 3.4 billion in 2016. The one billion barrier was crossed in 2005. Every day " +
             "over the past five years, an average of 640,000 people went online for the first time.";
 
+    // task 05
+    private static final String TEXT_WITH_REDUNDANT_SPACES = "  Humpty   Dumpty sat on  a   wall.   Humpty Dumpty   " +
+            "had a great fall.   All the   king's horses  and all the    king's men couldn't    put Humpty together " +
+            "again!      ";
+
     public static void main(String[] args) {
         // task 01
         StringBuilder[] renamedVariables = StringModifier.changeCamelCaseToSnakeCase(NAMES_OF_VARIABLES);
@@ -38,5 +43,10 @@ public class TaskLauncher {
         // task 04
         System.out.println("\n--- TASK 04 ---\nThe amount of numbers in the following string:\n\"" + TEXT_WITH_DIGITS +
                 "\"\nis " + StringAnalyzer.countAmountOfNumbers(TEXT_WITH_DIGITS));
+
+        // task 05
+        System.out.println("\n--- TASK 05 ---\nThe original text:\n" + TEXT_WITH_REDUNDANT_SPACES +
+                "\nThe text without redundant spaces:\n" + StringModifier.
+                removeRedundantSpaces(TEXT_WITH_REDUNDANT_SPACES));
     }
 }
