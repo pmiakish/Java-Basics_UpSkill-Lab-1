@@ -2,29 +2,33 @@ package com.epam.stringasarrayofcharacters;
 
 public class StringAnalyzer {
 
-    public static int countAmountOfDigits(String str) {
+    private static final int ASCII_NUMBER_OF_FIRST_DIGIT = 48;
+    private static final int ASCII_NUMBER_OF_LAST_DIGIT = 57;
+
+    // task 03
+    public static int countDigits(String str) {
         int counterOfDigits = 0;
-        char[] characters = str.toCharArray();
+        final char[] characters = str.toCharArray();
         for (char ch : characters) {
-            if ((int) ch > 47 && (int) ch < 58) {
+            if (ch >= ASCII_NUMBER_OF_FIRST_DIGIT && ch <= ASCII_NUMBER_OF_LAST_DIGIT) {
                 counterOfDigits++;
             }
         }
         return counterOfDigits;
     }
 
-    public static int countAmountOfNumbers(String str) {
-        String strWithoutSeparators = str.replace(".", "").replace(",", "");
-        char[] characters = strWithoutSeparators.toCharArray();
+    // task 04
+    public static int countNumbers(String str) {
         int counterOfNumbers = 0;
         boolean foundNumber = false;
+        final char[] characters = str.toCharArray();
         for (char ch : characters) {
-            if (foundNumber && !((int) ch > 47 && (int) ch < 58)) {
+            if (foundNumber && !(ch >= ASCII_NUMBER_OF_FIRST_DIGIT && ch <= ASCII_NUMBER_OF_LAST_DIGIT) && ch != '.' &&
+                    ch != ',') {
                 foundNumber = false;
-            }
-            else if (!foundNumber && (int) ch > 47 && (int) ch < 58) {
-                foundNumber = true;
+            } else if (!foundNumber && ch >= ASCII_NUMBER_OF_FIRST_DIGIT && ch <= ASCII_NUMBER_OF_LAST_DIGIT) {
                 counterOfNumbers++;
+                foundNumber = true;
             }
         }
         return counterOfNumbers;

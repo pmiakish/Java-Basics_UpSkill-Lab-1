@@ -27,7 +27,7 @@ public class TaskLauncher {
 
     public static void main(String[] args) {
         // task 01
-        StringBuilder[] renamedVariables = StringModifier.changeCamelCaseToSnakeCase(NAMES_OF_VARIABLES);
+        String[] renamedVariables = StringModifier.changeCamelCaseToSnakeCase(NAMES_OF_VARIABLES);
         System.out.println("\n--- TASK 01 ---\nThe camelCase names: " + Arrays.toString(NAMES_OF_VARIABLES) + "\n" +
                 "The snake_case names: " + Arrays.toString(renamedVariables));
 
@@ -38,11 +38,11 @@ public class TaskLauncher {
 
         // task 03
         System.out.println("\n--- TASK 03 ---\nThe number of digits in the following string:\n\"" + TEXT_WITH_DIGITS +
-                "\"\nis " + StringAnalyzer.countAmountOfDigits(TEXT_WITH_DIGITS));
+                "\"\nis " + StringAnalyzer.countDigits(TEXT_WITH_DIGITS));
 
         // task 04
         System.out.println("\n--- TASK 04 ---\nThe amount of numbers in the following string:\n\"" + TEXT_WITH_DIGITS +
-                "\"\nis " + StringAnalyzer.countAmountOfNumbers(TEXT_WITH_DIGITS));
+                "\"\nis " + StringAnalyzer.countNumbers(TEXT_WITH_DIGITS));
 
         // task 05
         System.out.println("\n--- TASK 05 ---\nThe original text:\n" + TEXT_WITH_REDUNDANT_SPACES +
