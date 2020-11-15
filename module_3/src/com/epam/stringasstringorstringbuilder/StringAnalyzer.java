@@ -23,7 +23,7 @@ public class StringAnalyzer {
     public static boolean checkIfWordIsPalindrome(String str) {
         boolean result = false;
         StringBuilder reversedString = new StringBuilder(str.toLowerCase()).reverse();
-        if (reversedString.toString().equals(str.toLowerCase())) {
+        if (str.toLowerCase().contentEquals(reversedString)) {
             result = true;
         }
         return result;

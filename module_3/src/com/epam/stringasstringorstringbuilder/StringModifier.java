@@ -10,4 +10,22 @@ public class StringModifier {
         }
         return resultString;
     }
+
+    // task_024
+    public static String concatenateSpecifiedWordFromAnotherWord(String donorWord, String specifiedWord) {
+        String resultString = "";
+        boolean thereAreNotAllCharacters = false;
+        char[] donorCharacters = donorWord.toCharArray();
+        int index;
+        for (int i = 0; i < specifiedWord.length(); i++) {
+            index = donorWord.indexOf(specifiedWord.charAt(i));
+            if (index != -1) {
+                resultString = resultString.concat(String.valueOf(donorWord.charAt(index)));
+            } else {
+                thereAreNotAllCharacters = true;
+                break;
+            }
+        }
+        return (thereAreNotAllCharacters) ? "" : resultString;
+    }
 }
