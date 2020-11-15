@@ -15,7 +15,6 @@ public class StringModifier {
     public static String concatenateSpecifiedWordFromAnotherWord(String donorWord, String specifiedWord) {
         String resultString = "";
         boolean thereAreNotAllCharacters = false;
-        char[] donorCharacters = donorWord.toCharArray();
         int index;
         for (int i = 0; i < specifiedWord.length(); i++) {
             index = donorWord.indexOf(specifiedWord.charAt(i));
