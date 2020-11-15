@@ -6,7 +6,7 @@ public class TaskLauncher {
     private static final String STRING_INCLUDING_SPACES = "   This string   is intended     to count the maximum     " +
             "number of        consecutive  spaces  .";
 
-    // task_02
+    // task_02, 06
     private static final String STRING_FOR_SUBSTR_REPLACING = "an apple and an orange";
     private static final String TEXT_TO_INSERT = "b";
     private static final String SPECIFIED_SUBSTR = "a";
@@ -66,6 +66,11 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 05 ---\nThe character \"" + SPECIFIED_CHAR + "\" occurs in the string \"" +
                 STRING_TO_COUNT_CHAR_OCCURRENCES + "\" " + StringAnalyzer.
                 countOccurrencesOfCharacter(STRING_TO_COUNT_CHAR_OCCURRENCES, SPECIFIED_CHAR) + " times.");
+
+        // task_06
+        String strWithDuplicatedCharacters = StringModifier.duplicateEachCharacter(STRING_FOR_SUBSTR_REPLACING);
+            System.out.println("\n--- TASK 06 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\n" +
+                    "The modified string is: \"" + strWithDuplicatedCharacters + "\"");
 
     }
 }
