@@ -14,7 +14,7 @@ public class StringAnalyzer {
                 counterOfSpaces = 0;
             }
         }
-        return (counterOfSpaces > result) ? counterOfSpaces : result;
+        return (result != -1 && counterOfSpaces > result) ? counterOfSpaces : result;
     }
 
 
