@@ -29,4 +29,13 @@ public class StringAnalyzer {
         return result;
     }
 
+    // task_05
+    public static int countOccurrencesOfCharacter(String str, char ch) {
+        int result = 0;
+        for (int i = str.indexOf(ch); i != -1; i = str.indexOf(ch, i + 1)) {
+            result++;
+        }
+        return result;
+    }
+
 }

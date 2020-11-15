@@ -18,6 +18,11 @@ public class TaskLauncher {
     private static final String DONOR_WORD = "информатика";
     private static final String SPECIFIED_WORD = "торт";
 
+    // task_05
+    private static final String STRING_TO_COUNT_CHAR_OCCURRENCES = "Java is a class-based, object-oriented " +
+            "programming language that is designed to have as few implementation dependencies as possible";
+    private static final char SPECIFIED_CHAR = 'a';
+
     public static void main(String[] args) {
         // task_01
         int amountOfSpaces = StringAnalyzer.findMostAmountOfConsecutiveSpaces(STRING_INCLUDING_SPACES);
@@ -56,6 +61,11 @@ public class TaskLauncher {
             System.out.println("\n--- TASK 04 ---\nThe word \"" + SPECIFIED_WORD + "\" cannot be concatenated of " +
                     "characters containing in the word \"" + DONOR_WORD + "\"!");
         }
+
+        // task_05
+        System.out.println("\n--- TASK 05 ---\nThe character \"" + SPECIFIED_CHAR + "\" occurs in the string \"" +
+                STRING_TO_COUNT_CHAR_OCCURRENCES + "\" " + StringAnalyzer.
+                countOccurrencesOfCharacter(STRING_TO_COUNT_CHAR_OCCURRENCES, SPECIFIED_CHAR) + " times.");
 
     }
 }
