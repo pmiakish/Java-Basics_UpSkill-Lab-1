@@ -11,6 +11,8 @@ public class TaskLauncher {
     private static final String TEXT_TO_INSERT = "b";
     private static final String SPECIFIED_SUBSTR = "a";
 
+    // task_03
+    private static final String PALINDROME_OR_NOT = "Madam";
 
 
     public static void main(String[] args) {
@@ -33,6 +35,13 @@ public class TaskLauncher {
         } else {
             System.out.println("\n--- TASK 02 ---\nThe string:\n\"" + STRING_FOR_SUBSTR_REPLACING +
                     "\"\ndoesn't contain the specified substring!");
+        }
+
+        // task_03
+        if (StringAnalyzer.checkIfWordIsPalindrome(PALINDROME_OR_NOT)) {
+            System.out.println("\n--- TASK 03 ---\nThe string \"" + PALINDROME_OR_NOT + "\" is a palindrome");
+        } else {
+            System.out.println("\n--- TASK 03 ---\nThe string \"" + PALINDROME_OR_NOT + "\" isn't a palindrome");
         }
 
     }

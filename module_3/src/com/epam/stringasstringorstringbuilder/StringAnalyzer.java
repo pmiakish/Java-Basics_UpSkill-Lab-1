@@ -1,6 +1,8 @@
 package com.epam.stringasstringorstringbuilder;
 
 public class StringAnalyzer {
+
+    // task_01
     public static int findMostAmountOfConsecutiveSpaces(String str) {
         int result = -1;
         int counterOfSpaces = 0;
@@ -17,5 +19,14 @@ public class StringAnalyzer {
         return (result != -1 && counterOfSpaces > result) ? counterOfSpaces : result;
     }
 
+    // task_03
+    public static boolean checkIfWordIsPalindrome(String str) {
+        boolean result = false;
+        StringBuilder reversedString = new StringBuilder(str.toLowerCase()).reverse();
+        if (reversedString.toString().equals(str.toLowerCase())) {
+            result = true;
+        }
+        return result;
+    }
 
 }
