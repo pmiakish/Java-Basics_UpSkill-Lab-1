@@ -36,8 +36,7 @@ public class StringModifier {
             duplicateCharacters[i] = characters[i / 2];
             duplicateCharacters[i + 1] = characters[i / 2];
         }
-        String resultStr = new String(duplicateCharacters);
-        return resultStr;
+        return new String(duplicateCharacters);
     }
 
 
