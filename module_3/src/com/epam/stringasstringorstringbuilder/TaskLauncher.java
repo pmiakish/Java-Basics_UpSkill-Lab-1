@@ -2,26 +2,29 @@ package com.epam.stringasstringorstringbuilder;
 
 public class TaskLauncher {
 
-    // task_01
+    // task 01
     private static final String STRING_INCLUDING_SPACES = "   This string   is intended     to count the maximum     " +
             "number of        consecutive  spaces  .";
 
-    // task_02, 06
+    // tasks 02, 06, 07
     private static final String STRING_FOR_SUBSTR_REPLACING = "an apple and an orange";
     private static final String TEXT_TO_INSERT = "b";
     private static final String SPECIFIED_SUBSTR = "a";
 
-    // task_03
+    // task 03
     private static final String PALINDROME_OR_NOT = "Madam";
 
-    // task_04
+    // task 04
     private static final String DONOR_WORD = "информатика";
     private static final String SPECIFIED_WORD = "торт";
 
-    // task_05
+    // task 05
     private static final String STRING_TO_COUNT_CHAR_OCCURRENCES = "Java is a class-based, object-oriented " +
             "programming language that is designed to have as few implementation dependencies as possible";
     private static final char SPECIFIED_CHAR = 'a';
+
+    // task 08
+    private static final String WORDS_SEPARATED_BY_SPACES = "This string is intended to searching the longest word";
 
     public static void main(String[] args) {
         // task_01
@@ -65,6 +68,10 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 07 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\nThe " +
                 "modified string is: \"" + StringModifier.
                 removeSpacesAndRepeatingCharacters(STRING_FOR_SUBSTR_REPLACING) + "\"");
+
+        // task_08
+        System.out.println("\n--- TASK 08 ---\nThe longest word in the string: \"" + WORDS_SEPARATED_BY_SPACES + "\"\n" +
+                "is: \"" + StringAnalyzer.findLongestWord(WORDS_SEPARATED_BY_SPACES) + "\"");
 
     }
 }

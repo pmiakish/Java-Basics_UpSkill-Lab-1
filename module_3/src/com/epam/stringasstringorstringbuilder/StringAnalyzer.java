@@ -34,4 +34,16 @@ public class StringAnalyzer {
         return occurrencesOfCharacter;
     }
 
+    // task_08
+    public static String findLongestWord(String str) {
+        String[] words = str.split(" ");
+        int indexOfLongestWord = 0;
+        for (int i = 1; i < words.length; i++) {
+            if (words[i].length() > words[indexOfLongestWord].length()) {
+                indexOfLongestWord = i;
+            }
+        }
+        return words[indexOfLongestWord];
+    }
+
 }
