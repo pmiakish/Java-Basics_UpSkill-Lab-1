@@ -4,28 +4,24 @@ public class StringModifier {
 
     // task_02
     public static String insertTextAfterSpecifiedSubstring(String str, String textToInsert, String specifiedSubstr) {
-        String resultString = "";
-        if (str.contains(specifiedSubstr)) {
-            resultString = str.replace(specifiedSubstr, specifiedSubstr + textToInsert);
-        }
-        return resultString;
+        return str.replace(specifiedSubstr, specifiedSubstr + textToInsert);
     }
 
     // task_04
     public static String concatenateSpecifiedWordFromAnotherWord(String donorWord, String specifiedWord) {
-        String resultStr = "";
-        boolean thereAreNotAllCharacters = false;
-        int index;
-        for (int i = 0; i < specifiedWord.length(); i++) {
-            index = donorWord.indexOf(specifiedWord.charAt(i));
-            if (index != -1) {
-                resultStr = resultStr.concat(String.valueOf(donorWord.charAt(index)));
+        final int LENGTH_OF_WORD = specifiedWord.length();
+        StringBuilder resultStr = new StringBuilder();
+        boolean areAllCharacters = true;
+        for (int i = 0; i < LENGTH_OF_WORD; i++) {
+            int indexOfSearchingLetter = donorWord.indexOf(specifiedWord.charAt(i));
+            if (indexOfSearchingLetter != -1) {
+                resultStr.append(donorWord.charAt(indexOfSearchingLetter));
             } else {
-                thereAreNotAllCharacters = true;
+                areAllCharacters = false;
                 break;
             }
         }
-        return (thereAreNotAllCharacters) ? "" : resultStr;
+        return (areAllCharacters) ? resultStr.toString() : "";
     }
 
     // task_06
@@ -33,8 +29,9 @@ public class StringModifier {
         char[] characters = str.toCharArray();
         char[] duplicateCharacters = new char[characters.length * 2];
         for (int i = 0; i < duplicateCharacters.length; i += 2) {
-            duplicateCharacters[i] = characters[i / 2];
-            duplicateCharacters[i + 1] = characters[i / 2];
+            int j = i / 2;
+            duplicateCharacters[i] = characters[j];
+            duplicateCharacters[i + 1] = characters[j];
         }
         return new String(duplicateCharacters);
     }

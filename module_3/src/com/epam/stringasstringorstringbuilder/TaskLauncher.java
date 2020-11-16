@@ -25,25 +25,15 @@ public class TaskLauncher {
 
     public static void main(String[] args) {
         // task_01
-        int amountOfSpaces = StringAnalyzer.findMostAmountOfConsecutiveSpaces(STRING_INCLUDING_SPACES);
-        if (amountOfSpaces != -1) {
-            System.out.println("\n--- TASK 01 ---\nThe max number of consecutive spaces in the following string:\n\"" +
-                    STRING_INCLUDING_SPACES + "\"\nis " + amountOfSpaces);
-        } else {
-            System.out.println("\n--- TASK 01 ---\nThe string:\n\"" +
-                    STRING_INCLUDING_SPACES + "\"\ndoesn't contain spaces!");
-        }
+        System.out.println("\n--- TASK 01 ---\nThe max number of consecutive spaces in the following string:\n\"" +
+                STRING_INCLUDING_SPACES + "\"\nis " + StringAnalyzer.
+                findMostAmountOfConsecutiveSpaces(STRING_INCLUDING_SPACES));
 
         // task_02
-        String strWithReplacedSubstrings = StringModifier.insertTextAfterSpecifiedSubstring(STRING_FOR_SUBSTR_REPLACING,
-               TEXT_TO_INSERT, SPECIFIED_SUBSTR);
-        if (strWithReplacedSubstrings.length() != 0) {
-            System.out.println("\n--- TASK 02 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\n" +
-                    "The modified string is: \"" + strWithReplacedSubstrings + "\"");
-        } else {
-            System.out.println("\n--- TASK 02 ---\nThe string:\n\"" + STRING_FOR_SUBSTR_REPLACING +
-                    "\"\ndoesn't contain the specified substring!");
-        }
+        System.out.println("\n--- TASK 02 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\n" +
+                "The modified string is: \"" + StringModifier.
+                insertTextAfterSpecifiedSubstring(STRING_FOR_SUBSTR_REPLACING, TEXT_TO_INSERT, SPECIFIED_SUBSTR) +
+                "\"");
 
         // task_03
         if (StringAnalyzer.checkIfWordIsPalindrome(PALINDROME_OR_NOT)) {

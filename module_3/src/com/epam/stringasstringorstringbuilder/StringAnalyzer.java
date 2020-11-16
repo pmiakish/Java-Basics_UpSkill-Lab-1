@@ -4,38 +4,34 @@ public class StringAnalyzer {
 
     // task_01
     public static int findMostAmountOfConsecutiveSpaces(String str) {
-        int result = -1;
-        int counterOfSpaces = 0;
-        for (int i = 0; i < str.length(); i++) {
+        final int STR_LENGTH = str.length();
+        int mostAmountOfConsecutiveSpaces = 0;
+        int counterOfSpaces = (str.charAt(0) == ' ') ? 1 : 0;
+        for (int i = 1; i < STR_LENGTH; i++) {
             if (str.charAt(i) == ' ') {
                 counterOfSpaces++;
-            } else if (i != 0 && str.charAt(i - 1) == ' ' && counterOfSpaces > result) {
-                result = counterOfSpaces;
+            } else if (str.charAt(i - 1) == ' ' && counterOfSpaces > mostAmountOfConsecutiveSpaces) {
+                mostAmountOfConsecutiveSpaces = counterOfSpaces;
                 counterOfSpaces = 0;
-            } else if (i != 0 && str.charAt(i - 1) == ' ' && counterOfSpaces <= result) {
+            } else if (str.charAt(i - 1) == ' ' && counterOfSpaces <= mostAmountOfConsecutiveSpaces) {
                 counterOfSpaces = 0;
             }
         }
-        return (result != -1 && counterOfSpaces > result) ? counterOfSpaces : result;
+        return Math.max(mostAmountOfConsecutiveSpaces, counterOfSpaces);
     }
 
     // task_03
     public static boolean checkIfWordIsPalindrome(String str) {
-        boolean result = false;
-        StringBuilder reversedString = new StringBuilder(str.toLowerCase()).reverse();
-        if (str.toLowerCase().contentEquals(reversedString)) {
-            result = true;
-        }
-        return result;
+        return str.toLowerCase().contentEquals(new StringBuilder(str.toLowerCase()).reverse());
     }
 
     // task_05
     public static int countOccurrencesOfCharacter(String str, char ch) {
-        int result = 0;
+        int occurrencesOfCharacter = 0;
         for (int i = str.indexOf(ch); i != -1; i = str.indexOf(ch, i + 1)) {
-            result++;
+            occurrencesOfCharacter++;
         }
-        return result;
+        return occurrencesOfCharacter;
     }
 
 }
