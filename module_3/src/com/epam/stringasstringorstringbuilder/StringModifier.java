@@ -36,5 +36,17 @@ public class StringModifier {
         return new String(duplicateCharacters);
     }
 
+    // task_07
+    public static String removeSpacesAndRepeatingCharacters(String str) {
+        char[] characters = str.toCharArray();
+        StringBuilder modifiedStr = new StringBuilder();
+        for (char ch : characters) {
+            if (ch != ' ' && modifiedStr.indexOf(String.valueOf(ch)) == -1) {
+                modifiedStr.append(ch);
+            }
+        }
+        return modifiedStr.toString();
+    }
+
 
 }

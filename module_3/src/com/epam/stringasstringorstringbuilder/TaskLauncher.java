@@ -58,9 +58,13 @@ public class TaskLauncher {
                 countOccurrencesOfCharacter(STRING_TO_COUNT_CHAR_OCCURRENCES, SPECIFIED_CHAR) + " times.");
 
         // task_06
-        String strWithDuplicatedCharacters = StringModifier.duplicateEachCharacter(STRING_FOR_SUBSTR_REPLACING);
-            System.out.println("\n--- TASK 06 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\n" +
-                    "The modified string is: \"" + strWithDuplicatedCharacters + "\"");
+        System.out.println("\n--- TASK 06 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\nThe " +
+                "modified string is: \"" + StringModifier.duplicateEachCharacter(STRING_FOR_SUBSTR_REPLACING) + "\"");
+
+        // task_07
+        System.out.println("\n--- TASK 07 ---\nThe original string is: \"" + STRING_FOR_SUBSTR_REPLACING + "\"\nThe " +
+                "modified string is: \"" + StringModifier.
+                removeSpacesAndRepeatingCharacters(STRING_FOR_SUBSTR_REPLACING) + "\"");
 
     }
 }
