@@ -29,6 +29,11 @@ public class TaskLauncher {
     // task 09
     private static final String UPPER_AND_LOWER_CASE = "This STRING contains WORDS in UPPER AND lower case";
 
+    // task 10
+    private static final String STRING_WITH_SENTENCES = "This is the first sentence. Is it the second sentence? No! " +
+            "This is the forth sentence.";
+    private static final char[] SEPARATORS = {'.', '!', '?'};
+
     public static void main(String[] args) {
         // task 01
         System.out.println("\n--- TASK 01 ---\nThe max number of consecutive spaces in the following string:\n\"" +
@@ -73,14 +78,19 @@ public class TaskLauncher {
                 removeSpacesAndRepeatingCharacters(STRING_FOR_SUBSTR_REPLACING) + "\"");
 
         // task 08
-        System.out.println("\n--- TASK 08 ---\nThe longest word in the string: \"" + WORDS_SEPARATED_BY_SPACES + "\"\n" +
-                "is: \"" + StringAnalyzer.findLongestWord(WORDS_SEPARATED_BY_SPACES) + "\"");
+        System.out.println("\n--- TASK 08 ---\nThe longest word in the string: \"" + WORDS_SEPARATED_BY_SPACES + "\"\n"
+                + "is: \"" + StringAnalyzer.findLongestWord(WORDS_SEPARATED_BY_SPACES) + "\"");
 
         // task 09
         System.out.println("\n--- TASK 09 ---\nThe string: \"" + UPPER_AND_LOWER_CASE + "\"\ncontains: " +
                 StringAnalyzer.countCharactersInUpperOrLowerCase(UPPER_AND_LOWER_CASE, true) + " characters in upper " +
                 "case and " + StringAnalyzer.countCharactersInUpperOrLowerCase(UPPER_AND_LOWER_CASE,false) +
                 " characters in lower case.");
+
+        // task 10
+        System.out.println("\n--- TASK 10 ---\nThe following string: \"" + STRING_WITH_SENTENCES + "\"\n"
+                + "contains " + StringAnalyzer.countOccurrencesOfCharacter(STRING_WITH_SENTENCES, SEPARATORS) +
+                " sentences.");
 
     }
 }

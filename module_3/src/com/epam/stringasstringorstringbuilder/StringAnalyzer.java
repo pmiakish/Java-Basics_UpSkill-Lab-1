@@ -25,11 +25,19 @@ public class StringAnalyzer {
         return str.toLowerCase().contentEquals(new StringBuilder(str.toLowerCase()).reverse());
     }
 
-    // task 05
+    // tasks 05, 10
     public static int countOccurrencesOfCharacter(String str, char ch) {
         int occurrencesOfCharacter = 0;
         for (int i = str.indexOf(ch); i != -1; i = str.indexOf(ch, i + 1)) {
             occurrencesOfCharacter++;
+        }
+        return occurrencesOfCharacter;
+    }
+
+    public static int countOccurrencesOfCharacter(String str, char[] chars) {
+        int occurrencesOfCharacter = 0;
+        for (char ch : chars) {
+            occurrencesOfCharacter += countOccurrencesOfCharacter(str, ch);
         }
         return occurrencesOfCharacter;
     }
