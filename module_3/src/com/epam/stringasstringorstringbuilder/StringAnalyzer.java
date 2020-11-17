@@ -2,7 +2,7 @@ package com.epam.stringasstringorstringbuilder;
 
 public class StringAnalyzer {
 
-    // task_01
+    // task 01
     public static int findMostAmountOfConsecutiveSpaces(String str) {
         final int STR_LENGTH = str.length();
         int mostAmountOfConsecutiveSpaces = 0;
@@ -20,12 +20,12 @@ public class StringAnalyzer {
         return Math.max(mostAmountOfConsecutiveSpaces, counterOfSpaces);
     }
 
-    // task_03
+    // task 03
     public static boolean checkIfWordIsPalindrome(String str) {
         return str.toLowerCase().contentEquals(new StringBuilder(str.toLowerCase()).reverse());
     }
 
-    // task_05
+    // task 05
     public static int countOccurrencesOfCharacter(String str, char ch) {
         int occurrencesOfCharacter = 0;
         for (int i = str.indexOf(ch); i != -1; i = str.indexOf(ch, i + 1)) {
@@ -34,7 +34,7 @@ public class StringAnalyzer {
         return occurrencesOfCharacter;
     }
 
-    // task_08
+    // task 08
     public static String findLongestWord(String str) {
         String[] words = str.split(" ");
         int indexOfLongestWord = 0;
@@ -44,6 +44,20 @@ public class StringAnalyzer {
             }
         }
         return words[indexOfLongestWord];
+    }
+
+    // task 09
+    public static int countCharactersInUpperOrLowerCase(String str, boolean isUpperCaseCounting) {
+        final int STR_LENGTH = str.length();
+        int counterOfCharacters = 0;
+        for (int i = 0; i < STR_LENGTH; i++) {
+            char anotherCase = (isUpperCaseCounting) ? Character.toLowerCase(str.charAt(i)) : Character.toUpperCase(str.
+                    charAt(i));
+            if (str.charAt(i) != anotherCase) {
+                counterOfCharacters++;
+            }
+        }
+        return counterOfCharacters;
     }
 
 }
