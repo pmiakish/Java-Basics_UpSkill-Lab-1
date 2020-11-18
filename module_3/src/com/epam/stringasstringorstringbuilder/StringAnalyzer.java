@@ -54,14 +54,21 @@ public class StringAnalyzer {
         final int ASCII_LAST_LOWER_CASE_CHARACTER = 122;
         final int STR_LENGTH = str.length();
         int counterOfCharacters = 0;
-        for (int i = 0; i < STR_LENGTH; i++) {
-            int charAsciiNumber = str.charAt(i);
-            if (isUpperCaseCounting && charAsciiNumber >= ASCII_FIRST_UPPER_CASE_CHARACTER && charAsciiNumber <=
-                    ASCII_LAST_UPPER_CASE_CHARACTER) {
-                counterOfCharacters++;
-            } else if (!isUpperCaseCounting && charAsciiNumber >= ASCII_FIRST_LOWER_CASE_CHARACTER && charAsciiNumber <=
-                    ASCII_LAST_LOWER_CASE_CHARACTER) {
-                counterOfCharacters++;
+        if (isUpperCaseCounting) {
+            for (int i = 0; i < STR_LENGTH; i++) {
+                int charAsciiNumber = str.charAt(i);
+                if (charAsciiNumber >= ASCII_FIRST_UPPER_CASE_CHARACTER && charAsciiNumber <=
+                        ASCII_LAST_UPPER_CASE_CHARACTER) {
+                    counterOfCharacters++;
+                }
+            }
+        } else {
+            for (int i = 0; i < STR_LENGTH; i++) {
+                int charAsciiNumber = str.charAt(i);
+                if (charAsciiNumber >= ASCII_FIRST_LOWER_CASE_CHARACTER && charAsciiNumber <=
+                        ASCII_LAST_LOWER_CASE_CHARACTER) {
+                    counterOfCharacters++;
+                }
             }
         }
         return counterOfCharacters;
