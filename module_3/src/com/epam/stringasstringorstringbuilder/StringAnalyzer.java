@@ -69,7 +69,7 @@ public class StringAnalyzer {
 
     // task 10
     public static String[] splitStringIntoSentences(String str) {
-        return str.split("\\.+ *|!+ *|\\?+ *");
+        return str.split("\\.+\\s*|!+\\s*|\\?+\\s*");
     }
 
 }
