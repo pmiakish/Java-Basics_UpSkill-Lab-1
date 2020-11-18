@@ -30,9 +30,8 @@ public class TaskLauncher {
     private static final String UPPER_AND_LOWER_CASE = "This STRING contains WORDS in UPPER AND lower case";
 
     // task 10
-    private static final String STRING_WITH_SENTENCES = "This is the first sentence. Is it the second sentence? No! " +
+    private static final String STRING_WITH_SENTENCES = "This is the first sentence... Is it the second sentence? No! " +
             "This is the forth sentence.";
-    private static final char[] SEPARATORS = {'.', '!', '?'};
 
     public static void main(String[] args) {
         // task 01
@@ -88,9 +87,9 @@ public class TaskLauncher {
                 " characters in lower case.");
 
         // task 10
+        String[] sentences = StringAnalyzer.splitStringIntoSentences(STRING_WITH_SENTENCES);
         System.out.println("\n--- TASK 10 ---\nThe following string: \"" + STRING_WITH_SENTENCES + "\"\n"
-                + "contains " + StringAnalyzer.countOccurrencesOfCharacter(STRING_WITH_SENTENCES, SEPARATORS) +
-                " sentences.");
+                + "contains " + sentences.length + " sentences.");
 
     }
 }

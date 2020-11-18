@@ -34,14 +34,6 @@ public class StringAnalyzer {
         return occurrencesOfCharacter;
     }
 
-    public static int countOccurrencesOfCharacter(String str, char[] chars) {
-        int occurrencesOfCharacter = 0;
-        for (char ch : chars) {
-            occurrencesOfCharacter += countOccurrencesOfCharacter(str, ch);
-        }
-        return occurrencesOfCharacter;
-    }
-
     // task 08
     public static String findLongestWord(String str) {
         String[] words = str.split(" ");
@@ -56,16 +48,28 @@ public class StringAnalyzer {
 
     // task 09
     public static int countCharactersInUpperOrLowerCase(String str, boolean isUpperCaseCounting) {
+        final int ASCII_FIRST_UPPER_CASE_CHARACTER = 65;
+        final int ASCII_LAST_UPPER_CASE_CHARACTER = 90;
+        final int ASCII_FIRST_LOWER_CASE_CHARACTER = 97;
+        final int ASCII_LAST_LOWER_CASE_CHARACTER = 122;
         final int STR_LENGTH = str.length();
         int counterOfCharacters = 0;
         for (int i = 0; i < STR_LENGTH; i++) {
-            char anotherCase = (isUpperCaseCounting) ? Character.toLowerCase(str.charAt(i)) : Character.toUpperCase(str.
-                    charAt(i));
-            if (str.charAt(i) != anotherCase) {
+            int charAsciiNumber = str.charAt(i);
+            if (isUpperCaseCounting && charAsciiNumber >= ASCII_FIRST_UPPER_CASE_CHARACTER && charAsciiNumber <=
+                    ASCII_LAST_UPPER_CASE_CHARACTER) {
+                counterOfCharacters++;
+            } else if (!isUpperCaseCounting && charAsciiNumber >= ASCII_FIRST_LOWER_CASE_CHARACTER && charAsciiNumber <=
+                    ASCII_LAST_LOWER_CASE_CHARACTER) {
                 counterOfCharacters++;
             }
         }
         return counterOfCharacters;
+    }
+
+    // task 10
+    public static String[] splitStringIntoSentences(String str) {
+        return str.split("\\.+ *|!+ *|\\?+ *");
     }
 
 }
