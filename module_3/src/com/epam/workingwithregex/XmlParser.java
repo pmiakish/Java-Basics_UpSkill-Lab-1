@@ -13,7 +13,7 @@ public class XmlParser {
             if (!nameOfTag.isEmpty()) {
                 Pattern closingTag = Pattern.compile("</" + nameOfTag + ">");
                 Matcher matClosingTag = closingTag.matcher(xml);
-                if (matClosingTag.find(matOpeningTag.start())) {
+                if (matClosingTag.find(matOpeningTag.end())) {
                     parsedXML.append("--- the node \"").append(nameOfTag).append("\" ---\n");
                     String attributesOfTag = defineAttributesOfTag(matOpeningTag.group());
                     if (!attributesOfTag.isEmpty()) {
