@@ -14,7 +14,7 @@ public class TaskLauncher {
     private static final int MIN_EXCELLENT_GRADE = 9;
     private static final int MAX_GRADE = 10;
     private static final int NUMBER_OF_GRADES = 5;
-    private static final int NUMBER_OFSTUDENTS = 10;
+    private static final int NUMBER_OF_STUDENTS = 10;
 
     public static void main(String[] args) {
 
@@ -43,7 +43,7 @@ public class TaskLauncher {
 
         // task 03
         System.out.println("\n--- TASK 03 ---");
-        Student[] students = new Student[NUMBER_OFSTUDENTS];
+        Student[] students = new Student[NUMBER_OF_STUDENTS];
         // students with random grades
         for (int i = 0; i < NUMBER_OF_STUDENTS_WITH_RANDOM_GRADES; i++) {
             int randomGroupNumber = (int) (Math.random() * (MAX_GROUP_NUMBER - MIN_GROUP_NUMBER + 1) +
