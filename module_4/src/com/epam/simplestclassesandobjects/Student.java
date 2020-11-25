@@ -2,38 +2,34 @@ package com.epam.simplestclassesandobjects;
 
 public class Student {
 
-    private String surnameAndInitials;
+    private String studentName;
     private int groupNumber;
-    private int[] academicPerformance = new int[5];
+    private final int NUMBER_OF_GRADES = 5;
+    private int[] grades = new int[NUMBER_OF_GRADES];
 
-    public Student(String studentName, int groupNumberValue, int[] grades) {
-        surnameAndInitials = studentName;
-        for (int i = 0; i < grades.length && i < academicPerformance.length; i++) {
-            academicPerformance[i] = grades[i];
+    public Student(String studentName, int groupNumber, int[] grades) {
+        this.studentName = studentName;
+        for (int i = 0; i < this.grades.length && i < grades.length; i++) {
+            this.grades[i] = grades[i];
+            this.groupNumber = groupNumber;
         }
-        if (groupNumberValue > 0) {
-            groupNumber = groupNumberValue;
-        }
     }
 
-    public String getName() {
-        return surnameAndInitials;
-    }
-
-    public int getGroupNumber() {
-        return groupNumber;
-    }
-
-    public boolean checkIfItIsExcellentStudent() {
+    public boolean isExcellentStudent() {
         final int MIN_EXCELLENT_VALUE = 9;
         boolean isExcellentStudent = true;
-        for (int grade : academicPerformance) {
+        for (int grade : grades) {
             if (grade < MIN_EXCELLENT_VALUE) {
                 isExcellentStudent = false;
                 break;
             }
         }
         return isExcellentStudent;
+    }
+
+    @Override
+    public String toString() {
+        return studentName + ", group #" + groupNumber;
     }
 
 }
