@@ -9,7 +9,7 @@ public class Train implements Comparable<Train>{
     private final int trainNumber;
     private final GregorianCalendar departureTime;
 
-    public Train(String destination, int trainNumber,  GregorianCalendar departureTime) {
+    public Train(String destination, int trainNumber, GregorianCalendar departureTime) {
         this.destination = destination;
         this.trainNumber = trainNumber;
         this.departureTime = departureTime;
