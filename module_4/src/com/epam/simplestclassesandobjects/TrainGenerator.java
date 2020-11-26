@@ -14,8 +14,8 @@ public class TrainGenerator {
         Train[] trains = (numberOfTrains > 0) ? new Train[numberOfTrains] : null;
         for (int i = 0; i < numberOfTrains; i++) {
             GregorianCalendar departureTime = new GregorianCalendar();
-            int randomHour = generateRandomNumber(START_HOUR, LAST_HOUR);
-            int randomMinute = generateRandomNumber(START_MINUTE, LAST_MINUTE);
+            final int randomHour = generateRandomNumber(START_HOUR, LAST_HOUR);
+            final int randomMinute = generateRandomNumber(START_MINUTE, LAST_MINUTE);
             departureTime.set(GregorianCalendar.HOUR_OF_DAY, randomHour);
             departureTime.set(GregorianCalendar.MINUTE, randomMinute);
             trains[i] = new Train(DESTINATIONS[generateRandomNumber(0, DESTINATIONS.length - 1)], (numberOfTrains - i),
