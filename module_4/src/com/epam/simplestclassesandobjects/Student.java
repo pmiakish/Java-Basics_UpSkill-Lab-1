@@ -1,18 +1,18 @@
 package com.epam.simplestclassesandobjects;
 
+import java.util.Arrays;
+
 public class Student {
 
     private String studentName;
     private int groupNumber;
     private final int NUMBER_OF_GRADES = 5;
-    private int[] grades = new int[NUMBER_OF_GRADES];
+    private int[] grades;
 
     public Student(String studentName, int groupNumber, int[] grades) {
         this.studentName = studentName;
-        for (int i = 0; i < this.grades.length && i < grades.length; i++) {
-            this.grades[i] = grades[i];
-            this.groupNumber = groupNumber;
-        }
+        this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
+        this.groupNumber = groupNumber;
     }
 
     public boolean isExcellentStudent() {
