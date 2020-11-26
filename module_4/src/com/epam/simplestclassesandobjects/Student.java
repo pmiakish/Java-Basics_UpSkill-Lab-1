@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class Student {
 
-    private String studentName;
-    private int groupNumber;
-    private final int NUMBER_OF_GRADES = 5;
-    private int[] grades;
+    private final String studentName;
+    private final int groupNumber;
+    private final int[] grades;
 
     public Student(String studentName, int groupNumber, int[] grades) {
+        final int NUMBER_OF_GRADES = 5;
         this.studentName = studentName;
         this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
         this.groupNumber = groupNumber;
