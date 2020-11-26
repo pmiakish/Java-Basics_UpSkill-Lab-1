@@ -2,6 +2,8 @@ package com.epam.simplestclassesandobjects;
 
 import com.epam.onedimensionalarrays.ArrayMaker;
 
+import java.util.Arrays;
+
 public class TaskLauncher {
 
     // tasks 01, 02
@@ -11,6 +13,9 @@ public class TaskLauncher {
     // task 03
     private static final int NUMBER_OF_STUDENTS = 10;
     private static final int NUMBER_OF_EXCELLENT_STUDENTS = 3;
+
+    // task 04
+    private static final int NUMBER_OF_TRAINS = 5;
 
     public static void main(String[] args) {
 
@@ -42,6 +47,22 @@ public class TaskLauncher {
             if (student.isExcellentStudent()) {
                 System.out.println(student);
             }
+        }
+
+        // task 04
+        System.out.println("\n--- TASK 04 ---");
+        Train[] trains = TrainGenerator.generateTrainArray(NUMBER_OF_TRAINS);
+
+        System.out.println("Trains sorted by numbers:");
+        Arrays.sort(trains);
+        for (Train train : trains) {
+            System.out.println(train);
+        }
+        System.out.println();
+        System.out.println("Trains sorted by destination (considering departure time):");
+        Arrays.sort(trains, new TrainByDestinationComparator());
+        for (Train train : trains) {
+            System.out.println(train);
         }
 
     }
