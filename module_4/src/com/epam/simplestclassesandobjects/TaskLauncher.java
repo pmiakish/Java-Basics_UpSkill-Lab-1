@@ -1,7 +1,5 @@
 package com.epam.simplestclassesandobjects;
 
-import com.epam.onedimensionalarrays.ArrayMaker;
-
 import java.util.Arrays;
 
 public class TaskLauncher {
@@ -16,6 +14,10 @@ public class TaskLauncher {
 
     // task 04
     private static final int NUMBER_OF_TRAINS = 5;
+
+    // task 05
+    private static final int START_COUNTER_VALUE = 10;
+    private static final int END_COUNTER_VALUE = -5;
 
     public static void main(String[] args) {
 
@@ -63,6 +65,21 @@ public class TaskLauncher {
         Arrays.sort(trains, new TrainByDestinationComparator());
         for (Train train : trains) {
             System.out.println(train);
+        }
+
+        // task 05
+        System.out.println("\n--- TASK 05 ---");
+        Counter counter = new Counter();
+        System.out.println("Incrementing of the counter initialized with default boundaries:");
+        for (int i = 0; i < 20; i++) {
+            System.out.println(counter);
+            counter.increaseCounter();
+        }
+        Counter counterWithSpecifiedBoundaries = new Counter(START_COUNTER_VALUE, END_COUNTER_VALUE);
+        System.out.println("\nDecrementing of the counter initialized with specified boundaries:");
+        for (int i = 0; i < 20; i++) {
+            System.out.println(counterWithSpecifiedBoundaries);
+            counterWithSpecifiedBoundaries.decreaseCounter();
         }
 
     }

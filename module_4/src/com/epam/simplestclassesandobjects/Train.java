@@ -30,6 +30,7 @@ public class Train implements Comparable<Train>{
                 time.format(departureTime.getTime()) + "]";
     }
 
+    @Override
     public int compareTo(Train train) {
         return Integer.compare(this.trainNumber, train.trainNumber);
     }
