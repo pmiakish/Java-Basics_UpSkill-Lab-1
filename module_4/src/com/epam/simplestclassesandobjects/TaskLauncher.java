@@ -19,6 +19,16 @@ public class TaskLauncher {
     private static final int START_COUNTER_VALUE = 10;
     private static final int END_COUNTER_VALUE = -5;
 
+    // task 06
+    private static final int HOUR = 18;
+    private static final int MINUTE = 35;
+    private static final int INCORRECT_MINUTE_VALUE = 61;
+    private static final int SECOND = 57;
+    private static final int ADDITIONAL_HOURS = -8;
+    private static final int ADDITIONAL_MINUTES = 123;
+    private static final int ADDITIONAL_SECONDS = -4951;
+    private static final int CORRECTING_NUMBER = 3;
+
     public static void main(String[] args) {
 
         // task 01
@@ -82,6 +92,24 @@ public class TaskLauncher {
             counterWithSpecifiedBoundaries.decreaseCounter();
         }
 
+        // task 06
+        System.out.println("\n--- TASK 06 ---\nInitial time:");
+        Time time = new Time(HOUR, MINUTE, SECOND);
+        System.out.println(time + "\n");
+        time.setTime(HOUR + CORRECTING_NUMBER, MINUTE + CORRECTING_NUMBER, SECOND + CORRECTING_NUMBER);
+        System.out.println("Time after total correction:\n" + time + "\n");
+        time.setHour(HOUR);
+        System.out.println("Time after correction only hours:\n" + time + "\n");
+        time.setMinute(INCORRECT_MINUTE_VALUE);
+        System.out.println("Time after correction only minutes:\n" + time + "\n");
+        time.setSecond(SECOND);
+        System.out.println("Time after correction only seconds:\n" + time + "\n");
+        time.addSecond(ADDITIONAL_SECONDS);
+        System.out.println("Time after addition of " + ADDITIONAL_SECONDS + " seconds:\n" + time + "\n");
+        time.addMinute(ADDITIONAL_MINUTES);
+        System.out.println("Time after addition of " + ADDITIONAL_MINUTES + " minutes:\n" + time + "\n");
+        time.addHour(ADDITIONAL_HOURS);
+        System.out.println("Time after addition of " + ADDITIONAL_HOURS + " hours:\n" + time + "\n");
     }
 
 
