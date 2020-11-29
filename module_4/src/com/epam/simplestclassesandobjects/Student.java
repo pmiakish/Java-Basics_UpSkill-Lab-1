@@ -43,44 +43,32 @@ public class Student {
         grades = new int[] {0, 0, 0, 0, 0};
     }
 
-    public void setStudentName(String studentName) {
-        try {
-            if (studentName == null || studentName.compareTo("") == 0){
-                throw new Exception("Incorrect student name!");
-            }
-            this.studentName = studentName;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+    public void setStudentName(String studentName) throws Exception {
+        if (studentName == null || studentName.compareTo("") == 0) {
+            throw new Exception("Incorrect student name!");
         }
+        this.studentName = studentName;
     }
 
-    public void setGroupNumber(int groupNumber) {
-        try {
-            if (groupNumber < 0) {
-                throw new Exception("The group mustn't have a negative number!");
-            }
-            this.groupNumber = groupNumber;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+    public void setGroupNumber(int groupNumber) throws Exception {
+        if (groupNumber < 0) {
+            throw new Exception("The group mustn't have a negative number!");
         }
+        this.groupNumber = groupNumber;
     }
 
-    public void setGrades(int[] grades) {
-        try {
-            boolean areCorrectGrades = true;
-            for (int grade : grades) {
-                if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
-                    areCorrectGrades = false;
-                    break;
-                }
+    public void setGrades(int[] grades) throws Exception {
+        boolean areCorrectGrades = true;
+        for (int grade : grades) {
+            if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
+                areCorrectGrades = false;
+                break;
             }
-            if (grades.length != NUMBER_OF_GRADES || !areCorrectGrades) {
-                throw new Exception("Incorrect values of the grades!");
-            }
-            this.grades = grades;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
         }
+        if (grades.length != NUMBER_OF_GRADES || !areCorrectGrades) {
+            throw new Exception("Incorrect values of the grades!");
+        }
+        this.grades = grades;
     }
 
     public String getStudentName() {
