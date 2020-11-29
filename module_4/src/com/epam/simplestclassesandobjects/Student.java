@@ -12,48 +12,29 @@ public class Student {
     private final int MIN_CORRECT_GRADE = 0;
     private final int MAX_CORRECT_GRADE = 10;
 
-    public Student(String studentName, int groupNumber, int[] grades) {
-
+    public Student(String studentName, int groupNumber, int[] grades) throws Exception {
         // studentName initialization
-        try {
-            if (studentName == null || studentName.compareTo("") == 0){
-                throw new Exception("Incorrect student name!");
-            }
-            this.studentName = studentName;
-        } catch(Exception ex) {
-            this.studentName = "Unnamed";
-            System.out.println(ex.getMessage());
+        if (studentName == null || studentName.compareTo("") == 0) {
+            throw new Exception("Incorrect student name!");
         }
-
+        this.studentName = studentName;
         // groupNumber initialization
-        try {
-            if (groupNumber < 0) {
-                throw new Exception("The group mustn't have a negative number!");
-            }
-            this.groupNumber = groupNumber;
-        } catch(Exception ex) {
-            this.groupNumber = 0;
-            System.out.println(ex.getMessage());
+        if (groupNumber < 0) {
+            throw new Exception("The group mustn't have a negative number!");
         }
-
+        this.groupNumber = groupNumber;
         // grades initialization
-        try {
-            boolean areCorrectGrades = true;
-            for (int grade : grades) {
-                if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
-                    areCorrectGrades = false;
-                    break;
-                }
+        boolean areCorrectGrades = true;
+        for (int grade : grades) {
+            if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
+                areCorrectGrades = false;
+                break;
             }
-            if (!areCorrectGrades) {
-                throw new Exception("Incorrect values of the grades!");
-            }
-            this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
-        } catch(Exception ex) {
-            this.grades = new int[] {0, 0, 0, 0, 0};
-            System.out.println(ex.getMessage());
         }
-
+        if (!areCorrectGrades) {
+            throw new Exception("Incorrect values of the grades!");
+        }
+        this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
     }
 
     public Student() {

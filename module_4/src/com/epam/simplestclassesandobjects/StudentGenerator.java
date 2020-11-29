@@ -23,15 +23,25 @@ public class StudentGenerator {
             for (int i = 0; i < numberOfStudentsWithRandomGrades; i++) {
                 int randomGroupNumber = generateRandomNumber(MIN_GROUP_NUMBER, MAX_GROUP_NUMBER);
                 int[] randomGrades = ArrayMaker.generateArray(MIN_GRADE, MAX_GRADE, NUMBER_OF_GRADES);
-                students[i] = new Student(NAMES_OF_STUDENTS[generateRandomNumber(0, NAMES_OF_STUDENTS.length - 1)],
-                        randomGroupNumber, randomGrades);
+                try {
+                    students[i] = new Student(NAMES_OF_STUDENTS[generateRandomNumber(0, NAMES_OF_STUDENTS.length - 1)],
+                            randomGroupNumber, randomGrades);
+                } catch (Exception ex) {
+                    students[i] = new Student();
+                    System.out.println(ex.getMessage());
+                }
             }
             // students with excellent grades
             for (int i = numberOfStudentsWithRandomGrades; i < numberOfStudents; i++) {
                 int randomGroupNumber = generateRandomNumber(MIN_GROUP_NUMBER, MAX_GROUP_NUMBER);
                 int[] excellentGrades = ArrayMaker.generateArray(MIN_EXCELLENT_GRADE, MAX_GRADE, NUMBER_OF_GRADES);
-                students[i] = new Student(NAMES_OF_STUDENTS[generateRandomNumber(0, NAMES_OF_STUDENTS.length - 1)],
-                        randomGroupNumber, excellentGrades);
+                try {
+                    students[i] = new Student(NAMES_OF_STUDENTS[generateRandomNumber(0, NAMES_OF_STUDENTS.length - 1)],
+                            randomGroupNumber, excellentGrades);
+                } catch (Exception ex) {
+                    students[i] = new Student();
+                    System.out.println(ex.getMessage());
+                }
             }
         }
         return students;
