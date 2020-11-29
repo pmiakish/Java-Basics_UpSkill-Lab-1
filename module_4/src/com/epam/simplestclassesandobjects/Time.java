@@ -7,6 +7,7 @@ public class Time {
     private int hour;
     private int minute;
     private int second;
+
     private static final int MAX_HOUR_VALUE = 24;
     private static final int MAX_MINUTE_AND_SECOND_VALUE = 60;
 
@@ -64,6 +65,22 @@ public class Time {
         } else {
             this.second = 0;
         }
+    }
+
+    public int[] getTime() {
+        return new int[] {hour, minute, second};
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public int getSecond() {
+        return second;
     }
 
     public void changeHour(int numberOfHours) {
