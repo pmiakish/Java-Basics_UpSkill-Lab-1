@@ -76,17 +76,27 @@ public class TaskLauncher {
 
         // task 05
         System.out.println("\n--- TASK 05 ---");
-        Counter counter = new Counter();
-        System.out.println("Incrementing of the counter initialized with default bounds:");
-        for (int i = 0; i < 20; i++) {
-            System.out.println(counter);
-            counter.increaseCounter();
+        Counter counter;
+        try {
+            counter = new Counter();
+            System.out.println("Incrementing of the counter initialized with default bounds:");
+            for (int i = 0; i < 20; i++) {
+                System.out.println(counter);
+                counter.increaseCounter();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
-        Counter counterWithSpecifiedBoundaries = new Counter(START_COUNTER_VALUE, END_COUNTER_VALUE);
-        System.out.println("\nDecrementing of the counter initialized with specified bounds:");
-        for (int i = 0; i < 20; i++) {
-            System.out.println(counterWithSpecifiedBoundaries);
-            counterWithSpecifiedBoundaries.decreaseCounter();
+        Counter counterWithSpecifiedBoundaries;
+        try {
+             counterWithSpecifiedBoundaries = new Counter(START_COUNTER_VALUE, END_COUNTER_VALUE);
+             System.out.println("\nDecrementing of the counter initialized with specified bounds:");
+            for (int i = 0; i < 20; i++) {
+                System.out.println(counterWithSpecifiedBoundaries);
+                counterWithSpecifiedBoundaries.decreaseCounter();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
 
         // task 06

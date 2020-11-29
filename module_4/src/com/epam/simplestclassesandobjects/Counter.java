@@ -8,19 +8,15 @@ public class Counter {
     private int endValue;
     private int currentValue;
 
-    public Counter(int startValue, int endValue) {
-        try {
-            if (startValue == endValue) {
-                throw new Exception("Wrong values of counter bounds!");
-            }
-            this.startValue = currentValue = startValue;
-            this.endValue = endValue;
-        } catch(Exception ex) {
-            System.out.println(ex.getMessage());
+    public Counter(int startValue, int endValue) throws Exception {
+        if (startValue == endValue) {
+            throw new Exception("Wrong values of counter bounds!");
         }
+        this.startValue = currentValue = startValue;
+        this.endValue = endValue;
     }
 
-    public Counter() {
+    public Counter() throws Exception {
         this(-5, 10);
     }
 
@@ -33,16 +29,11 @@ public class Counter {
         currentValue = startValue;
     }
 
-    public void setCurrentValue(int currentValue) {
-        try {
-            if (currentValue > Math.max(startValue, endValue) || currentValue < Math.min(startValue, endValue)) {
-                throw new Exception("The specified current value is out of bounds of the counter!");
-            }
-            this.currentValue = currentValue;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+    public void setCurrentValue(int currentValue) throws Exception {
+        if (currentValue > Math.max(startValue, endValue) || currentValue < Math.min(startValue, endValue)) {
+            throw new Exception("The specified current value is out of bounds of the counter!");
         }
-
+        this.currentValue = currentValue;
     }
 
     public int getStartValue() {
