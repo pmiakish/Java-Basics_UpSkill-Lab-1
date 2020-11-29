@@ -9,8 +9,15 @@ public class Counter {
     private int currentValue;
 
     public Counter(int startValue, int endValue) {
-        this.startValue = currentValue = startValue;
-        this.endValue = endValue;
+        try {
+            if (startValue == endValue) {
+                throw new Exception("Wrong values of counter bounds!");
+            }
+            this.startValue = currentValue = startValue;
+            this.endValue = endValue;
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public Counter() {
