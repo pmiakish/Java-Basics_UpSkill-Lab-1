@@ -1,18 +1,117 @@
 package com.epam.simplestclassesandobjects;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Student {
 
-    private final String studentName;
-    private final int groupNumber;
-    private final int[] grades;
+    private String studentName;
+    private int groupNumber;
+    private int[] grades;
+    private final int NUMBER_OF_GRADES = 5;
+    private final int MIN_CORRECT_GRADE = 0;
+    private final int MAX_CORRECT_GRADE = 10;
 
     public Student(String studentName, int groupNumber, int[] grades) {
-        final int NUMBER_OF_GRADES = 5;
-        this.studentName = studentName;
-        this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
-        this.groupNumber = groupNumber;
+
+        // studentName initialization
+        try {
+            if (studentName == null || studentName.compareTo("") == 0){
+                throw new Exception("Incorrect student name!");
+            }
+            this.studentName = studentName;
+        } catch(Exception ex) {
+            this.studentName = "Unnamed";
+            System.out.println(ex.getMessage());
+        }
+
+        // groupNumber initialization
+        try {
+            if (groupNumber < 0) {
+                throw new Exception("The group mustn't have a negative number!");
+            }
+            this.groupNumber = groupNumber;
+        } catch(Exception ex) {
+            this.groupNumber = 0;
+            System.out.println(ex.getMessage());
+        }
+
+        // grades initialization
+        try {
+            boolean areCorrectGrades = true;
+            for (int grade : grades) {
+                if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
+                    areCorrectGrades = false;
+                    break;
+                }
+            }
+            if (!areCorrectGrades) {
+                throw new Exception("Incorrect values of the grades!");
+            }
+            this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
+        } catch(Exception ex) {
+            this.grades = new int[] {0, 0, 0, 0, 0};
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public Student() {
+        studentName = "Unnamed";
+        groupNumber = 0;
+        grades = new int[] {0, 0, 0, 0, 0};
+    }
+
+    public void setStudentName(String studentName) {
+        try {
+            if (studentName == null || studentName.compareTo("") == 0){
+                throw new Exception("Incorrect student name!");
+            }
+            this.studentName = studentName;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setGroupNumber(int groupNumber) {
+        try {
+            if (groupNumber < 0) {
+                throw new Exception("The group mustn't have a negative number!");
+            }
+            this.groupNumber = groupNumber;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setGrades(int[] grades) {
+        try {
+            boolean areCorrectGrades = true;
+            for (int grade : grades) {
+                if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
+                    areCorrectGrades = false;
+                    break;
+                }
+            }
+            if (grades.length != NUMBER_OF_GRADES || !areCorrectGrades) {
+                throw new Exception("Incorrect values of the grades!");
+            }
+            this.grades = grades;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public int getGroupNumber() {
+        return groupNumber;
+    }
+
+    public int[] getGrades() {
+        return grades;
     }
 
     public boolean isExcellentStudent() {
@@ -29,7 +128,28 @@ public class Student {
 
     @Override
     public String toString() {
-        return studentName + ", group #" + groupNumber;
+        return "Student [studentName: " + studentName + "; group: " + groupNumber + "; grades: " + Arrays.
+                toString(grades) + "]";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Student other = (Student) obj;
+        return groupNumber == other.groupNumber &&
+                studentName.equals(other.studentName) &&
+                Arrays.equals(grades, other.grades);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(studentName, groupNumber);
+        result = 31 * result + Arrays.hashCode(grades);
+        return result;
+    }
 }

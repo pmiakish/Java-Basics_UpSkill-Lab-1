@@ -14,6 +14,7 @@ public class TaskLauncher {
 
     // task 04
     private static final int NUMBER_OF_TRAINS = 5;
+    private static final int SPECIFIED_TRAIN_NUMBER = 3;
 
     // task 05
     private static final int START_COUNTER_VALUE = 10;
@@ -64,29 +65,25 @@ public class TaskLauncher {
         // task 04
         System.out.println("\n--- TASK 04 ---");
         Train[] trains = TrainGenerator.generateTrainArray(NUMBER_OF_TRAINS);
-
         System.out.println("Trains sorted by numbers:");
-        Arrays.sort(trains);
-        for (Train train : trains) {
-            System.out.println(train);
-        }
-        System.out.println();
-        System.out.println("Trains sorted by destination (considering departure time):");
+        Arrays.sort(trains, new TrainByNumberComparator());
+        TrainWorker.printTrains(trains);
+        System.out.println("\nTrains sorted by destination (considering departure time):");
         Arrays.sort(trains, new TrainByDestinationComparator());
-        for (Train train : trains) {
-            System.out.println(train);
-        }
+        TrainWorker.printTrains(trains);
+        System.out.println("\nInfo about the train with the specified number (" + SPECIFIED_TRAIN_NUMBER + "):");
+        TrainWorker.printTrainInfoByNumber(trains, SPECIFIED_TRAIN_NUMBER);
 
         // task 05
         System.out.println("\n--- TASK 05 ---");
         Counter counter = new Counter();
-        System.out.println("Incrementing of the counter initialized with default boundaries:");
+        System.out.println("Incrementing of the counter initialized with default bounds:");
         for (int i = 0; i < 20; i++) {
             System.out.println(counter);
             counter.increaseCounter();
         }
         Counter counterWithSpecifiedBoundaries = new Counter(START_COUNTER_VALUE, END_COUNTER_VALUE);
-        System.out.println("\nDecrementing of the counter initialized with specified boundaries:");
+        System.out.println("\nDecrementing of the counter initialized with specified bounds:");
         for (int i = 0; i < 20; i++) {
             System.out.println(counterWithSpecifiedBoundaries);
             counterWithSpecifiedBoundaries.decreaseCounter();
@@ -104,11 +101,11 @@ public class TaskLauncher {
         System.out.println("Time after correction only minutes:\n" + time + "\n");
         time.setSecond(SECOND);
         System.out.println("Time after correction only seconds:\n" + time + "\n");
-        time.addSecond(ADDITIONAL_SECONDS);
+        time.changeSecond(ADDITIONAL_SECONDS);
         System.out.println("Time after addition of " + ADDITIONAL_SECONDS + " seconds:\n" + time + "\n");
-        time.addMinute(ADDITIONAL_MINUTES);
+        time.changeMinute(ADDITIONAL_MINUTES);
         System.out.println("Time after addition of " + ADDITIONAL_MINUTES + " minutes:\n" + time + "\n");
-        time.addHour(ADDITIONAL_HOURS);
+        time.changeHour(ADDITIONAL_HOURS);
         System.out.println("Time after addition of " + ADDITIONAL_HOURS + " hours:\n" + time + "\n");
     }
 

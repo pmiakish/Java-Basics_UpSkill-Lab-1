@@ -1,5 +1,7 @@
 package com.epam.simplestclassesandobjects;
 
+import java.util.Objects;
+
 public class Time {
 
     private int hour;
@@ -64,7 +66,7 @@ public class Time {
         }
     }
 
-    public void addHour(int numberOfHours) {
+    public void changeHour(int numberOfHours) {
         int newHourValue = hour + numberOfHours;
         if (newHourValue >= MAX_HOUR_VALUE) {
             hour = newHourValue % MAX_HOUR_VALUE;
@@ -77,35 +79,35 @@ public class Time {
         }
     }
 
-    public void addMinute(int numberOfMinutes) {
+    public void changeMinute(int numberOfMinutes) {
         int newMinuteValue = minute + numberOfMinutes;
         if (newMinuteValue >= MAX_MINUTE_AND_SECOND_VALUE) {
             minute = newMinuteValue % MAX_MINUTE_AND_SECOND_VALUE;
-            addHour(newMinuteValue / MAX_MINUTE_AND_SECOND_VALUE);
+            changeHour(newMinuteValue / MAX_MINUTE_AND_SECOND_VALUE);
         } else if (newMinuteValue >= 0) {
             minute = newMinuteValue;
         } else if (Math.abs(newMinuteValue) >= MAX_MINUTE_AND_SECOND_VALUE) {
             minute = MAX_MINUTE_AND_SECOND_VALUE - (Math.abs(newMinuteValue) % MAX_MINUTE_AND_SECOND_VALUE);
-            addHour((newMinuteValue / MAX_MINUTE_AND_SECOND_VALUE) - 1);
+            changeHour((newMinuteValue / MAX_MINUTE_AND_SECOND_VALUE) - 1);
         } else {
             minute = MAX_MINUTE_AND_SECOND_VALUE - Math.abs(newMinuteValue);
-            addHour(-1);
+            changeHour(-1);
         }
     }
 
-    public void addSecond(int numberOfSeconds) {
+    public void changeSecond(int numberOfSeconds) {
         int newSecondValue = second + numberOfSeconds;
         if (newSecondValue >= MAX_MINUTE_AND_SECOND_VALUE) {
             second = newSecondValue % MAX_MINUTE_AND_SECOND_VALUE;
-            addMinute(newSecondValue / MAX_MINUTE_AND_SECOND_VALUE);
+            changeMinute(newSecondValue / MAX_MINUTE_AND_SECOND_VALUE);
         } else if (newSecondValue >= 0) {
             second = newSecondValue;
         } else if (Math.abs(newSecondValue) >= MAX_MINUTE_AND_SECOND_VALUE) {
             second = MAX_MINUTE_AND_SECOND_VALUE - (Math.abs(newSecondValue) % MAX_MINUTE_AND_SECOND_VALUE);
-            addMinute((newSecondValue / MAX_MINUTE_AND_SECOND_VALUE) - 1);
+            changeMinute((newSecondValue / MAX_MINUTE_AND_SECOND_VALUE) - 1);
         } else {
             second = MAX_MINUTE_AND_SECOND_VALUE - Math.abs(newSecondValue);
-            addMinute(-1);
+            changeMinute(-1);
         }
     }
 
@@ -114,4 +116,22 @@ public class Time {
         return String.format("Time [%02dh : %02dm : %02ds]", hour, minute, second);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Time other = (Time) obj;
+        return hour == other.hour &&
+                minute == other.minute &&
+                second == other.second;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hour, minute, second);
+    }
 }
