@@ -89,5 +89,20 @@ public class Triangle {
         return "Triangle {coordinates: " + Arrays.deepToString(coordinates) + "}";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Triangle other = (Triangle) obj;
+        return Arrays.equals(coordinates, other.coordinates);
+    }
 
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(coordinates);
+    }
 }
