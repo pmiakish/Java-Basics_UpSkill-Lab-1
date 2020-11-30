@@ -26,7 +26,7 @@ public class StudentGenerator {
                 try {
                     students[i] = new Student(NAMES_OF_STUDENTS[generateRandomNumber(0, NAMES_OF_STUDENTS.length - 1)],
                             randomGroupNumber, randomGrades);
-                } catch (Exception ex) {
+                } catch (IllegalArgumentException ex) {
                     students[i] = new Student();
                     System.out.println(ex.getMessage());
                 }
@@ -38,7 +38,7 @@ public class StudentGenerator {
                 try {
                     students[i] = new Student(NAMES_OF_STUDENTS[generateRandomNumber(0, NAMES_OF_STUDENTS.length - 1)],
                             randomGroupNumber, excellentGrades);
-                } catch (Exception ex) {
+                } catch (IllegalArgumentException ex) {
                     students[i] = new Student();
                     System.out.println(ex.getMessage());
                 }

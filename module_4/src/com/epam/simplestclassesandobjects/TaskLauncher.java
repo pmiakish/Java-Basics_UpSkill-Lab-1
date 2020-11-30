@@ -30,6 +30,13 @@ public class TaskLauncher {
     private static final int ADDITIONAL_SECONDS = -4951;
     private static final int CORRECTING_NUMBER = 3;
 
+    // task 07
+    private static final double[][] COORDINATES = {
+            {2.0, 5.0},
+            {4.5, -3.5},
+            {-7.1, -2.8}
+    };
+
     public static void main(String[] args) {
 
         // task 01
@@ -84,7 +91,7 @@ public class TaskLauncher {
                 System.out.println(counter);
                 counter.increaseCounter();
             }
-        } catch (Exception ex) {
+        } catch (IllegalAccessException ex) {
             System.out.println(ex.getMessage());
         }
         Counter counterWithSpecifiedBoundaries;
@@ -95,7 +102,7 @@ public class TaskLauncher {
                 System.out.println(counterWithSpecifiedBoundaries);
                 counterWithSpecifiedBoundaries.decreaseCounter();
             }
-        } catch (Exception ex) {
+        } catch (IllegalAccessException ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -117,7 +124,19 @@ public class TaskLauncher {
         System.out.println("Time after addition of " + ADDITIONAL_MINUTES + " minutes:\n" + time + "\n");
         time.changeHour(ADDITIONAL_HOURS);
         System.out.println("Time after addition of " + ADDITIONAL_HOURS + " hours:\n" + time + "\n");
+
+        // task 07
+        System.out.println("--- TASK 07 ---");
+        try {
+            Triangle triangle = new Triangle(COORDINATES);
+            System.out.println(triangle);
+            System.out.println("The perimeter of the specified triangle is " + triangle.calculatePerimeter());
+            System.out.println("The area of the specified triangle is " + triangle.calculateArea());
+            System.out.println("The centroid coordinates of the triangle are " + Arrays.toString(triangle.
+                    findCentroidLocation()));
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
-
-
 }

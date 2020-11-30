@@ -12,15 +12,15 @@ public class Student {
     private final int MIN_CORRECT_GRADE = 0;
     private final int MAX_CORRECT_GRADE = 10;
 
-    public Student(String studentName, int groupNumber, int[] grades) throws Exception {
+    public Student(String studentName, int groupNumber, int[] grades) throws IllegalArgumentException {
         // studentName initialization
         if (studentName == null || studentName.compareTo("") == 0) {
-            throw new Exception("Incorrect student name!");
+            throw new IllegalArgumentException("Incorrect student name!");
         }
         this.studentName = studentName;
         // groupNumber initialization
         if (groupNumber < 0) {
-            throw new Exception("The group mustn't have a negative number!");
+            throw new IllegalArgumentException("The group mustn't have a negative number!");
         }
         this.groupNumber = groupNumber;
         // grades initialization
@@ -32,7 +32,7 @@ public class Student {
             }
         }
         if (!areCorrectGrades) {
-            throw new Exception("Incorrect values of the grades!");
+            throw new IllegalArgumentException("Incorrect values of the grades!");
         }
         this.grades = Arrays.copyOf(grades, NUMBER_OF_GRADES);
     }
@@ -43,21 +43,21 @@ public class Student {
         grades = new int[] {0, 0, 0, 0, 0};
     }
 
-    public void setStudentName(String studentName) throws Exception {
+    public void setStudentName(String studentName) throws IllegalArgumentException {
         if (studentName == null || studentName.compareTo("") == 0) {
-            throw new Exception("Incorrect student name!");
+            throw new IllegalArgumentException("Incorrect student name!");
         }
         this.studentName = studentName;
     }
 
-    public void setGroupNumber(int groupNumber) throws Exception {
+    public void setGroupNumber(int groupNumber) throws IllegalArgumentException {
         if (groupNumber < 0) {
-            throw new Exception("The group mustn't have a negative number!");
+            throw new IllegalArgumentException("The group mustn't have a negative number!");
         }
         this.groupNumber = groupNumber;
     }
 
-    public void setGrades(int[] grades) throws Exception {
+    public void setGrades(int[] grades) throws IllegalArgumentException {
         boolean areCorrectGrades = true;
         for (int grade : grades) {
             if (!(grade >= MIN_CORRECT_GRADE && grade <= MAX_CORRECT_GRADE)) {
@@ -66,7 +66,7 @@ public class Student {
             }
         }
         if (grades.length != NUMBER_OF_GRADES || !areCorrectGrades) {
-            throw new Exception("Incorrect values of the grades!");
+            throw new IllegalArgumentException("Incorrect values of the grades!");
         }
         this.grades = grades;
     }

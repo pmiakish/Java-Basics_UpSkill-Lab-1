@@ -8,15 +8,15 @@ public class Counter {
     private int endValue;
     private int currentValue;
 
-    public Counter(int startValue, int endValue) throws Exception {
+    public Counter(int startValue, int endValue) throws IllegalAccessException {
         if (startValue == endValue) {
-            throw new Exception("Wrong values of counter bounds!");
+            throw new IllegalAccessException("Wrong values of counter bounds!");
         }
         this.startValue = currentValue = startValue;
         this.endValue = endValue;
     }
 
-    public Counter() throws Exception {
+    public Counter() throws IllegalAccessException {
         this(-5, 10);
     }
 
@@ -29,9 +29,9 @@ public class Counter {
         currentValue = startValue;
     }
 
-    public void setCurrentValue(int currentValue) throws Exception {
+    public void setCurrentValue(int currentValue) throws IllegalArgumentException {
         if (currentValue > Math.max(startValue, endValue) || currentValue < Math.min(startValue, endValue)) {
-            throw new Exception("The specified current value is out of bounds of the counter!");
+            throw new IllegalArgumentException("The specified current value is out of counter bounds!");
         }
         this.currentValue = currentValue;
     }
