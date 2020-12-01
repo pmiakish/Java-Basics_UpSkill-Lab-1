@@ -37,6 +37,10 @@ public class TaskLauncher {
             {-7.1, -2.8}
     };
 
+    // task 08
+    private static final String MIN_CHECKING_POSTFIX = "0050"; // last four digits of a card number
+    private static final String MAX_CHECKING_POSTFIX = "4050";
+
     public static void main(String[] args) {
 
         // task 01
@@ -138,5 +142,21 @@ public class TaskLauncher {
             System.out.println(ex.getMessage());
         }
 
+        // task 08
+        System.out.println("\n--- TASK 08 ---");
+        Customer[] customers = CustomerAggregator.generateCustomerArray(5);
+        System.out.println("The unsorted array of customers:");
+        CustomerAggregator.printCustomers(customers);
+        Arrays.sort(customers, new CustomerByNameComparator());
+        System.out.println("\nThe array of customers sorted by names:");
+        CustomerAggregator.printCustomers(customers);
+        System.out.println("\nThe customers which have cards with postfixes from '" + MIN_CHECKING_POSTFIX + "' to " +
+                "'" + MAX_CHECKING_POSTFIX + "':");
+        try {
+            CustomerAggregator.printCustomersWithSpecifiedCardNumberPostfix(customers, MIN_CHECKING_POSTFIX,
+                    MAX_CHECKING_POSTFIX);
+        } catch (NumberFormatException ex) {
+           System.out.println("Incorrect postfix values!");
+        }
     }
 }
