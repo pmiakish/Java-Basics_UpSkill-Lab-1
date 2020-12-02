@@ -1,5 +1,6 @@
 package com.epam.simplestclassesandobjects;
 
+import java.time.Year;
 import java.util.Arrays;
 
 public class TaskLauncher {
@@ -40,6 +41,11 @@ public class TaskLauncher {
     // task 08
     private static final String MIN_CHECKING_POSTFIX = "0050"; // last four digits of a card number
     private static final String MAX_CHECKING_POSTFIX = "4050";
+
+    // task 09
+    private static final String AUTHOR_NAME = "Sierra K.";
+    private static final String PUBLISHER = "Pearson";
+    private static final Year YEAR = Year.of(2007);
 
     public static void main(String[] args) {
 
@@ -162,6 +168,23 @@ public class TaskLauncher {
         } else {
             System.out.println("Can't generate a customer array.");
         }
+
+        // task 09
+        System.out.println("\n--- TASK 09 ---");
+        Book[] books = BookAggregator.generateBookArray(10);
+        if (books != null) {
+            System.out.println("The unsorted array of books:");
+            BookAggregator.printBooks(books);
+            System.out.println("\nThe books by the author - " + AUTHOR_NAME + ":");
+            BookAggregator.printBooksByAuthor(books, AUTHOR_NAME);
+            System.out.println("\nThe books by the publisher - " + PUBLISHER + ":");
+            BookAggregator.printBooksByPublisher(books, PUBLISHER);
+            System.out.println("\nThe books published after " + YEAR + ":");
+            BookAggregator.printBooksAfterYear(books, YEAR);
+        } else {
+            System.out.println("Can't generate a book array.");
+        }
+
 
     }
 }

@@ -1,7 +1,5 @@
 package com.epam.simplestclassesandobjects;
 
-import com.epam.onedimensionalarrays.ArrayMaker;
-
 public class CustomerAggregator {
 
     private static final String[] FIRST_NAMES = {"Alexandr", "Ivan", "Denis", "Igor", "Anton", "Eduard", "Egor",
@@ -50,7 +48,8 @@ public class CustomerAggregator {
         boolean areCustomers = false;
         for (Customer customer : customers) {
             long postfixOfCardNumber = customer.getCardNumber() % (long) Math.pow(10, NUMBER_OF_POSTFIX_DIGITS);
-            if (postfixOfCardNumber >= Long.valueOf(minPostfix) && postfixOfCardNumber <= Long.valueOf(maxPostfix)) {
+            if (postfixOfCardNumber >= Long.parseLong(minPostfix) && postfixOfCardNumber <= Long.
+                    parseLong(maxPostfix)) {
                 System.out.println(customer);
                 areCustomers = true;
             }
