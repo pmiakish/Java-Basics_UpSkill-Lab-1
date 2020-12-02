@@ -95,7 +95,7 @@ public class Customer {
 
     // checking of arguments
     private boolean isCorrectName(String ...names) {
-        Pattern namePattern = Pattern.compile("[\\w-]+");
+        Pattern namePattern = Pattern.compile("[A-Za-z-]+");
         for (String name : names) {
             if (name == null) {
                 return false;

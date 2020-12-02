@@ -17,7 +17,7 @@ public class CustomerAggregator {
     private static final long MAX_NUMBER_POSTFIX_ADDEND = 9999L;
     private static final int NUMBER_OF_POSTFIX_DIGITS = 4;
 
-    public static Customer[] generateCustomerArray(int numberOfCustomers) throws IllegalArgumentException {
+    public static Customer[] generateCustomerArray(int numberOfCustomers) {
         Customer[] customers = (numberOfCustomers > 0) ? new Customer[numberOfCustomers] : null;
         for (int i = 0; i < numberOfCustomers; i++) {
             String randomFirstName = FIRST_NAMES[(int) generateRandomNumber(0, FIRST_NAMES.length - 1)];
@@ -32,6 +32,8 @@ public class CustomerAggregator {
                         randomAccountNumber);
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
+                customers = null;
+                break;
             }
         }
         return customers;

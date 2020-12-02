@@ -145,18 +145,23 @@ public class TaskLauncher {
         // task 08
         System.out.println("\n--- TASK 08 ---");
         Customer[] customers = CustomerAggregator.generateCustomerArray(5);
-        System.out.println("The unsorted array of customers:");
-        CustomerAggregator.printCustomers(customers);
-        Arrays.sort(customers, new CustomerByNameComparator());
-        System.out.println("\nThe array of customers sorted by names:");
-        CustomerAggregator.printCustomers(customers);
-        System.out.println("\nThe customers which have cards with postfixes from '" + MIN_CHECKING_POSTFIX + "' to " +
-                "'" + MAX_CHECKING_POSTFIX + "':");
-        try {
-            CustomerAggregator.printCustomersWithSpecifiedCardNumberPostfix(customers, MIN_CHECKING_POSTFIX,
-                    MAX_CHECKING_POSTFIX);
-        } catch (NumberFormatException ex) {
-           System.out.println("Incorrect postfix values!");
+        if (customers != null) {
+            System.out.println("The unsorted array of customers:");
+            CustomerAggregator.printCustomers(customers);
+            Arrays.sort(customers, new CustomerByNameComparator());
+            System.out.println("\nThe array of customers sorted by names:");
+            CustomerAggregator.printCustomers(customers);
+            System.out.println("\nThe customers which have cards with postfixes from '" + MIN_CHECKING_POSTFIX + "' to " +
+                    "'" + MAX_CHECKING_POSTFIX + "':");
+            try {
+                CustomerAggregator.printCustomersWithSpecifiedCardNumberPostfix(customers, MIN_CHECKING_POSTFIX,
+                        MAX_CHECKING_POSTFIX);
+            } catch (NumberFormatException ex) {
+                System.out.println("Incorrect postfix values!");
+            }
+        } else {
+            System.out.println("Can't generate a customer array.");
         }
+
     }
 }
