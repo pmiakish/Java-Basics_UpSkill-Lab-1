@@ -1,5 +1,6 @@
 package com.epam.simplestclassesandobjects;
 
+import java.time.LocalTime;
 import java.time.Year;
 import java.util.Arrays;
 
@@ -46,6 +47,11 @@ public class TaskLauncher {
     private static final String AUTHOR_NAME = "Sierra K.";
     private static final String PUBLISHER = "Pearson";
     private static final Year YEAR = Year.of(2007);
+
+    // task 10
+    private static final String DESTINATION = "MSQ";
+    private static final String DAY_OF_WEEK = "FRI";
+    private static final LocalTime TIME = LocalTime.of(12, 0);
 
     public static void main(String[] args) {
 
@@ -173,7 +179,7 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 09 ---");
         Book[] books = BookAggregator.generateBookArray(10);
         if (books != null) {
-            System.out.println("The unsorted array of books:");
+            System.out.println("The array of books:");
             BookAggregator.printBooks(books);
             System.out.println("\nThe books by the author - " + AUTHOR_NAME + ":");
             BookAggregator.printBooksByAuthor(books, AUTHOR_NAME);
@@ -185,6 +191,21 @@ public class TaskLauncher {
             System.out.println("Can't generate a book array.");
         }
 
+        // task 10
+        System.out.println("\n--- TASK 10 ---");
+        Airline[] airlines = AirlineAggregator.generateAirlineArray(10);
+        if (airlines != null) {
+            System.out.println("The array of airlines:");
+            AirlineAggregator.printAirlines(airlines);
+            System.out.println("\nThe flights by the destination - " + DESTINATION + ":");
+            AirlineAggregator.printAirlinesByDestination(airlines, DESTINATION);
+            System.out.println("\nThe flights by the day of the week - " + DAY_OF_WEEK + ":");
+            AirlineAggregator.printAirlinesByDayOfWeek(airlines, DAY_OF_WEEK);
+            System.out.println("\nThe flights by the day of the week - " + DAY_OF_WEEK + ", after " + TIME + ":");
+            AirlineAggregator.printAirlinesByDayOfWeek(airlines, DAY_OF_WEEK, TIME);
+        } else {
+            System.out.println("Can't generate an airline array.");
+        }
 
     }
 }
