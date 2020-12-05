@@ -1,6 +1,9 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.service;
+
+import com.epam.simplestclassesandobjects.entity.Airline;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class AirlineAggregator {
 
@@ -39,44 +42,36 @@ public class AirlineAggregator {
         }
     }
 
-    public static void printAirlinesByDestination(Airline[] airlines, String specifiedDestination) {
-        boolean areFlights = false;
+    public static ArrayList<Airline> findAirlinesByDestination(Airline[] airlines, String specifiedDestination) {
+        ArrayList<Airline> airlinesByDestination = new ArrayList<Airline>();
         for (Airline airline : airlines) {
             if (airline.getDestination().equalsIgnoreCase(specifiedDestination)) {
-                areFlights = true;
-                System.out.println(airline);
+                airlinesByDestination.add(airline);
             }
         }
-        if (!areFlights) {
-            System.out.println("There are no flights by specified destination!");
-        }
+        return airlinesByDestination;
     }
 
-    public static void printAirlinesByDayOfWeek(Airline[] airlines, String specifiedDayOfWeek) {
-        boolean areFlights = false;
+    public static ArrayList<Airline> findAirlinesByDayOfWeek(Airline[] airlines, String specifiedDayOfWeek) {
+        ArrayList<Airline> airlinesByDayOfWeek = new ArrayList<Airline>();
         for (Airline airline : airlines) {
             if (airline.getDayOfWeek().equalsIgnoreCase(specifiedDayOfWeek)) {
-                areFlights = true;
-                System.out.println(airline);
+                airlinesByDayOfWeek.add(airline);
             }
         }
-        if (!areFlights) {
-            System.out.println("There are no flights by specified day of the week!");
-        }
+        return airlinesByDayOfWeek;
     }
 
-    public static void printAirlinesByDayOfWeek(Airline[] airlines, String specifiedDayOfWeek, LocalTime time) {
-        boolean areFlights = false;
+    public static ArrayList<Airline> findAirlinesByDayOfWeek(Airline[] airlines, String specifiedDayOfWeek,
+            LocalTime time) {
+        ArrayList<Airline> airlinesByDayOfWeek = new ArrayList<Airline>();
         for (Airline airline : airlines) {
             if (airline.getDayOfWeek().equalsIgnoreCase(specifiedDayOfWeek) &&
                     airline.getTimeOfDeparture().isAfter(time)) {
-                areFlights = true;
-                System.out.println(airline);
+                airlinesByDayOfWeek.add(airline);
             }
         }
-        if (!areFlights) {
-            System.out.println("There are no flights by specified day of the week and time!");
-        }
+        return airlinesByDayOfWeek;
     }
 
     private static int generateRandomNumber(int minValue, int maxValue) {

@@ -1,20 +1,23 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.entity;
 
 import java.util.Arrays;
 
 public class Triangle {
 
-    private static final int NUMBER_OF_POINTS = 3;
-    private static final int NUMBER_OF_COORDINATE_AXES = 2;
-
     private double[][] coordinates;
     // coordinates: x - double[][0], y - double[][1]
 
+    private static final int NUMBER_OF_POINTS = 3;
+    private static final int NUMBER_OF_COORDINATE_AXES = 2;
+
     public Triangle(double[][] coordinates) throws IllegalArgumentException {
-        if (!areCorrectCoordinates(coordinates)) {
-            throw new IllegalArgumentException("Can't create an triangle! Wrong values of point coordinates.");
+        if (areCorrectCoordinates(coordinates)) {
+            this.coordinates = new double[NUMBER_OF_POINTS][NUMBER_OF_COORDINATE_AXES];
+            for (int i = 0; i < coordinates.length; i++) {
+                System.arraycopy(coordinates[i], 0, this.coordinates[i], 0, coordinates[i].length);
+            }
         } else {
-            this.coordinates = coordinates.clone();
+            throw new IllegalArgumentException("Can't create an triangle! Wrong values of point coordinates.");
         }
     }
 
@@ -33,12 +36,16 @@ public class Triangle {
     }
 
     public double calculatePerimeter() {
-        return calculateLengthOfAB() + calculateLengthOfAC() + calculateLengthOfBC();
+        return calculateSegmentLength(coordinates[0], coordinates[1]) +
+                calculateSegmentLength(coordinates[0], coordinates[2]) +
+                calculateSegmentLength(coordinates[1], coordinates[2]);
     }
 
     public double calculateArea() {
         double p = calculatePerimeter() / 2.0;
-        return Math.sqrt(p * (p - calculateLengthOfAB()) * (p - calculateLengthOfAC()) * (p - calculateLengthOfBC()));
+        return Math.sqrt(p * (p - calculateSegmentLength(coordinates[0], coordinates[1])) *
+                (p - calculateSegmentLength(coordinates[0], coordinates[2])) *
+                (p - calculateSegmentLength(coordinates[1], coordinates[2])));
     }
 
     public double[] findCentroidLocation() {
@@ -51,19 +58,9 @@ public class Triangle {
         return new double[] {(x / 3), (y / 3)};
     }
 
-    private double calculateLengthOfAB() {
-        return Math.sqrt(Math.pow(coordinates[1][0] - coordinates[0][0], 2.0) + Math.pow(coordinates[1][1] -
-                coordinates[0][1], 2.0));
-    }
-
-    private double calculateLengthOfAC() {
-        return Math.sqrt(Math.pow(coordinates[2][0] - coordinates[0][0], 2.0) + Math.pow(coordinates[2][1] -
-                coordinates[0][1], 2.0));
-    }
-
-    private double calculateLengthOfBC() {
-        return Math.sqrt(Math.pow(coordinates[2][0] - coordinates[1][0], 2.0) + Math.pow(coordinates[2][1] -
-                coordinates[1][1], 2.0));
+    private double calculateSegmentLength(double[] firstPointCoordinates, double[] secondPointCoordinates) {
+        return Math.sqrt(Math.pow(secondPointCoordinates[0] - firstPointCoordinates[0], 2.0) +
+                Math.pow(secondPointCoordinates[1] - firstPointCoordinates[1], 2.0));
     }
 
     private boolean areCorrectCoordinates(double[][] coordinates) {

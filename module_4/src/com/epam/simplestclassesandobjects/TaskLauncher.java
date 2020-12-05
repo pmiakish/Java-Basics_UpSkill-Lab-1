@@ -1,8 +1,13 @@
 package com.epam.simplestclassesandobjects;
 
+import com.epam.simplestclassesandobjects.entity.*;
+import com.epam.simplestclassesandobjects.service.*;
+
 import java.time.LocalTime;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class TaskLauncher {
 
@@ -78,7 +83,7 @@ public class TaskLauncher {
         // task 03
         System.out.println("\n--- TASK 03 ---");
         System.out.println("Excellent students:");
-        Student[] students = StudentGenerator.generateStudentArray(NUMBER_OF_STUDENTS, NUMBER_OF_EXCELLENT_STUDENTS);
+        Student[] students = StudentAggregator.generateStudentArray(NUMBER_OF_STUDENTS, NUMBER_OF_EXCELLENT_STUDENTS);
         for (Student student : students) {
             if (student.isExcellentStudent()) {
                 System.out.println(student);
@@ -87,19 +92,21 @@ public class TaskLauncher {
 
         // task 04
         System.out.println("\n--- TASK 04 ---");
-        Train[] trains = TrainGenerator.generateTrainArray(NUMBER_OF_TRAINS);
+        Train[] trains = TrainAggregator.generateTrainArray(NUMBER_OF_TRAINS);
         System.out.println("Trains sorted by numbers:");
         Arrays.sort(trains, new TrainByNumberComparator());
-        TrainWorker.printTrains(trains);
+        TrainAggregator.printTrains(trains);
         System.out.println("\nTrains sorted by destination (considering departure time):");
         Arrays.sort(trains, new TrainByDestinationComparator());
-        TrainWorker.printTrains(trains);
+        TrainAggregator.printTrains(trains);
         System.out.println("\nInfo about the train with the specified number (" + SPECIFIED_TRAIN_NUMBER + "):");
-        TrainWorker.printTrainInfoByNumber(trains, SPECIFIED_TRAIN_NUMBER);
+        String trainInfo = TrainAggregator.findTrainInfoByNumber(trains, SPECIFIED_TRAIN_NUMBER);
+        System.out.println(Objects.requireNonNullElse(trainInfo, "The train with specified number is not found!"));
 
         // task 05
         System.out.println("\n--- TASK 05 ---");
         Counter counter;
+        Counter counterWithSpecifiedBoundaries;
         try {
             counter = new Counter();
             System.out.println("Incrementing of the counter initialized with default bounds:");
@@ -107,18 +114,14 @@ public class TaskLauncher {
                 System.out.println(counter);
                 counter.increaseCounter();
             }
-        } catch (IllegalAccessException ex) {
-            System.out.println(ex.getMessage());
-        }
-        Counter counterWithSpecifiedBoundaries;
-        try {
-             counterWithSpecifiedBoundaries = new Counter(START_COUNTER_VALUE, END_COUNTER_VALUE);
-             System.out.println("\nDecrementing of the counter initialized with specified bounds:");
+
+            counterWithSpecifiedBoundaries = new Counter(START_COUNTER_VALUE, END_COUNTER_VALUE);
+            System.out.println("\nDecrementing of the counter initialized with specified bounds:");
             for (int i = 0; i < 20; i++) {
                 System.out.println(counterWithSpecifiedBoundaries);
                 counterWithSpecifiedBoundaries.decreaseCounter();
             }
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -160,14 +163,23 @@ public class TaskLauncher {
         if (customers != null) {
             System.out.println("The unsorted array of customers:");
             CustomerAggregator.printCustomers(customers);
-            Arrays.sort(customers, new CustomerByNameComparator());
+            Arrays.sort(customers);
             System.out.println("\nThe array of customers sorted by names:");
             CustomerAggregator.printCustomers(customers);
-            System.out.println("\nThe customers which have cards with postfixes from '" + MIN_CHECKING_POSTFIX + "' to " +
-                    "'" + MAX_CHECKING_POSTFIX + "':");
+
+            System.out.println("\nThe customers which have cards with postfixes from '" + MIN_CHECKING_POSTFIX +
+                    "' to '" + MAX_CHECKING_POSTFIX + "':");
             try {
-                CustomerAggregator.printCustomersWithSpecifiedCardNumberPostfix(customers, MIN_CHECKING_POSTFIX,
+                ArrayList<Customer> customersWithSpecifiedCardNumberPostfix = CustomerAggregator.
+                        findCustomersWithSpecifiedCardNumberPostfix(customers, MIN_CHECKING_POSTFIX,
                         MAX_CHECKING_POSTFIX);
+                if (customersWithSpecifiedCardNumberPostfix.size() != 0) {
+                    System.out.println(customersWithSpecifiedCardNumberPostfix.toString());
+                } else {
+                    System.out.println("There are no customers which have the card number with specified postfix!");
+                }
+
+
             } catch (NumberFormatException ex) {
                 System.out.println("Incorrect postfix values!");
             }
@@ -179,14 +191,35 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 09 ---");
         Book[] books = BookAggregator.generateBookArray(10);
         if (books != null) {
+
             System.out.println("The array of books:");
             BookAggregator.printBooks(books);
+
             System.out.println("\nThe books by the author - " + AUTHOR_NAME + ":");
-            BookAggregator.printBooksByAuthor(books, AUTHOR_NAME);
+            ArrayList<Book> booksByAuthor = BookAggregator.findBooksByAuthor(books, AUTHOR_NAME);
+            if (booksByAuthor.size() != 0) {
+                System.out.println(booksByAuthor.toString());
+            } else {
+                System.out.println("There are no books by specified author name!");
+            }
+
             System.out.println("\nThe books by the publisher - " + PUBLISHER + ":");
-            BookAggregator.printBooksByPublisher(books, PUBLISHER);
+            ArrayList<Book> booksByPublisher = BookAggregator.findBooksByPublisher(books, PUBLISHER);
+            if (booksByPublisher.size() != 0) {
+                System.out.println(booksByPublisher.toString());
+            } else {
+                System.out.println("There are no books by specified publisher!");
+            }
+
             System.out.println("\nThe books published after " + YEAR + ":");
-            BookAggregator.printBooksAfterYear(books, YEAR);
+            ArrayList<Book> booksPublishedAfterSpecifiedYear = BookAggregator.
+                    findBooksPublishedAfterSpecifiedYear(books, YEAR);
+            if (booksPublishedAfterSpecifiedYear.size() != 0) {
+                System.out.println(booksPublishedAfterSpecifiedYear.toString());
+            } else {
+                System.out.println("There are no books publishing after specified year!");
+            }
+
         } else {
             System.out.println("Can't generate a book array.");
         }
@@ -195,14 +228,37 @@ public class TaskLauncher {
         System.out.println("\n--- TASK 10 ---");
         Airline[] airlines = AirlineAggregator.generateAirlineArray(10);
         if (airlines != null) {
+
             System.out.println("The array of airlines:");
             AirlineAggregator.printAirlines(airlines);
+
             System.out.println("\nThe flights by the destination - " + DESTINATION + ":");
-            AirlineAggregator.printAirlinesByDestination(airlines, DESTINATION);
+            ArrayList<Airline> airlinesByDestination = AirlineAggregator.findAirlinesByDestination(airlines,
+                    DESTINATION);
+            if (airlinesByDestination.size() != 0) {
+                System.out.println(airlinesByDestination.toString());
+            } else {
+                System.out.println("The flights are not found!");
+            }
+
             System.out.println("\nThe flights by the day of the week - " + DAY_OF_WEEK + ":");
-            AirlineAggregator.printAirlinesByDayOfWeek(airlines, DAY_OF_WEEK);
+            ArrayList<Airline> airlinesByDayOfWeek = AirlineAggregator.findAirlinesByDayOfWeek(airlines,
+                    DAY_OF_WEEK);
+            if (airlinesByDayOfWeek.size() != 0) {
+                System.out.println(airlinesByDayOfWeek.toString());
+            } else {
+                System.out.println("The flights are not found!");
+            }
+
             System.out.println("\nThe flights by the day of the week - " + DAY_OF_WEEK + ", after " + TIME + ":");
-            AirlineAggregator.printAirlinesByDayOfWeek(airlines, DAY_OF_WEEK, TIME);
+            ArrayList<Airline> airlinesByDayOfWeekAndTime = AirlineAggregator.findAirlinesByDayOfWeek(airlines,
+                    DAY_OF_WEEK, TIME);
+            if (airlinesByDayOfWeekAndTime.size() != 0) {
+                System.out.println(airlinesByDayOfWeekAndTime.toString());
+            } else {
+                System.out.println("The flights are not found!");
+            }
+
         } else {
             System.out.println("Can't generate an airline array.");
         }

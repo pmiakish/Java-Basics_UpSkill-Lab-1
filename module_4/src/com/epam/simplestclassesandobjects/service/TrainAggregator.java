@@ -1,8 +1,10 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.service;
+
+import com.epam.simplestclassesandobjects.entity.Train;
 
 import java.util.GregorianCalendar;
 
-public class TrainGenerator {
+public class TrainAggregator {
 
     private static final String[] DESTINATIONS = {"Kukuevo", "Zhabinka", "Glubokoe", "Khoyniki", "Gibulichi"};
     private static final int START_HOUR = 0;
@@ -22,6 +24,21 @@ public class TrainGenerator {
                     departureTime);
         }
         return trains;
+    }
+
+    public static void printTrains(Train[] trains) {
+        for (Train train : trains) {
+            System.out.println(train);
+        }
+    }
+
+    public static String findTrainInfoByNumber(Train[] trains, int trainNumber) {
+        for (Train train : trains) {
+            if (train.getTrainNumber() == trainNumber) {
+                return String.valueOf(train);
+            }
+        }
+        return null;
     }
 
     private static int generateRandomNumber(int minValue, int maxValue) {

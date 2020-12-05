@@ -1,4 +1,4 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.entity;
 
 import java.time.Year;
 import java.util.Arrays;

@@ -1,10 +1,10 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.entity;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
 
     private final int id;
     private static int counterId = 1;
@@ -153,4 +153,19 @@ public class Customer {
     public int hashCode() {
         return Objects.hash(id, firstName, patronymicName, surname, cardNumber, accountNumber);
     }
+
+    @Override
+    public int compareTo(Customer other) {
+        final int comparisonBySurname = this.getSurname().compareToIgnoreCase(other.getSurname());
+        if (comparisonBySurname != 0) {
+            return comparisonBySurname;
+        }
+        final int comparisonByFirstName = this.getFirstName().compareToIgnoreCase(other.getFirstName());
+        if (comparisonByFirstName != 0) {
+            return comparisonByFirstName;
+        } else {
+            return this.getPatronymicName().compareToIgnoreCase(other.getPatronymicName());
+        }
+    }
+
 }

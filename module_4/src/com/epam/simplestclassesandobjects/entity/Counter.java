@@ -1,4 +1,4 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.entity;
 
 import java.util.Objects;
 
@@ -8,16 +8,19 @@ public class Counter {
     private int endValue;
     private int currentValue;
 
-    public Counter(int startValue, int endValue) throws IllegalAccessException {
+    private static final int DEFAULT_START_VALUE = -5;
+    private static final int DEFAULT_END_VALUE = 10;
+
+    public Counter(int startValue, int endValue) throws IllegalArgumentException {
         if (startValue == endValue) {
-            throw new IllegalAccessException("Wrong values of counter bounds!");
+            throw new IllegalArgumentException("Wrong values of counter bounds!");
         }
         this.startValue = currentValue = startValue;
         this.endValue = endValue;
     }
 
-    public Counter() throws IllegalAccessException {
-        this(-5, 10);
+    public Counter() throws IllegalArgumentException {
+        this(DEFAULT_START_VALUE, DEFAULT_END_VALUE);
     }
 
     public void setStartValue(int startValue) {

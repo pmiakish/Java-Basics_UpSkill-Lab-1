@@ -1,4 +1,4 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.entity;
 
 import java.time.LocalTime;
 import java.util.Objects;

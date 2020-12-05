@@ -1,6 +1,10 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.service;
+
+import com.epam.simplestclassesandobjects.entity.Airline;
+import com.epam.simplestclassesandobjects.entity.Book;
 
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BookAggregator {
@@ -69,46 +73,37 @@ public class BookAggregator {
         }
     }
 
-    public static void printBooksByAuthor(Book[] books, String specifiedAuthor) {
-        boolean areBooks = false;
+    public static ArrayList<Book> findBooksByAuthor(Book[] books, String specifiedAuthor) {
+        ArrayList<Book> booksByAuthor = new ArrayList<Book>();
         for (Book book : books) {
             for (String author : book.getAuthors()) {
                 if (author.equalsIgnoreCase(specifiedAuthor)) {
-                    areBooks = true;
-                    System.out.println(book);
+                    booksByAuthor.add(book);
                     break;
                 }
             }
         }
-        if (!areBooks) {
-            System.out.println("There are no books by specified author name!");
-        }
+        return booksByAuthor;
     }
 
-    public static void printBooksByPublisher(Book[] books, String specifiedPublisher) {
-        boolean areBooks = false;
+    public static ArrayList<Book> findBooksByPublisher(Book[] books, String specifiedPublisher) {
+        ArrayList<Book> booksByPublisher = new ArrayList<Book>();
         for (Book book : books) {
             if (book.getPublisher().equalsIgnoreCase(specifiedPublisher)) {
-                areBooks = true;
-                System.out.println(book);
+                booksByPublisher.add(book);
             }
         }
-        if (!areBooks) {
-            System.out.println("There are no books by specified publisher!");
-        }
+        return booksByPublisher;
     }
 
-    public static void printBooksAfterYear(Book[] books, Year specifiedYear) {
-        boolean areBooks = false;
+    public static ArrayList<Book> findBooksPublishedAfterSpecifiedYear(Book[] books, Year specifiedYear) {
+        ArrayList<Book> booksPublishedAfterSpecifiedYear = new ArrayList<Book>();
         for (Book book : books) {
             if (book.getYearOfPublication().isAfter(specifiedYear)) {
-                areBooks = true;
-                System.out.println(book);
+                booksPublishedAfterSpecifiedYear.add(book);
             }
         }
-        if (!areBooks) {
-            System.out.println("There are no books publishing after specified year!");
-        }
+        return booksPublishedAfterSpecifiedYear;
     }
 
     private static int generateRandomNumber(int minValue, int maxValue) {

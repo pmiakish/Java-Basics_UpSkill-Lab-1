@@ -1,8 +1,9 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.service;
 
 import com.epam.onedimensionalarrays.ArrayMaker;
+import com.epam.simplestclassesandobjects.entity.Student;
 
-public class StudentGenerator {
+public class StudentAggregator {
 
     private static final String[] NAMES_OF_STUDENTS = {"A.P. Ivanov", "B.P. Smirnov", "P.V. Miakish", "S.S. Pavlov",
             "N.P. Andreev", "V.L. Kizhniakov", "D.S. Radyuk", "K.N. Konon", "F.E. Dzerzhinsky", "I.M. Leonenko",

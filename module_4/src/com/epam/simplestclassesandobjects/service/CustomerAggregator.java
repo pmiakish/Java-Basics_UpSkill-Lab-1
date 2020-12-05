@@ -1,4 +1,8 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.service;
+
+import com.epam.simplestclassesandobjects.entity.Customer;
+
+import java.util.ArrayList;
 
 public class CustomerAggregator {
 
@@ -43,20 +47,17 @@ public class CustomerAggregator {
         }
     }
 
-    public static void printCustomersWithSpecifiedCardNumberPostfix(Customer[] customers, String minPostfix, String
-            maxPostfix) throws NumberFormatException {
-        boolean areCustomers = false;
+    public static ArrayList<Customer> findCustomersWithSpecifiedCardNumberPostfix(Customer[] customers, String
+            minPostfix, String maxPostfix) throws NumberFormatException {
+        ArrayList<Customer> customersWithSpecifiedCardNumberPostfix = new ArrayList<Customer>();
         for (Customer customer : customers) {
             long postfixOfCardNumber = customer.getCardNumber() % (long) Math.pow(10, NUMBER_OF_POSTFIX_DIGITS);
             if (postfixOfCardNumber >= Long.parseLong(minPostfix) && postfixOfCardNumber <= Long.
                     parseLong(maxPostfix)) {
-                System.out.println(customer);
-                areCustomers = true;
+                customersWithSpecifiedCardNumberPostfix.add(customer);
             }
         }
-        if (!areCustomers) {
-            System.out.println("There are no customers with specified card numbers");
-        }
+        return customersWithSpecifiedCardNumberPostfix;
     }
 
     private static long generateRandomNumber(long minValue, long maxValue) {

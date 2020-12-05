@@ -1,4 +1,4 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;

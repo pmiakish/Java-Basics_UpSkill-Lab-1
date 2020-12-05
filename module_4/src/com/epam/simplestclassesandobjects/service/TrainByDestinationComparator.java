@@ -1,4 +1,6 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.service;
+
+import com.epam.simplestclassesandobjects.entity.Train;
 
 import java.util.Comparator;
 
