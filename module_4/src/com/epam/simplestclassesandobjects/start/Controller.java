@@ -1,7 +1,10 @@
-package com.epam.simplestclassesandobjects;
+package com.epam.simplestclassesandobjects.start;
 
 import com.epam.simplestclassesandobjects.entity.*;
 import com.epam.simplestclassesandobjects.service.*;
+import com.epam.simplestclassesandobjects.service.train.TrainAggregator;
+import com.epam.simplestclassesandobjects.service.train.TrainByDestinationComparator;
+import com.epam.simplestclassesandobjects.service.train.TrainByNumberComparator;
 
 import java.time.LocalTime;
 import java.time.Year;
@@ -9,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class TaskLauncher {
+public class Controller {
 
     // tasks 01, 02
     private static final double A_VALUE = -1.0;
@@ -100,8 +103,13 @@ public class TaskLauncher {
         Arrays.sort(trains, new TrainByDestinationComparator());
         TrainAggregator.printTrains(trains);
         System.out.println("\nInfo about the train with the specified number (" + SPECIFIED_TRAIN_NUMBER + "):");
-        String trainInfo = TrainAggregator.findTrainInfoByNumber(trains, SPECIFIED_TRAIN_NUMBER);
-        System.out.println(Objects.requireNonNullElse(trainInfo, "The train with specified number is not found!"));
+        try {
+            Train trainByNumber = TrainAggregator.findTrainByNumber(trains, SPECIFIED_TRAIN_NUMBER);
+            System.out.println(Objects.requireNonNullElse(trainByNumber.toString(), "The train with specified number" +
+                    "is not found!"));
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
 
         // task 05
         System.out.println("\n--- TASK 05 ---");

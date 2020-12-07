@@ -1,4 +1,4 @@
-package com.epam.simplestclassesandobjects.service;
+package com.epam.simplestclassesandobjects.service.train;
 
 import com.epam.simplestclassesandobjects.entity.Train;
 

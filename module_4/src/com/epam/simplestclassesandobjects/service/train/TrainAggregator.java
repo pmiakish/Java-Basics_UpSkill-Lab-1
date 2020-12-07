@@ -1,4 +1,4 @@
-package com.epam.simplestclassesandobjects.service;
+package com.epam.simplestclassesandobjects.service.train;
 
 import com.epam.simplestclassesandobjects.entity.Train;
 
@@ -32,11 +32,15 @@ public class TrainAggregator {
         }
     }
 
-    public static String findTrainInfoByNumber(Train[] trains, int trainNumber) {
-        for (Train train : trains) {
-            if (train.getTrainNumber() == trainNumber) {
-                return String.valueOf(train);
+    public static Train findTrainByNumber(Train[] trains, int trainNumber) throws IllegalArgumentException {
+        if (trains != null && trainNumber > 0) {
+            for (Train train : trains) {
+                if (train.getTrainNumber() == trainNumber) {
+                    return train;
+                }
             }
+        } else {
+            throw new IllegalArgumentException("Incorrect values of the train array or the train number!");
         }
         return null;
     }
