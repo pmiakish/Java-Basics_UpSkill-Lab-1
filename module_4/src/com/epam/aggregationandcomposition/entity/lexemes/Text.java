@@ -1,6 +1,6 @@
 package com.epam.aggregationandcomposition.entity.lexemes;
 
-import com.epam.aggregationandcomposition.entity.lexemes.exceptions.LexemeLogicalException;
+import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

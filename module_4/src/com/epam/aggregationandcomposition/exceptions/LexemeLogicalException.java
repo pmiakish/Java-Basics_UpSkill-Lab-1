@@ -1,4 +1,4 @@
-package com.epam.aggregationandcomposition.entity.lexemes.exceptions;
+package com.epam.aggregationandcomposition.exceptions;
 
 public class LexemeLogicalException extends Exception {
     public LexemeLogicalException() {

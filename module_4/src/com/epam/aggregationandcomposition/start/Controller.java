@@ -2,7 +2,7 @@ package com.epam.aggregationandcomposition.start;
 
 import com.epam.aggregationandcomposition.entity.lexemes.Readable;
 import com.epam.aggregationandcomposition.entity.lexemes.*;
-import com.epam.aggregationandcomposition.entity.lexemes.exceptions.LexemeLogicalException;
+import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
 
 import java.util.ArrayList;
 

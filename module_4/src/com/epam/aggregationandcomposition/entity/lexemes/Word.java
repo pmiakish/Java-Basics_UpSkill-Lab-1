@@ -1,6 +1,6 @@
 package com.epam.aggregationandcomposition.entity.lexemes;
 
-import com.epam.aggregationandcomposition.entity.lexemes.exceptions.LexemeLogicalException;
+import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
