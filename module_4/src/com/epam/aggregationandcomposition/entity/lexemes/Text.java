@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Text implements Readable {
+public class Text implements Lexeme {
 
-    List<Readable> header;
-    List<Readable> content;
+    private List<Lexeme> header;
+    private List<Lexeme> content;
 
-    public Text(List<Readable> header, List<Readable> content) throws LexemeLogicalException{
+    public Text(List<Lexeme> header, List<Lexeme> content) throws LexemeLogicalException{
         if (header != null && content != null && !header.isEmpty() && !content.isEmpty()) {
             this.header = header;
             this.content = content;
@@ -19,7 +19,7 @@ public class Text implements Readable {
         }
     }
 
-    public void setHeader(List<Readable> header) throws LexemeLogicalException {
+    public void setHeader(List<Lexeme> header) throws LexemeLogicalException {
         if (header != null && !header.isEmpty()) {
             this.header = header;
         } else {
@@ -27,7 +27,7 @@ public class Text implements Readable {
         }
     }
 
-    public void setContent(List<Readable> content) throws LexemeLogicalException {
+    public void setContent(List<Lexeme> content) throws LexemeLogicalException {
         if (content != null && !content.isEmpty()) {
             this.content = content;
         } else {
@@ -35,19 +35,19 @@ public class Text implements Readable {
         }
     }
 
-    public List<Readable> getHeader() {
+    public List<Lexeme> getHeader() {
         return header;
     }
 
-    public List<Readable> getContent() {
+    public List<Lexeme> getContent() {
         return content;
     }
 
     @Override
     public void addContent(String additionalContent) throws LexemeLogicalException {
         if (additionalContent != null && additionalContent.length() != 0) {
-            String[] subStrings = additionalContent.split("\\s|\\b(?:(?=[\\.!\\?,;:])|(?<=[\\.!\\?,;:]))+");
-            ArrayList<Readable> splitText = new ArrayList<>();
+            String[] subStrings = additionalContent.split("\\s|\\b(?:(?=[\\.!\\?,;:])|(?<=[\\.!\\?,;:]))");
+            ArrayList<Lexeme> splitText = new ArrayList<>();
             for (String subStr : subStrings) {
                 if (Word.isCorrectContent(subStr)) {
                     splitText.add(new Word(subStr));

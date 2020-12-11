@@ -1,17 +1,17 @@
 package com.epam.aggregationandcomposition.entity.lexemes;
 
 import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Sentence implements Readable {
+public class Sentence implements Lexeme {
 
-    List<Readable> content;
+    private List<Lexeme> content;
 
-    public Sentence(List<Readable> content) throws LexemeLogicalException {
+    public Sentence(List<Lexeme> content) throws LexemeLogicalException {
         if (isCorrectContent(content)) {
             this.content = new ArrayList<>(content);
         } else {
@@ -19,11 +19,11 @@ public class Sentence implements Readable {
         }
     }
 
-    public List<Readable> getContent() {
+    public List<Lexeme> getContent() {
         return content;
     }
 
-    public void setContent(List<Readable> content) throws LexemeLogicalException{
+    public void setContent(List<Lexeme> content) throws LexemeLogicalException{
         if (isCorrectContent(content)) {
             this.content = new ArrayList<>(content);
         } else {
@@ -31,13 +31,10 @@ public class Sentence implements Readable {
         }
     }
 
-    public boolean isCorrectContent(List<Readable> content) {
+    private boolean isCorrectContent(List<Lexeme> content) {
         if (content != null && !content.isEmpty()) {
-            Pattern wordPattern = Pattern.compile("^[\\\\\\w'\"/-]+$");
-            Matcher wordMatcher = wordPattern.matcher(String.valueOf(content.get(0)));
-            Pattern punctuationPattern = Pattern.compile("^[\\.!\\?]+$");
-            Matcher punctuationMatcher = punctuationPattern.matcher(String.valueOf(content.get(content.size() - 1)));
-            if (wordMatcher.matches() && punctuationMatcher.matches()) {
+            if (Pattern.compile("^[\\\\\\w'\"/-]+$").matcher(String.valueOf(content.get(0))).matches() &&
+                    Pattern.compile("^[\\.!\\?]+$").matcher(String.valueOf(content.get(content.size()-1))).matches()) {
                 return true;
             }
         }

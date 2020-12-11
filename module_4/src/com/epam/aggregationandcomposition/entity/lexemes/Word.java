@@ -1,17 +1,13 @@
 package com.epam.aggregationandcomposition.entity.lexemes;
 
 import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
+
 import java.util.Objects;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Word implements Readable {
+public class Word implements Lexeme {
 
-    String content;
-
-    Word() {
-        super();
-    }
+    private String content;
 
     public Word(String content) throws LexemeLogicalException {
         if (isCorrectContent(content)) {
@@ -35,9 +31,7 @@ public class Word implements Readable {
 
     public static boolean isCorrectContent(String content) {
         if (content != null) {
-            Pattern wordPattern = Pattern.compile("^[\\\\\\w'\"/-]+$");
-            Matcher wordMatcher = wordPattern.matcher(content);
-            return wordMatcher.matches();
+            return Pattern.compile("^[\\\\\\w'\"/-]+$").matcher(content).matches();
         } else {
             return false;
         }

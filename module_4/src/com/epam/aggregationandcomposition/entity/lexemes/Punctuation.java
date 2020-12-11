@@ -1,13 +1,13 @@
 package com.epam.aggregationandcomposition.entity.lexemes;
 
 import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
+
 import java.util.Objects;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Punctuation extends Word{
+public class Punctuation implements Lexeme {
 
-    String content;
+    private String content;
 
     public Punctuation(String content) throws LexemeLogicalException {
         if (isCorrectContent(content)) {
@@ -21,15 +21,25 @@ public class Punctuation extends Word{
         return content;
     }
 
+    public void setContent(String content) throws LexemeLogicalException {
+        if (isCorrectContent(content)) {
+            this.content = content;
+        } else {
+            throw new LexemeLogicalException("Incorrect content! Can't change the punctuation object!");
+        }
+    }
+
     public static boolean isCorrectContent(String content) {
-        Pattern punctuationPattern = Pattern.compile("^[\\.!\\?,;:]+$");
-        Matcher punctuationMatcher = punctuationPattern.matcher(String.valueOf(content));
-        return punctuationMatcher.matches();
+        return Pattern.compile("^[\\.!\\?,;:]+$").matcher(String.valueOf(content)).matches();
     }
 
     @Override
-    public void addContent(String additionalContent) {
-
+    public void addContent(String additionalContent) throws LexemeLogicalException {
+        if (isCorrectContent(additionalContent)) {
+            this.content.concat(additionalContent);
+        } else {
+            throw new LexemeLogicalException("Incorrect additional content! Can't change the word object!");
+        }
     }
 
     @Override
