@@ -6,7 +6,7 @@ import com.epam.aggregationandcomposition.exceptions.LexemeLogicalException;
 
 import java.util.ArrayList;
 
-public class Controller {
+public class LexemeController {
 
     private static final String[] WORDS_PART1 = {"Java", "is", "a", "set", "of", "computer", "software", "and",
             "specifications", "developed", "by", "James", "Gosling", "at", "Sun", "Microsystems"};
