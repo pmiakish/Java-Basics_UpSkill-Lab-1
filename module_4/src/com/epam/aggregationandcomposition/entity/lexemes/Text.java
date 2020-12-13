@@ -47,7 +47,7 @@ public class Text implements Lexeme {
     public void addContent(String additionalContent) throws LexemeLogicalException {
         if (additionalContent != null && additionalContent.length() != 0) {
             String[] subStrings = additionalContent.split("\\s|\\b(?:(?=[\\.!\\?,;:])|(?<=[\\.!\\?,;:]))");
-            ArrayList<Lexeme> splitText = new ArrayList<>();
+            List<Lexeme> splitText = new ArrayList<>();
             for (String subStr : subStrings) {
                 if (Word.isCorrectContent(subStr)) {
                     splitText.add(new Word(subStr));

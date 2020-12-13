@@ -15,4 +15,9 @@ public class RandomNumberGenerator {
         return (float) Math.round(result * 10) / 10;
     }
 
+    public static double generate(double minValue, double rightBorder) {
+        double result = (Math.random() * (rightBorder - minValue) + minValue);
+        return (double) Math.round(result * 100) / 100;
+    }
+
 }
