@@ -8,6 +8,7 @@ import com.epam.aggregationandcomposition.service.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class AccountController {
 
@@ -16,6 +17,7 @@ public class AccountController {
     private static final int NUMBER_OF_BLOCKED_ACCOUNTS = 2;
     private static final double MIN_BALANCE = -5000.0;
     private static final double MAX_BALANCE = 5000.0;
+    private static final long ACCOUNT_NUMBER_FOR_SEARCHING = 1572501004L;
 
     public static void main(String[] args) {
         try {
@@ -46,10 +48,15 @@ public class AccountController {
             System.out.println("\nSorting of accounts by number:");
             customer.getAccounts().sort(Comparator.comparing(Account::getNumber));
             System.out.println(customer);
+            System.out.println("\nSearching for account with number '" + ACCOUNT_NUMBER_FOR_SEARCHING + "':");
+            Account foundedAccount = customer.findAccountByNumber(ACCOUNT_NUMBER_FOR_SEARCHING);
+            System.out.println(Objects.requireNonNullElse(foundedAccount, "The account with specified number" +
+                    " is not found!"));
 
         } catch (CustomerLogicalException e) {
             e.printStackTrace();
         }
 
     }
+
 }

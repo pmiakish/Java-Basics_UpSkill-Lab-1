@@ -31,6 +31,10 @@ public class Customer {
         return accounts.stream().filter(account -> account.getBalance() < 0).mapToDouble(Account::getBalance).sum();
     }
 
+    public Account findAccountByNumber(long number) {
+        return accounts.stream().filter(account -> account.getNumber() == number).findAny().orElse(null);
+    }
+
     public String getName() {
         return name;
     }
