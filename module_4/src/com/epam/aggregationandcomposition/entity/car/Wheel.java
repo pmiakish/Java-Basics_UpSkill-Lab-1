@@ -1,21 +1,19 @@
 package com.epam.aggregationandcomposition.entity.car;
 
 import com.epam.aggregationandcomposition.exceptions.CarLogicalException;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Wheel {
 
-    private static final String[] CORRECT_TIRE_TYPES = {"AS", "M+S", "Winter", "Summer", "Rain"};
     private static final byte MIN_WHEEL_RADIUS = 13;
     private static final byte MAX_WHEEL_RADIUS = 20;
 
-    String tireType;
-    String tireBrand;
-    byte radius;
+    private TireTypes tireType;
+    private String tireBrand;
+    private byte radius;
 
-    public Wheel(String tireType, String tireBrand, byte radius) throws CarLogicalException {
-        if (isCorrectTireType(tireType) && radius >= MIN_WHEEL_RADIUS && radius <= MAX_WHEEL_RADIUS) {
+    public Wheel(TireTypes tireType, String tireBrand, byte radius) throws CarLogicalException {
+        if (tireType != null && radius >= MIN_WHEEL_RADIUS && radius <= MAX_WHEEL_RADIUS) {
             this.tireType = tireType;
             this.tireBrand = tireBrand;
             this.radius = radius;
@@ -24,16 +22,12 @@ public class Wheel {
         }
     }
 
-    public static boolean isCorrectTireType(String tireType) {
-        return tireType != null && Arrays.stream(CORRECT_TIRE_TYPES).anyMatch(tireType::equalsIgnoreCase);
-    }
-
-    public String getTireType() {
+    public TireTypes getTireType() {
         return tireType;
     }
 
-    public void setTireType(String tireType) throws CarLogicalException {
-        if (isCorrectTireType(tireType)) {
+    public void setTireType(TireTypes tireType) throws CarLogicalException {
+        if (tireType != null) {
             this.tireType = tireType;
         } else {
             throw new CarLogicalException("Unknown type of the tire. Can't change the current tire type!");

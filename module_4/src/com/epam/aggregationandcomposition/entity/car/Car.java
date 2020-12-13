@@ -2,6 +2,7 @@ package com.epam.aggregationandcomposition.entity.car;
 
 import com.epam.aggregationandcomposition.exceptions.CarLogicalException;
 import com.epam.aggregationandcomposition.exceptions.CarTechnicalException;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -11,10 +12,10 @@ public class Car {
     private static final float FUEL_AMOUNT_TO_ONE_RIDE = 0.2f;
     private static final byte NUMBER_OF_WHEELS = 4;
 
-    String carBrand;
-    Engine engine;
-    Wheel[] wheels;
-    float fuelLevel = 1.0f;
+    private String carBrand;
+    private Engine engine;
+    private Wheel[] wheels;
+    private float fuelLevel = 1.0f;
 
     public Car(String carBrand, Engine engine, Wheel[] wheels) throws CarLogicalException {
         if (carBrand != null && engine != null &&  wheels != null) {
@@ -26,26 +27,22 @@ public class Car {
         }
     }
 
-    public float go() throws CarTechnicalException {
+    public void go() throws CarTechnicalException {
         if (fuelLevel >= FUEL_AMOUNT_TO_ONE_RIDE) {
             fuelLevel -= FUEL_AMOUNT_TO_ONE_RIDE;
+            System.out.println("The car is going... The fuel level is " + fuelLevel);
         } else {
             throw new CarTechnicalException("There isn't enough fuel to going. You have to refuel!");
         }
-        return fuelLevel;
     }
 
-    public void refuel() {
-        try {
-            setFuelLevel(FULL_TANK);
-        } catch (CarLogicalException e) {
-            e.printStackTrace();
-        }
+    public void refuel() throws CarLogicalException {
+        setFuelLevel(FULL_TANK);
     }
 
-    public void changeWheel(byte wheelNumber, String tireBrand, String tireType) throws CarLogicalException{
+    public void changeWheel(byte wheelNumber, String tireBrand, TireTypes tireType) throws CarLogicalException {
         if (wheelNumber >= 0 && wheelNumber < NUMBER_OF_WHEELS) {
-            if (Wheel.isCorrectTireType(tireType)) {
+            if (tireType != null) {
                 byte radius = wheels[wheelNumber].getRadius();
                 wheels[wheelNumber] = new Wheel(tireType, tireBrand, radius);
             } else {
@@ -54,10 +51,6 @@ public class Car {
         } else {
             throw new CarLogicalException("Wrong wheel number to changing. Can't change the wheel!");
         }
-    }
-
-    public void printCarBrand() {
-        System.out.println("The car brand is " + carBrand);
     }
 
     public String getCarBrand() {

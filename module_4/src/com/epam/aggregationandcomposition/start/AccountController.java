@@ -2,9 +2,10 @@ package com.epam.aggregationandcomposition.start;
 
 import com.epam.aggregationandcomposition.entity.account.Account;
 import com.epam.aggregationandcomposition.entity.account.Customer;
+import com.epam.aggregationandcomposition.exceptions.AccountLogicalException;
 import com.epam.aggregationandcomposition.exceptions.CustomerLogicalException;
 import com.epam.aggregationandcomposition.service.RandomNumberGenerator;
-
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -23,12 +24,12 @@ public class AccountController {
         try {
             List<Account> accounts = new ArrayList<>();
             for (int i = 0; i < NUMBER_OF_ACCOUNTS; i++) {
-                accounts.add(new Account(RandomNumberGenerator.generate(MIN_BALANCE, MAX_BALANCE)));
+                accounts.add(new Account(BigDecimal.valueOf(RandomNumberGenerator.generate(MIN_BALANCE, MAX_BALANCE))));
             }
             for (int i = 0; i < NUMBER_OF_BLOCKED_ACCOUNTS; i++) {
                 int randomNumber = RandomNumberGenerator.generate(0, accounts.size() - 1);
-                if (accounts.get(randomNumber).isUnblocked()) {
-                    accounts.get(randomNumber).setUnblocked(false);
+                if (!accounts.get(randomNumber).isBlocked()) {
+                    accounts.get(randomNumber).setBlocked(true);
                 } else {
                     i--;
                 }
@@ -43,7 +44,7 @@ public class AccountController {
             customer.getAccounts().sort(Comparator.comparing(Account::getBalance));
             System.out.println(customer);
             System.out.println("\nSorting of accounts by status:");
-            customer.getAccounts().sort(Comparator.comparing(Account::isUnblocked));
+            customer.getAccounts().sort(Comparator.comparing(Account::isBlocked));
             System.out.println(customer);
             System.out.println("\nSorting of accounts by number:");
             customer.getAccounts().sort(Comparator.comparing(Account::getNumber));
@@ -53,7 +54,7 @@ public class AccountController {
             System.out.println(Objects.requireNonNullElse(foundedAccount, "The account with specified number" +
                     " is not found!"));
 
-        } catch (CustomerLogicalException e) {
+        } catch (CustomerLogicalException | AccountLogicalException e) {
             e.printStackTrace();
         }
 

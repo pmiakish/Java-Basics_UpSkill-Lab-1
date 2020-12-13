@@ -1,8 +1,6 @@
 package com.epam.aggregationandcomposition.start;
 
-import com.epam.aggregationandcomposition.entity.car.Car;
-import com.epam.aggregationandcomposition.entity.car.Engine;
-import com.epam.aggregationandcomposition.entity.car.Wheel;
+import com.epam.aggregationandcomposition.entity.car.*;
 import com.epam.aggregationandcomposition.exceptions.CarLogicalException;
 import com.epam.aggregationandcomposition.exceptions.CarTechnicalException;
 import com.epam.aggregationandcomposition.service.RandomNumberGenerator;
@@ -14,9 +12,7 @@ public class CarController {
 
     private static final float MIN_ENGINE_DISPLACEMENT = 1.1f;
     private static final float MAX_ENGINE_DISPLACEMENT = 6.0f;
-    private static final String[] FUEL_TYPES = {"Diesel", "Petrol"};
 
-    private static final String[] TIRE_TYPES = {"AS", "M+S", "Winter", "Summer", "Rain"};
     private static final String[] TIRE_BRANDS = {"Continental", "Goodyear", "Bridgestone", "Pirelli", "Michelin",
             "Yokohama", "Hankook", "Dunlop", "Firestone", "Toyo"};
     private static final byte MIN_WHEEL_RADIUS = 13;
@@ -28,32 +24,33 @@ public class CarController {
 
     public static void main(String[] args) {
 
-        // --- TASK 02 ---
         try {
+            FuelTypes[] fuelTypes = FuelTypes.values();
             Engine engine = new Engine(RandomNumberGenerator.generate(MIN_ENGINE_DISPLACEMENT, MAX_ENGINE_DISPLACEMENT),
-                    FUEL_TYPES[RandomNumberGenerator.generate(0, FUEL_TYPES.length - 1)]);
+                    fuelTypes[RandomNumberGenerator.generate(0, fuelTypes.length - 1)]);
 
             Wheel[] wheels = new Wheel[NUMBER_OF_WHEELS];
-            String tireType = TIRE_TYPES[RandomNumberGenerator.generate(0, TIRE_TYPES.length - 1)];
+            TireTypes[] tireTypes = TireTypes.values();
+            TireTypes randomTireType = tireTypes[RandomNumberGenerator.generate(0, tireTypes.length - 1)];
             String tireBrand = TIRE_BRANDS[RandomNumberGenerator.generate(0, TIRE_BRANDS.length - 1)];
             byte radius = RandomNumberGenerator.generate(MIN_WHEEL_RADIUS, MAX_WHEEL_RADIUS);
             for (int i = 0; i < NUMBER_OF_WHEELS; i++) {
-                wheels[i] = new Wheel(tireType, tireBrand, radius);
+                wheels[i] = new Wheel(randomTireType, tireBrand, radius);
             }
 
             Car car = new Car(CAR_BRANDS[RandomNumberGenerator.generate(0, CAR_BRANDS.length - 1)], engine, wheels);
             System.out.println("The car was create:\n" + car);
             for (int i = 0; i < NUMBER_OF_RIDES; i++) {
                 car.go();
-                System.out.println("The car is going... The fuel level is " + car.getFuelLevel());
+
             }
             System.out.println("Car refueling");
             car.refuel();
             System.out.println(car);
             System.out.println("A wheel changing");
-            car.changeWheel(WHEEL_FOR_CHANGE_NUMBER, TIRE_BRANDS[0], TIRE_TYPES[0]);
+            car.changeWheel(WHEEL_FOR_CHANGE_NUMBER, TIRE_BRANDS[0], TireTypes.AS);
             System.out.println(car);
-            car.printCarBrand();
+            System.out.println("The car brand is " + car.getCarBrand());
 
         } catch (CarLogicalException | CarTechnicalException e) {
             e.printStackTrace();

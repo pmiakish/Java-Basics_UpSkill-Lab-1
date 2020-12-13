@@ -103,8 +103,6 @@ public class StateController {
         } catch (StateLogicalException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private static List<Measurable> generateDistrict (String[] settlementNames, double[] settlementAreas) {

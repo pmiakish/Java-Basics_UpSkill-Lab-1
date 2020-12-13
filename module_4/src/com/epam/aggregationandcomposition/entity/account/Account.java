@@ -1,57 +1,68 @@
 package com.epam.aggregationandcomposition.entity.account;
 
+import com.epam.aggregationandcomposition.exceptions.AccountLogicalException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Account {
 
     private static int counterId = 0;
-    private static long accountNumberPrefix = 1572501000L;
+    private final static long accountNumberPrefix = 1572501000L;
 
     private final long number;
-    private boolean isUnblocked = true;
-    private double balance = 0.0;
+    private boolean isBlocked = false;
+    private BigDecimal balance = BigDecimal.ZERO;
 
     public Account() {
         this.number = accountNumberPrefix + counterId++;
     }
 
-    public Account(double balance) {
+    public Account(BigDecimal balance) throws AccountLogicalException {
         this();
-        this.balance = balance;
+        if (balance != null) {
+            this.balance = balance;
+        } else {
+            throw new AccountLogicalException("Incorrect parameter. Can't create an account!");
+        }
     }
 
-    public Account(boolean isUnblocked, double balance) {
+    public Account(boolean isBlocked, BigDecimal balance) throws AccountLogicalException {
         this();
-        this.isUnblocked = isUnblocked;
-        this.balance = balance;
+        if (balance != null) {
+            this.isBlocked = isBlocked;
+            this.balance = balance;
+        } else {
+            throw new AccountLogicalException("Incorrect parameter. Can't create an account!");
+        }
     }
 
     public long getNumber() {
         return number;
     }
 
-    public boolean isUnblocked() {
-        return isUnblocked;
+    public boolean isBlocked() {
+        return isBlocked;
     }
 
-    public void setUnblocked(boolean unblocked) {
-        isUnblocked = unblocked;
+    public void setBlocked(boolean blocked) {
+        isBlocked = blocked;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
     @Override
     public String toString() {
-        String blocking = (isUnblocked) ? "unblocked" : "blocked";
+        String blocking = (isBlocked) ? "blocked" : "unblocked";
         return "(account number: " + number +
                 ", status: " + blocking +
-                ", balance: " + balance + ")";
+                ", balance: " + balance.setScale(2, RoundingMode.HALF_UP) + ")";
     }
 
     @Override
@@ -60,12 +71,12 @@ public class Account {
         if (o == null || getClass() != o.getClass()) return false;
         Account other = (Account) o;
         return number == other.number &&
-                isUnblocked == other.isUnblocked &&
-                Double.compare(other.balance, balance) == 0;
+                isBlocked == other.isBlocked &&
+                Objects.equals(balance, other.balance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, isUnblocked, balance);
+        return Objects.hash(number, isBlocked, balance);
     }
 }

@@ -1,6 +1,8 @@
 package com.epam.aggregationandcomposition.entity.account;
 
 import com.epam.aggregationandcomposition.exceptions.CustomerLogicalException;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -19,16 +21,18 @@ public class Customer {
         }
     }
 
-    public double getCommonBalance() {
-        return accounts.stream().mapToDouble(Account::getBalance).sum();
+    public BigDecimal getCommonBalance() {
+        return accounts.stream().map(Account::getBalance).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public double getCommonPositiveBalance() {
-        return accounts.stream().filter(account -> account.getBalance() > 0).mapToDouble(Account::getBalance).sum();
+    public BigDecimal getCommonPositiveBalance() {
+        return accounts.stream().map(Account::getBalance).filter(account -> account.compareTo(BigDecimal.ZERO) > 0).
+                reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public double getCommonNegativeBalance() {
-        return accounts.stream().filter(account -> account.getBalance() < 0).mapToDouble(Account::getBalance).sum();
+    public BigDecimal getCommonNegativeBalance() {
+        return accounts.stream().map(Account::getBalance).filter(account -> account.compareTo(BigDecimal.ZERO) < 0).
+                reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public Account findAccountByNumber(long number) {
