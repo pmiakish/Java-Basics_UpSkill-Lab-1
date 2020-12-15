@@ -87,12 +87,12 @@ public class TravelVoucherController {
 
             System.out.println("\n--------\nSearching for travel vouchers with transport type 'airplane':\n");
             travelVouchers.stream().filter(travelVoucher -> travelVoucher.getTransport().equals(Transport.AIRPLANE)).
-                    forEachOrdered(System.out::println);
+                    forEach(System.out::println);
 
             System.out.println("\n--------\nSearching for travel vouchers with the number of days greater than " +
                     NUMBER_OF_DAYS_FOR_FILTER + ":\n");
             travelVouchers.stream().filter(travelVoucher -> travelVoucher.getNumberOfDays() >
-                    NUMBER_OF_DAYS_FOR_FILTER).forEachOrdered(System.out::println);
+                    NUMBER_OF_DAYS_FOR_FILTER).forEach(System.out::println);
 
             System.out.println("\n--------\nChanging the parameters (transport type, meals) of travel vouchers from " +
                     "previous searching result:\n");
