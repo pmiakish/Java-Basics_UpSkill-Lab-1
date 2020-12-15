@@ -8,11 +8,11 @@ public class Wheel {
     private static final byte MIN_WHEEL_RADIUS = 13;
     private static final byte MAX_WHEEL_RADIUS = 20;
 
-    private TireTypes tireType;
+    private TireType tireType;
     private String tireBrand;
     private byte radius;
 
-    public Wheel(TireTypes tireType, String tireBrand, byte radius) throws CarLogicalException {
+    public Wheel(TireType tireType, String tireBrand, byte radius) throws CarLogicalException {
         if (tireType != null && radius >= MIN_WHEEL_RADIUS && radius <= MAX_WHEEL_RADIUS) {
             this.tireType = tireType;
             this.tireBrand = tireBrand;
@@ -22,11 +22,11 @@ public class Wheel {
         }
     }
 
-    public TireTypes getTireType() {
+    public TireType getTireType() {
         return tireType;
     }
 
-    public void setTireType(TireTypes tireType) throws CarLogicalException {
+    public void setTireType(TireType tireType) throws CarLogicalException {
         if (tireType != null) {
             this.tireType = tireType;
         } else {

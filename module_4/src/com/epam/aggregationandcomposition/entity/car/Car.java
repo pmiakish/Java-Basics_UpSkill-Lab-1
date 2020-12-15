@@ -40,7 +40,7 @@ public class Car {
         setFuelLevel(FULL_TANK);
     }
 
-    public void changeWheel(byte wheelNumber, String tireBrand, TireTypes tireType) throws CarLogicalException {
+    public void changeWheel(byte wheelNumber, String tireBrand, TireType tireType) throws CarLogicalException {
         if (wheelNumber >= 0 && wheelNumber < NUMBER_OF_WHEELS) {
             if (tireType != null) {
                 byte radius = wheels[wheelNumber].getRadius();

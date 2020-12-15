@@ -25,13 +25,13 @@ public class CarController {
     public static void main(String[] args) {
 
         try {
-            FuelTypes[] fuelTypes = FuelTypes.values();
+            FuelType[] fuelTypes = FuelType.values();
             Engine engine = new Engine(RandomNumberGenerator.generate(MIN_ENGINE_DISPLACEMENT, MAX_ENGINE_DISPLACEMENT),
                     fuelTypes[RandomNumberGenerator.generate(0, fuelTypes.length - 1)]);
 
             Wheel[] wheels = new Wheel[NUMBER_OF_WHEELS];
-            TireTypes[] tireTypes = TireTypes.values();
-            TireTypes randomTireType = tireTypes[RandomNumberGenerator.generate(0, tireTypes.length - 1)];
+            TireType[] tireTypes = TireType.values();
+            TireType randomTireType = tireTypes[RandomNumberGenerator.generate(0, tireTypes.length - 1)];
             String tireBrand = TIRE_BRANDS[RandomNumberGenerator.generate(0, TIRE_BRANDS.length - 1)];
             byte radius = RandomNumberGenerator.generate(MIN_WHEEL_RADIUS, MAX_WHEEL_RADIUS);
             for (int i = 0; i < NUMBER_OF_WHEELS; i++) {
@@ -48,7 +48,7 @@ public class CarController {
             car.refuel();
             System.out.println(car);
             System.out.println("A wheel changing");
-            car.changeWheel(WHEEL_FOR_CHANGE_NUMBER, TIRE_BRANDS[0], TireTypes.AS);
+            car.changeWheel(WHEEL_FOR_CHANGE_NUMBER, TIRE_BRANDS[0], TireType.AS);
             System.out.println(car);
             System.out.println("The car brand is " + car.getCarBrand());
 

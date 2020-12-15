@@ -9,9 +9,9 @@ public class Engine {
     private static final float MAX_ENGINE_DISPLACEMENT = 6.0f;
 
     private float displacement;
-    private FuelTypes fuelType;
+    private FuelType fuelType;
 
-    public Engine(float displacement, FuelTypes fuelType) throws CarLogicalException {
+    public Engine(float displacement, FuelType fuelType) throws CarLogicalException {
         if (fuelType != null && displacement >= MIN_ENGINE_DISPLACEMENT && displacement <= MAX_ENGINE_DISPLACEMENT) {
             this.displacement = displacement;
             this.fuelType = fuelType;
@@ -33,11 +33,11 @@ public class Engine {
         }
     }
 
-    public FuelTypes getFuelType() {
+    public FuelType getFuelType() {
         return fuelType;
     }
 
-    public void setFuelType(FuelTypes fuelType) throws CarLogicalException {
+    public void setFuelType(FuelType fuelType) throws CarLogicalException {
         if (fuelType != null) {
             this.fuelType = fuelType;
         } else {

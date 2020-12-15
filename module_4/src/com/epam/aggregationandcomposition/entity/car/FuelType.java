@@ -1,6 +1,6 @@
 package com.epam.aggregationandcomposition.entity.car;
 
-public enum FuelTypes {
+public enum FuelType {
 
     DIESEL,
     PETROL

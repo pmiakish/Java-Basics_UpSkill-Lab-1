@@ -1,6 +1,6 @@
 package com.epam.aggregationandcomposition.entity.car;
 
-public enum TireTypes {
+public enum TireType {
 
     AS,
     MS,
