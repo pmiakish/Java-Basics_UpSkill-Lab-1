@@ -2,7 +2,6 @@ package com.epam.aggregationandcomposition.entity.travelvoucher;
 
 import com.epam.aggregationandcomposition.exceptions.TourLogicalException;
 import java.math.BigDecimal;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public abstract class Tour {
@@ -128,30 +127,4 @@ public abstract class Tour {
         }
     }
 
-    @Override
-    public String toString() {
-        return  "(type: " + getClass().getSimpleName() +
-                "; location: " + location +
-                "; distance to destination: " + distance + " km" +
-                "; price per day (depending on meals): " + pricePerDayDependingOnMeals +
-                "; included meals: " + includedMeal +
-                ")";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tour other = (Tour) o;
-        return distance == other.distance &&
-                Objects.equals(location, other.location) &&
-                Objects.equals(pricePerDay, other.pricePerDay) &&
-                Objects.equals(pricePerDayDependingOnMeals, other.pricePerDayDependingOnMeals) &&
-                includedMeal == other.includedMeal;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(location, distance, pricePerDay, pricePerDayDependingOnMeals, includedMeal);
-    }
 }
