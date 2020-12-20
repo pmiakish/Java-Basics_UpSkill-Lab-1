@@ -1,4 +1,4 @@
-package com.epam.aggregationandcomposition.start;
+package com.epam.aggregationandcomposition.service;
 
 import com.epam.aggregationandcomposition.entity.state.*;
 import com.epam.aggregationandcomposition.exceptions.StateLogicalException;

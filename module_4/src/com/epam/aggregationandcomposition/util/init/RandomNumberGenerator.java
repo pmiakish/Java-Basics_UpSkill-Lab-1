@@ -1,4 +1,4 @@
-package com.epam.aggregationandcomposition.service;
+package com.epam.aggregationandcomposition.util.init;
 
 public class RandomNumberGenerator {
 

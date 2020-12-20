@@ -1,9 +1,9 @@
-package com.epam.aggregationandcomposition.start;
+package com.epam.aggregationandcomposition.service;
 
 import com.epam.aggregationandcomposition.entity.car.*;
 import com.epam.aggregationandcomposition.exceptions.CarLogicalException;
 import com.epam.aggregationandcomposition.exceptions.CarTechnicalException;
-import com.epam.aggregationandcomposition.service.RandomNumberGenerator;
+import com.epam.aggregationandcomposition.util.init.RandomNumberGenerator;
 
 public class CarController {
 

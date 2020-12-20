@@ -8,13 +8,8 @@ import java.util.Objects;
 public class TravelVoucher {
 
     private static int counterId = 1;
-    private static final double[] TRANSPORTATION_COST_PER_KM = {
-            0.15, // BUS
-            0.25, // TRAIN
-            0.35, // AIRPLANE
-    };
 
-    private int id;
+    private final int id;
     private Tour tour;
     private int numberOfDays;
     private Transport transport;
@@ -39,13 +34,16 @@ public class TravelVoucher {
         BigDecimal transportationCost;
         switch (transport) {
             case BUS:
-                transportationCost = BigDecimal.valueOf(tour.getDistance() * TRANSPORTATION_COST_PER_KM[0]);
+                transportationCost = BigDecimal.valueOf(tour.getDistance() * Transport.BUS.
+                        getTransportationCostPerKm());
                 break;
             case TRAIN:
-                transportationCost = BigDecimal.valueOf(tour.getDistance() * TRANSPORTATION_COST_PER_KM[1]);
+                transportationCost = BigDecimal.valueOf(tour.getDistance() * Transport.TRAIN.
+                        getTransportationCostPerKm());
                 break;
             case AIRPLANE:
-                transportationCost = BigDecimal.valueOf(tour.getDistance() * TRANSPORTATION_COST_PER_KM[2]);
+                transportationCost = BigDecimal.valueOf(tour.getDistance() * Transport.AIRPLANE.
+                        getTransportationCostPerKm());
                 break;
             default:
                 transportationCost = BigDecimal.ZERO;

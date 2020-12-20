@@ -1,10 +1,10 @@
-package com.epam.aggregationandcomposition.start;
+package com.epam.aggregationandcomposition.service;
 
 import com.epam.aggregationandcomposition.entity.account.Account;
 import com.epam.aggregationandcomposition.entity.account.Customer;
 import com.epam.aggregationandcomposition.exceptions.AccountLogicalException;
 import com.epam.aggregationandcomposition.exceptions.CustomerLogicalException;
-import com.epam.aggregationandcomposition.service.RandomNumberGenerator;
+import com.epam.aggregationandcomposition.util.init.RandomNumberGenerator;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;

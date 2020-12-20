@@ -7,19 +7,13 @@ import java.util.regex.Pattern;
 
 public abstract class Tour {
 
-    private static final double[] PRICE_CORRECTION_COEFFICIENTS_DEPENDING_ON_MEALS = {
-            1.2, // BREAKFAST
-            1.4, // BREAKFAST_LUNCH
-            1.5, // BREAKFAST_DINNER
-            1.8, // ALL_INCLUSIVE
-            2.0  // ULTRA_ALL_INCLUSIVE
-    };
+    private static final String NAME_OF_LOCATION_PATTERN = "^[A-Z]+[A-Za-z0-9 -]+$";
 
-    private String location;
-    private int distance;
-    private BigDecimal pricePerDay;
-    private BigDecimal pricePerDayDependingOnMeals;
-    private Meal includedMeal = Meal.NONE;
+    protected String location;
+    protected int distance;
+    protected BigDecimal pricePerDay;
+    protected BigDecimal pricePerDayDependingOnMeals;
+    protected Meal includedMeal = Meal.NONE;
 
     public Tour(String location, int distance, BigDecimal pricePerDay) throws TourLogicalException {
         if (isCorrectNameOfLocation(location) && isCorrectPrice(pricePerDay) && distance > 0) {
@@ -99,7 +93,7 @@ public abstract class Tour {
     private boolean isCorrectNameOfLocation(String location) {
         return (location != null &&
                 location.length() != 0 &&
-                Pattern.compile("^[A-Z]+[A-Za-z0-9 -]+$").matcher(location).matches());
+                Pattern.compile(NAME_OF_LOCATION_PATTERN).matcher(location).matches());
     }
 
     private boolean isCorrectPrice(BigDecimal priceForOneDay) {
@@ -108,31 +102,29 @@ public abstract class Tour {
     }
 
     private void adjustPriceDependingOnMeals() {
-        if (this.includedMeal != null) {
-            switch (this.includedMeal) {
-                case BREAKFAST:
-                    this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
-                            valueOf(PRICE_CORRECTION_COEFFICIENTS_DEPENDING_ON_MEALS[0]));
-                    break;
-                case BREAKFAST_LUNCH:
-                    this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
-                            valueOf(PRICE_CORRECTION_COEFFICIENTS_DEPENDING_ON_MEALS[1]));
-                    break;
-                case BREAKFAST_DINNER:
-                    this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
-                            valueOf(PRICE_CORRECTION_COEFFICIENTS_DEPENDING_ON_MEALS[2]));
-                    break;
-                case ALL_INCLUSIVE:
-                    this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
-                            valueOf(PRICE_CORRECTION_COEFFICIENTS_DEPENDING_ON_MEALS[3]));
-                    break;
-                case ULTRA_ALL_INCLUSIVE:
-                    this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
-                            valueOf(PRICE_CORRECTION_COEFFICIENTS_DEPENDING_ON_MEALS[4]));
-                    break;
-                default:
-                    break;
-            }
+        switch (this.includedMeal) {
+            case BREAKFAST:
+                this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
+                        valueOf(Meal.BREAKFAST.getPriceCorrectionCoefficient()));
+                break;
+            case BREAKFAST_LUNCH:
+                this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
+                        valueOf(Meal.BREAKFAST_LUNCH.getPriceCorrectionCoefficient()));
+                break;
+            case BREAKFAST_DINNER:
+                this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
+                        valueOf(Meal.BREAKFAST_DINNER.getPriceCorrectionCoefficient()));
+                break;
+            case ALL_INCLUSIVE:
+                this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
+                        valueOf(Meal.ALL_INCLUSIVE.getPriceCorrectionCoefficient()));
+                break;
+            case ULTRA_ALL_INCLUSIVE:
+                this.pricePerDayDependingOnMeals = this.pricePerDay.multiply(BigDecimal.
+                        valueOf(Meal.ULTRA_ALL_INCLUSIVE.getPriceCorrectionCoefficient()));
+                break;
+            default:
+                break;
         }
     }
 
