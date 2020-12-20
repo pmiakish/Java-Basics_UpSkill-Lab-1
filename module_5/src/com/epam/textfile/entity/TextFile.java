@@ -1,17 +1,19 @@
-package com.epam.textfile;
+package com.epam.textfile.entity;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class TextFile {
 
     private static int counterId = 0;
+    private static final String DIRECTORY_PATTERN = "^(?:[\\w-]+\\\\)+$";
+    private static final String PREFIX_OF_NAME_PATTERN = "^[\\w-]+$";
+    private static final String FILE_NAME_PATTERN = "^[\\w-]+\\.[A-Za-z0-9]+$";
+
     private Path directory;
     private Path fileName;
 
@@ -22,63 +24,6 @@ public class TextFile {
         } else {
             throw new IllegalArgumentException("Incorrect directory. Can't create the path!");
         }
-    }
-
-    public boolean create() throws IOException {
-        Path pathToFile = directory.resolve(fileName);
-        if (Files.exists(pathToFile)) {
-            return false;
-        }
-        if (Files.notExists(directory)) {
-            Files.createDirectories(directory);
-        }
-        Files.createFile(pathToFile);
-        return true;
-    }
-
-    public boolean delete() throws IOException {
-        Path pathToFile = directory.resolve(fileName);
-        if (Files.exists(pathToFile)) {
-            Files.delete(pathToFile);
-            return true;
-        }
-        return false;
-    }
-
-    public List<String> read() throws IOException {
-        List<String> fileLines = null;
-        Path pathToFile = directory.resolve(fileName);
-        if (Files.exists(pathToFile) && Files.isReadable(pathToFile)) {
-            fileLines = Files.readAllLines(pathToFile);
-        }
-        return fileLines;
-    }
-
-    public boolean write(String str) throws IOException {
-        Path pathToFile = directory.resolve(fileName);
-        if (Files.exists(pathToFile) && Files.isWritable(pathToFile) && str != null) {
-            Files.writeString(pathToFile, str, StandardOpenOption.APPEND);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean rename(String directory, String fileName) throws IOException {
-        Path pathToFile = this.directory.resolve(this.fileName);
-        if (isCorrectDirectory(directory) && isCorrectFileName(fileName)) {
-            Path newDirectory = Paths.get(directory);
-            Path newPathToFile = Paths.get(directory, fileName);
-            if (Files.notExists(newPathToFile)) {
-                if (Files.notExists(newDirectory)) {
-                    Files.createDirectories(newDirectory);
-                }
-                Files.move(pathToFile, newPathToFile);
-                this.directory = newDirectory;
-                this.fileName = Paths.get(fileName);
-                return true;
-            }
-        }
-        return false;
     }
 
     public Path getDirectory() {
@@ -122,16 +67,16 @@ public class TextFile {
         return false;
     }
 
-    private boolean isCorrectDirectory(String directory) {
-        return (directory != null && Pattern.compile("^(?:[\\w-]+\\\\)+$").matcher(directory).matches());
+    public static boolean isCorrectDirectory(String directory) {
+        return (directory != null && Pattern.compile(DIRECTORY_PATTERN).matcher(directory).matches());
     }
 
-    private boolean isCorrectPrefixOfName(String prefixOfName) {
-        return (prefixOfName != null && Pattern.compile("^[\\w-]+$").matcher(prefixOfName).matches());
+    public static boolean isCorrectFileName(String fileName) {
+        return (fileName != null && Pattern.compile(FILE_NAME_PATTERN).matcher(fileName).matches());
     }
 
-    private boolean isCorrectFileName(String fileName) {
-        return (fileName != null && Pattern.compile("^[\\w-]+\\.[A-Za-z0-9]+$").matcher(fileName).matches());
+    private static boolean isCorrectPrefixOfName(String prefixOfName) {
+        return (prefixOfName != null && Pattern.compile(PREFIX_OF_NAME_PATTERN).matcher(prefixOfName).matches());
     }
 
     @Override
