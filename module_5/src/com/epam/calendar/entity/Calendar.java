@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Calendar {
 
-    private List<Holiday> holidays = new ArrayList<>();
+    private final List<Holiday> holidays = new ArrayList<>();
     private Year calendarYear;
 
     public Calendar(Year calendarYear) {
