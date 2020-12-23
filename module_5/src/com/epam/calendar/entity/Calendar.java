@@ -1,6 +1,5 @@
 package com.epam.calendar.entity;
 
-import com.epam.calendar.exceptions.CalendarLogicalException;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
@@ -13,34 +12,39 @@ public class Calendar {
     private Year calendarYear;
 
     public Calendar(Year calendarYear) {
-        this.calendarYear = calendarYear;
+        this.calendarYear = Objects.requireNonNull(calendarYear, "Can't create the calendar because year-field" +
+                " is null.");
     }
 
     public Calendar() {
         this(Year.now());
     }
 
-    public void addHoliday(LocalDate date, HolidayType type) throws CalendarLogicalException {
-        if (date != null && date.getYear() == calendarYear.getValue() && type != null && !isHoliday(date)) {
-            holidays.add(new Holiday(date, type));
-        } else {
-            throw new CalendarLogicalException("Incorrect parameters. Can't add the holiday!");
+    public void addHoliday(LocalDate date, HolidayType type) throws IllegalArgumentException, NullPointerException {
+        Objects.requireNonNull(date, "Can't add the holiday because the date is null!");
+        Objects.requireNonNull(type, "Can't add the holiday because its type is null!");
+        if (!isHoliday(date)) {
+            if (date.getYear() == calendarYear.getValue()) {
+                holidays.add(new Holiday(date, type));
+            } else {
+                throw new IllegalArgumentException("Wrong the year value. Can't add the holiday!");
+            }
         }
     }
 
-    public void removeHoliday(int index) throws CalendarLogicalException {
+    public void removeHoliday(int index) throws IllegalArgumentException {
         if (holidays.size() > 0 && index >= 0 && index < holidays.size() - 1) {
             holidays.remove(index);
         } else {
-            throw new CalendarLogicalException("Can't remove the last holiday because it does not exist!");
+            throw new IllegalArgumentException("Can't remove the last holiday because it does not exist!");
         }
     }
 
-    public void removeLastHoliday() throws CalendarLogicalException {
+    public void removeLastHoliday() throws IllegalArgumentException {
         if (holidays.size() > 0) {
             holidays.remove(holidays.size() - 1);
         } else {
-            throw new CalendarLogicalException("Can't remove the last holiday because it does not exist!");
+            throw new IllegalArgumentException("Can't remove the last holiday because it does not exist!");
         }
     }
 
@@ -48,19 +52,13 @@ public class Calendar {
         return calendarYear;
     }
 
-    public void setCalendarYear(Year calendarYear) throws CalendarLogicalException {
-        if (calendarYear != null) {
-            this.calendarYear = calendarYear;
-        } else {
-            throw new CalendarLogicalException("Incorrect parameter. Can't change the year of the calendar!");
-        }
+    public void setCalendarYear(Year calendarYear) throws NullPointerException {
+        this.calendarYear = Objects.requireNonNull(calendarYear, "Can't change the year of the calendar because " +
+                "the year is null!");
     }
 
-    public boolean isHoliday(LocalDate date) {
-        if (date != null) {
-            return holidays.stream().anyMatch(holiday -> holiday.getDate().equals(date));
-        }
-        return false;
+    private boolean isHoliday(LocalDate date) {
+        return holidays.stream().anyMatch(holiday -> holiday.getDate().equals(date));
     }
 
     private class Holiday {
