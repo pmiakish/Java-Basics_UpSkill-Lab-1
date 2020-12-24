@@ -67,7 +67,7 @@ public class Payment {
             return name;
         }
 
-        private void setName(String name) {
+        private void setName(String name) throws NullPointerException {
             this.name = Objects.requireNonNull(name, "The name of the purchase can't be null!");
         }
 
@@ -75,9 +75,10 @@ public class Payment {
             return pricePerPiece;
         }
 
-        private void setPricePerPiece(BigDecimal pricePerPiece) {
+        private void setPricePerPiece(BigDecimal pricePerPiece) throws NullPointerException {
             this.pricePerPiece = Objects.requireNonNull(pricePerPiece, "The price per piece of the purchase " +
                     "can't be null!");
+            this.totalPrice = pricePerPiece.multiply(BigDecimal.valueOf(numberOfPieces));
         }
 
         private int getNumberOfPieces() {
@@ -86,14 +87,11 @@ public class Payment {
 
         private void setNumberOfPieces(int numberOfPieces) {
             this.numberOfPieces = numberOfPieces;
+            this.totalPrice = pricePerPiece.multiply(BigDecimal.valueOf(numberOfPieces));
         }
 
         private BigDecimal getTotalPrice() {
             return totalPrice;
-        }
-
-        public void setTotalPrice(BigDecimal totalPrice) {
-            this.totalPrice = Objects.requireNonNull(totalPrice, "The total price of the purchase  can't be null!");
         }
 
         @Override
