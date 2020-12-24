@@ -46,7 +46,7 @@ public class Payment {
     }
 
     public BigDecimal getTotalAmount() {
-        return purchases.stream().map(Purchase::calculatePrice).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return purchases.stream().map(Purchase::getTotalPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     private class Purchase {
@@ -88,11 +88,7 @@ public class Payment {
             this.numberOfPieces = numberOfPieces;
         }
 
-        public BigDecimal calculatePrice() {
-            return pricePerPiece.multiply(BigDecimal.valueOf(numberOfPieces));
-        }
-
-        public BigDecimal getTotalPrice() {
+        private BigDecimal getTotalPrice() {
             return totalPrice;
         }
 
