@@ -1,6 +1,8 @@
-package com.epam.textfile.service;
+package com.epam.textfile.start;
 
 import com.epam.textfile.entity.TextFile;
+import com.epam.textfile.service.TextFileWorker;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

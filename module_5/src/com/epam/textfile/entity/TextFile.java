@@ -13,6 +13,7 @@ public class TextFile {
     private static final String DIRECTORY_PATTERN = "^(?:[\\w-]+\\\\)+$";
     private static final String PREFIX_OF_NAME_PATTERN = "^[\\w-]+$";
     private static final String FILE_NAME_PATTERN = "^[\\w-]+\\.[A-Za-z0-9]+$";
+    private static final String FILE_EXTENSION = ".txt";
 
     private Path directory;
     private Path fileName;
@@ -20,7 +21,7 @@ public class TextFile {
     public TextFile(String directory, String prefixOfName) throws IllegalArgumentException {
         if (isCorrectDirectory(directory) && isCorrectPrefixOfName(prefixOfName)) {
             this.directory = Paths.get(directory);
-            this.fileName = Paths.get(prefixOfName + counterId++ + ".txt");
+            this.fileName = Paths.get(prefixOfName + counterId++ + FILE_EXTENSION);
         } else {
             throw new IllegalArgumentException("Incorrect directory. Can't create the path!");
         }
@@ -67,11 +68,11 @@ public class TextFile {
         return false;
     }
 
-    public static boolean isCorrectDirectory(String directory) {
+    private static boolean isCorrectDirectory(String directory) {
         return (directory != null && Pattern.compile(DIRECTORY_PATTERN).matcher(directory).matches());
     }
 
-    public static boolean isCorrectFileName(String fileName) {
+    private static boolean isCorrectFileName(String fileName) {
         return (fileName != null && Pattern.compile(FILE_NAME_PATTERN).matcher(fileName).matches());
     }
 

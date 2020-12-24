@@ -36,7 +36,8 @@ public class Calendar {
         if (holidays.size() > 0 && index >= 0 && index < holidays.size() - 1) {
             holidays.remove(index);
         } else {
-            throw new IllegalArgumentException("Can't remove the last holiday because it does not exist!");
+            throw new IllegalArgumentException("Can't remove a holiday because item with the specified index does " +
+                    "not exist!");
         }
     }
 
