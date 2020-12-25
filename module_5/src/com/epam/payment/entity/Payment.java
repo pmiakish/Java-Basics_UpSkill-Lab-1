@@ -20,7 +20,7 @@ public class Payment {
         if (name.length() > 0 && pricePerPiece.compareTo(BigDecimal.ZERO) > 0 && numberOfPieces > 0) {
             this.purchases.add(new Purchase(name, pricePerPiece, numberOfPieces));
         } else {
-        throw new IllegalArgumentException("Incorrect parameters. Can't add the purchase!");
+            throw new IllegalArgumentException("Incorrect parameters. Can't add the purchase!");
         }
     }
 
