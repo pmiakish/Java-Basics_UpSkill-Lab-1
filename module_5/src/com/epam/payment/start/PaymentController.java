@@ -10,7 +10,7 @@ public class PaymentController {
             Payment payment = new Payment();
             PaymentInitializer.collectPurchases(payment);
             System.out.println(payment);
-            System.out.println("The total amount: " + payment.getTotalAmount());
+            System.out.println("The total numberOfItems: " + payment.getTotalAmount());
         } catch (IllegalArgumentException | NullPointerException e) {
             e.printStackTrace();
         }
