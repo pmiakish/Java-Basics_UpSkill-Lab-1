@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
 public class Cave {
 
     private final List<Treasure> treasures;
-    private final Dragon dragon = new Dragon();
+    private final Dragon dragon;
 
     public Cave() {
         this.treasures = new ArrayList<>();
+        this.dragon = new Dragon();
     }
 
     public class Dragon {

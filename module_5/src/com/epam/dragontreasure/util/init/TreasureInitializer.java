@@ -30,37 +30,29 @@ public class TreasureInitializer {
 
     public static void fillCave(Cave cave, int numberOfEachTypeTreasures) throws NullPointerException,
             IllegalArgumentException {
-
         Objects.requireNonNull(cave, "The cave can't be null!");
-
         if (numberOfEachTypeTreasures > 0) {
+            Cave.Dragon dragon = cave.callDragon();
+            dragon.removeAllTreasures();
 
-            try {
-                Cave.Dragon dragon = cave.callDragon();
-                dragon.removeAllTreasures();
+            // Coins
+            for (int i = 0; i < numberOfEachTypeTreasures; i++) {
+                dragon.addTreasure(createCoinTreasure());
+            }
 
-                // Coins
-                for (int i = 0; i < numberOfEachTypeTreasures; i++) {
-                    dragon.addTreasure(createCoinTreasure());
-                }
+            // Gemstones
+            for (int i = 0; i < numberOfEachTypeTreasures; i++) {
+                dragon.addTreasure(createGemstoneTreasure(false));
+            }
 
-                // Gemstones
-                for (int i = 0; i < numberOfEachTypeTreasures; i++) {
-                    dragon.addTreasure(createGemstoneTreasure(false));
-                }
+            // Ingots
+            for (int i = 0; i < numberOfEachTypeTreasures; i++) {
+                dragon.addTreasure(createIngotTreasure());
+            }
 
-                // Ingots
-                for (int i = 0; i < numberOfEachTypeTreasures; i++) {
-                    dragon.addTreasure(createIngotTreasure());
-                }
-
-                // Jewellery
-                for (int i = 0; i < numberOfEachTypeTreasures; i++) {
-                    dragon.addTreasure(createJewelleryTreasure());
-                }
-
-            } catch (NullPointerException | IllegalArgumentException e) {
-                e.printStackTrace();
+            // Jewellery
+            for (int i = 0; i < numberOfEachTypeTreasures; i++) {
+                dragon.addTreasure(createJewelleryTreasure());
             }
         } else {
             throw new IllegalArgumentException("Incorrect number of the treasures!");

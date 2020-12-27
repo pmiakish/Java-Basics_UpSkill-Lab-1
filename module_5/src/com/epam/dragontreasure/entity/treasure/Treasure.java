@@ -8,7 +8,7 @@ public abstract class Treasure implements Comparable<Treasure> {
     protected Enum type;
     protected int numberOfItems;
 
-    public Treasure(Enum type, int numberOfItems) throws NullPointerException, IllegalArgumentException {
+    protected Treasure(Enum type, int numberOfItems) throws NullPointerException, IllegalArgumentException {
         this.type = Objects.requireNonNull(type, "A type of the treasure can't be null!");
         if (numberOfItems > 0) {
             this.numberOfItems = numberOfItems;
