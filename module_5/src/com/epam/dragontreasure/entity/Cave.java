@@ -1,7 +1,6 @@
 package com.epam.dragontreasure.entity;
 
 import com.epam.dragontreasure.entity.treasure.Treasure;
-
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
