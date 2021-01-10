@@ -10,7 +10,7 @@ public abstract class Pack {
 
     protected Pack(PackColour packColour, Enum packType) throws NullPointerException {
         this.packColour = Objects.requireNonNull(packColour, "The colour of the flower cannot be null!");
-        this.packType = Objects.requireNonNull(packType, "The packtype cannot be null!");
+        this.packType = Objects.requireNonNull(packType, "The pack type cannot be null!");
     }
 
     public PackColour getColour() {

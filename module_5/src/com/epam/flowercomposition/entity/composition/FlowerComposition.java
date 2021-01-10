@@ -25,6 +25,8 @@ public abstract class FlowerComposition {
         }
     }
 
+    public abstract boolean checkBelongingToExpensiveSection();
+
     public List<Flower> getFlowers() {
         return flowers;
     }
@@ -56,6 +58,14 @@ public abstract class FlowerComposition {
             throw new IllegalArgumentException("Incorrect parameter! Cannot change the name of the flower " +
                     "composition.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "name: '" + name + "'" +
+                ", flowers: " + flowers +
+                ", pack: " + pack +
+                "}";
     }
 
     @Override

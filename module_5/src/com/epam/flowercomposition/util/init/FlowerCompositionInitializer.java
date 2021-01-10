@@ -1,7 +1,5 @@
 package com.epam.flowercomposition.util.init;
 
-import com.epam.flowercomposition.entity.composition.enums.BouquetType;
-import com.epam.flowercomposition.entity.composition.enums.SoilType;
 import com.epam.flowercomposition.entity.flower.ArtificialFlower;
 import com.epam.flowercomposition.entity.flower.Flower;
 import com.epam.flowercomposition.entity.flower.NaturalFlower;
@@ -94,16 +92,6 @@ public class FlowerCompositionInitializer {
         return new Container(colours[RandomNumberGenerator.generate(0, colours.length - 1)],
                 types[RandomNumberGenerator.generate(0, types.length - 1)], matchPackSize,
                 RandomNumberGenerator.generate(0, 1) == 1);
-    }
-
-    public static BouquetType defineRandomBouquetType() {
-        BouquetType[] types = BouquetType.values();
-        return types[RandomNumberGenerator.generate(0, types.length - 1)];
-    }
-
-    public static SoilType defineRandomSoilType() {
-        SoilType[] types = SoilType.values();
-        return types[RandomNumberGenerator.generate(0, types.length - 1)];
     }
 
     public static String defineRandomName() {
